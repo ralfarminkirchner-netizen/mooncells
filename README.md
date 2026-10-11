@@ -100,20 +100,41 @@ Getestetes Szenario: A befüllt → Sync → B hat alles; B ergänzt parallel �
 Sync zurück → beide Instanzen identisch (`diff` der `/api/graph`-Ausgaben leer).
 Nicht erreichbare Peers werden mit `502` und lesbarer Meldung abgelehnt.
 
+## Auto-Sync
+
+Peers werden pro Instanz registriert (`POST /api/peers {"url": "https://…"}`,
+in der Oberfläche im Panel „Peers & Auto-Sync"). **Jeder lokale Schreibzugriff**
+(Agent, Werk, Variante, Kante, Befund) pusht danach automatisch den eigenen
+Export an alle registrierten Peers — asynchron im Hintergrund, Fehler beim
+Peer blockieren oder verwerfen den lokalen Schreibzugriff nie. Ergebnisse der
+letzten Läufe: `GET /api/autosync-log`. Getestet lokal (zwei Instanzen) und
+über das Internet (lokal ⇄ Railway).
+
+## Deployment
+
+- **GitHub:** <https://github.com/ralfarminkirchner-netizen/mooncells>
+- **Railway:** live unter <https://mooncells-production.up.railway.app> —
+  Deploy via `Procfile` (`python -m server.app --host 0.0.0.0 --port $PORT`),
+  Host/Port/Instanz werden aus `MOONCELLS_HOST`/`PORT`/`MOONCELLS_INSTANCE` gelesen.
+  Neu deployen: `railway up` im Projektverzeichnis.
+- **Hinweis:** das JSON-File-Storage ist auf Railway flüchtig (neuer Deploy =
+  leerer Zustand). Für dauerhaften Betrieb dort: Railway-Volume mounten und
+  `MOONCELLS_DATA=/data/state.json` setzen — oder auf die Datenbank-Ausbaustufe warten.
+
 ## Oberfläche
 
 Liste der Werke mit eingerückten Variantenbäumen (Wurzel + abgeleitete Zweige),
-Kanten- und Befundstabellen, Formulare für alle Grundoperationen, Export-Download
-und Import-Upload direkt im Browser.
+Kanten- und Befundstabellen, Formulare für alle Grundoperationen, Peer-Verwaltung
+mit Auto-Sync-Log, Export-Download und Import-Upload direkt im Browser.
 
 ## Ausblick: nächste Ausbaustufen
 
-1. **Auto-Sync:** Nach jedem Schreibzugriff registrierte Peers automatisch
-   pushen (Peer-Liste in der State-Datei) — dann ist Konvergenz ohne Klick da.
-2. **Echte Verteilung:** Websocket/Server-Sent-Events broadcasten neue
+1. **GitHub-gesteuertes Deployment:** Railway-Service an das Repo koppeln, dann
+   reicht `git push` für Auto-Deploys.
+2. **Persistenz:** Volume-Template für Railway (`MOONCELLS_DATA=/data/state.json`)
+   oder `JsonStore`-Interface gegen SQLite/Postgres implementieren.
+3. **Echte Verteilung:** Websocket/Server-Sent-Events broadcasten neue
    Entitäten an registrierte Peers; die Merge-Logik (`store.import_document`)
    bleibt unverändert — nur der Transport wechselt von Request zu Stream.
-3. **Identität auf Netzwerkebene:** Peers als registrierte Agents mit
+4. **Identität auf Netzwerkebene:** Peers als registrierte Agents mit
    Instanz-URL im `description`-Feld, später Signatur je Document.
-4. **Datenbank:** `JsonStore` (gleiches Interface) durch SQLite/Postgres
-   ersetzen — die API-Schicht bleibt unverändert.
