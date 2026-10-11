@@ -1,0 +1,134 @@
+"""Pydantic-Modelle für das Mooncells Document Format v1.
+
+Entspricht exakt docs/schema.md. Referenzen sind bewusst schwach typisiert
+(plain strings) — siehe Designentscheidung 3.1 in docs/schema.md.
+"""
+from __future__ import annotations
+
+from datetime import datetime, timezone
+from typing import Literal, Optional
+
+from pydantic import BaseModel, Field
+
+
+def utcnow() -> str:
+    return datetime.now(timezone.utc).isoformat()
+
+
+# ---------------------------------------------------------------- Agents
+
+
+class AgentCreate(BaseModel):
+    handle: str
+    agent_type: Literal["human", "model"]
+    description: Optional[str] = None
+
+
+class Agent(AgentCreate):
+    id: str
+    created_at: str = Field(default_factory=utcnow)
+
+
+# ----------------------------------------------------------------- Works
+
+
+class WorkCreate(BaseModel):
+    work_type: str
+    title: str
+    author_id: str
+
+
+class Work(WorkCreate):
+    id: str
+    created_at: str = Field(default_factory=utcnow)
+
+
+# ------------------------------------------------------------- Worktrees
+
+
+class WorktreeCreate(BaseModel):
+    work_id: str
+    author_id: str
+
+
+class Worktree(WorktreeCreate):
+    id: str
+    created_at: str = Field(default_factory=utcnow)
+
+
+# -------------------------------------------------------------- Variants
+
+
+class VariantCreate(BaseModel):
+    worktree_id: str
+    derived_from: Optional[str] = None  # null = Wurzel des Baums
+    label: str
+    notes: str = ""
+    content: Optional[str] = None
+    author_id: str
+
+
+class Variant(VariantCreate):
+    id: str
+    created_at: str = Field(default_factory=utcnow)
+
+
+# ----------------------------------------------------------------- Edges
+
+EDGE_TYPES = ["remixt-aus", "erweitert", "testet", "widerspricht", "bewertet"]
+
+
+class EdgeCreate(BaseModel):
+    edge_type: str
+    from_variant_id: str
+    to_variant_id: str
+    note: Optional[str] = None
+    author_id: str
+
+
+class Edge(EdgeCreate):
+    id: str
+    created_at: str = Field(default_factory=utcnow)
+
+
+# -------------------------------------------------------------- Findings
+
+VERDICTS = ["tragfähig", "teilweise", "nicht-tragfähig"]
+
+
+class FindingCreate(BaseModel):
+    # genau eines der beiden Zielfelder muss gesetzt sein
+    target_edge_id: Optional[str] = None
+    target_variant_ids: Optional[tuple[str, str]] = None
+    criterion: str
+    task: str
+    verdict: Literal["tragfähig", "teilweise", "nicht-tragfähig"]
+    rationale: str
+    author_id: str
+
+
+class Finding(FindingCreate):
+    id: str
+    created_at: str = Field(default_factory=utcnow)
+
+
+# ------------------------------------------------------ Document Format
+
+
+class DocumentData(BaseModel):
+    agents: list[Agent] = []
+    works: list[Work] = []
+    worktrees: list[Worktree] = []
+    variants: list[Variant] = []
+    edges: list[Edge] = []
+    findings: list[Finding] = []
+
+
+class MooncellsDocument(BaseModel):
+    format: Literal["mooncells-document"] = "mooncells-document"
+    version: Literal["1"] = "1"
+    instance_id: str
+    exported_by: str
+    exported_at: str = Field(default_factory=utcnow)
+    scope: Optional[dict] = None
+    data: DocumentData

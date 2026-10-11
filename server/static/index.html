@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<title>Mooncells</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<header>
+  <h1>◍ Mooncells</h1>
+  <span class="sub">Variantenräume · vernetzt · append-only</span>
+  <div class="header-actions">
+    <button id="btn-sync" title="Bidirektional mit Peer-Instanz synchronisieren">⇄ Sync</button>
+    <button id="btn-export" title="Gesamtzustand als Mooncells Document herunterladen">⬇ Export</button>
+    <label class="import-label">⬆ Import <input type="file" id="import-file" accept=".json"></label>
+    <button id="btn-refresh">↻ Aktualisieren</button>
+  </div>
+</header>
+
+<div id="flash"></div>
+
+<main>
+  <!-- ============ Neue Entitäten ============ -->
+  <section class="panel" id="create">
+    <h2>Anlegen</h2>
+    <div class="form-grid">
+      <form id="form-agent">
+        <h3>Agent</h3>
+        <input name="handle" placeholder="Kennung, z. B. ralf / gpt-5.2" required>
+        <select name="agent_type"><option value="human">mensch</option><option value="model">modell</option></select>
+        <input name="description" placeholder="Beschreibung (optional)">
+        <button type="submit">Agent registrieren</button>
+      </form>
+
+      <form id="form-work">
+        <h3>Werk</h3>
+        <select name="work_type">
+          <option>text</option><option>song</option><option>app</option>
+          <option>video</option><option>program</option><option>skill</option>
+          <option>automation</option>
+        </select>
+        <input name="title" placeholder="Titel" required>
+        <select name="author_id" class="agent-select" required></select>
+        <button type="submit">Werk + Worktree anlegen</button>
+      </form>
+
+      <form id="form-variant">
+        <h3>Variante</h3>
+        <select name="work_id" class="work-select" required></select>
+        <select name="derived_from" class="variant-select"></select>
+        <input name="label" placeholder="Label, z. B. remix-minimal" required>
+        <textarea name="notes" placeholder="Abweichung / Parameter / Notizen"></textarea>
+        <textarea name="content" placeholder="Inhalt (optional)"></textarea>
+        <select name="author_id" class="agent-select" required></select>
+        <button type="submit">Variante anlegen</button>
+      </form>
+
+      <form id="form-edge">
+        <h3>Kante</h3>
+        <select name="edge_type">
+          <option>remixt-aus</option><option>erweitert</option><option>testet</option>
+          <option>widerspricht</option><option>bewertet</option>
+        </select>
+        <select name="from_variant_id" class="variant-select" required></select>
+        <select name="to_variant_id" class="variant-select" required></select>
+        <input name="note" placeholder="Notiz (optional)">
+        <select name="author_id" class="agent-select" required></select>
+        <button type="submit">Kante setzen</button>
+      </form>
+
+      <form id="form-finding">
+        <h3>Befund</h3>
+        <select name="target" id="finding-target"></select>
+        <input name="criterion" placeholder="Kriterium" required>
+        <input name="task" placeholder="Aufgabe" required>
+        <select name="verdict">
+          <option value="tragfähig">tragfähig</option>
+          <option value="teilweise">teilweise</option>
+          <option value="nicht-tragfähig">nicht tragfähig</option>
+        </select>
+        <textarea name="rationale" placeholder="Kurzbegründung"></textarea>
+        <select name="author_id" class="agent-select" required></select>
+        <button type="submit">Befund erfassen</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ============ Peers ============ -->
+  <section class="panel">
+    <h2>Peers &amp; Auto-Sync</h2>
+    <form id="form-peer" class="peer-form">
+      <input name="url" placeholder="Peer-URL, z. B. http://127.0.0.1:8401" required>
+      <button type="submit">Peer registrieren</button>
+    </form>
+    <div id="peers"></div>
+    <div id="autosync-log"></div>
+  </section>
+
+  <!-- ============ Ansichten ============ -->
+  <section class="panel">
+    <h2>Werke &amp; Variantenbäume</h2>
+    <div id="works"></div>
+  </section>
+
+  <section class="panel">
+    <h2>Kanten</h2>
+    <div id="edges"></div>
+  </section>
+
+  <section class="panel">
+    <h2>Befunde</h2>
+    <div id="findings"></div>
+  </section>
+</main>
+
+<script src="/static/app.js"></script>
+</body>
+</html>

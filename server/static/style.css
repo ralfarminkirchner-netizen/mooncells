@@ -1,0 +1,123 @@
+/* Mooncells Oberfläche — dunkel, kompakt, ohne Framework */
+:root {
+  --bg: #0e1116;
+  --panel: #171c24;
+  --line: #2a3240;
+  --text: #d7dee8;
+  --dim: #8b96a5;
+  --accent: #7cc7ff;
+  --good: #7ddba3;
+  --mid: #e8c96a;
+  --bad: #e88a8a;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--bg); color: var(--text);
+  font: 14px/1.5 -apple-system, "Segoe UI", system-ui, sans-serif;
+}
+header {
+  display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap;
+  padding: 14px 20px; border-bottom: 1px solid var(--line);
+  background: var(--panel); position: sticky; top: 0; z-index: 5;
+}
+header h1 { margin: 0; font-size: 20px; color: var(--accent); }
+header .sub { color: var(--dim); font-size: 13px; }
+.header-actions { margin-left: auto; display: flex; gap: 8px; align-items: center; }
+
+main { max-width: 1200px; margin: 0 auto; padding: 16px 20px 60px; }
+.panel {
+  background: var(--panel); border: 1px solid var(--line);
+  border-radius: 10px; padding: 14px 18px; margin-top: 16px;
+}
+.panel h2 { margin: 0 0 12px; font-size: 15px; color: var(--accent);
+  text-transform: uppercase; letter-spacing: .06em; }
+
+/* ---------- Formulare ---------- */
+.form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
+form {
+  border: 1px solid var(--line); border-radius: 8px; padding: 10px;
+  display: flex; flex-direction: column; gap: 6px; background: #12161d;
+}
+form h3 { margin: 0; font-size: 13px; color: var(--dim); }
+input, select, textarea, button {
+  font: inherit; color: var(--text); background: #0d1117;
+  border: 1px solid var(--line); border-radius: 6px; padding: 6px 8px;
+}
+textarea { min-height: 44px; resize: vertical; }
+button { cursor: pointer; background: #1d2836; border-color: #35435a; }
+button:hover { background: #253349; }
+.import-label {
+  display: inline-flex; align-items: center; gap: 4px; cursor: pointer;
+  padding: 6px 10px; border: 1px solid #35435a; border-radius: 6px;
+  background: #1d2836;
+}
+.import-label input { display: none; }
+
+/* ---------- Werke & Bäume ---------- */
+.work { border: 1px solid var(--line); border-radius: 8px; margin-bottom: 12px; overflow: hidden; }
+.work-head {
+  display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap;
+  padding: 8px 12px; background: #1a212b; cursor: pointer;
+}
+.work-head .title { font-weight: 600; }
+.badge {
+  font-size: 11px; padding: 1px 8px; border-radius: 10px;
+  border: 1px solid var(--line); color: var(--dim);
+}
+.badge.type { color: var(--accent); border-color: #2c4d6e; }
+.byline { color: var(--dim); font-size: 12px; margin-left: auto; }
+.tree { padding: 8px 12px 12px; }
+.vnode { margin: 2px 0 2px 0; padding-left: 0; }
+.vnode .vrow {
+  display: flex; gap: 8px; align-items: baseline; flex-wrap: wrap;
+  padding: 4px 8px; border-radius: 6px; background: #131920;
+  border: 1px solid transparent; cursor: default;
+}
+.vnode .vrow:hover { border-color: var(--line); }
+.vnode .label { font-weight: 600; color: #cfe6ff; }
+.vnode .notes { color: var(--dim); font-size: 12px; }
+.vnode .vid { font-size: 11px; color: #55606e; font-family: ui-monospace, monospace; }
+.vnode .root-tag { color: var(--good); font-size: 11px; }
+.vkids { margin-left: 18px; border-left: 1px solid var(--line); padding-left: 10px; }
+.empty { color: var(--dim); font-style: italic; padding: 8px 12px; }
+
+/* ---------- Kanten & Befunde ---------- */
+table { width: 100%; border-collapse: collapse; font-size: 13px; }
+th, td { text-align: left; padding: 6px 8px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { color: var(--dim); font-weight: 500; font-size: 12px; }
+td.mono, .mono { font-family: ui-monospace, monospace; font-size: 12px; color: var(--dim); }
+.pill { padding: 1px 8px; border-radius: 10px; font-size: 12px; white-space: nowrap; }
+.pill.remixt-aus  { background: #12324a; color: var(--accent); }
+.pill.erweitert   { background: #123526; color: var(--good); }
+.pill.testet      { background: #3a3413; color: var(--mid); }
+.pill.widerspricht{ background: #3d1a1a; color: var(--bad); }
+.pill.bewertet    { background: #2a2f3a; color: var(--text); }
+.pill.tragfähig        { background: #123526; color: var(--good); }
+.pill.teilweise        { background: #3a3413; color: var(--mid); }
+.pill.nicht-tragfähig  { background: #3d1a1a; color: var(--bad); }
+
+/* ---------- Peers ---------- */
+.peer-form { flex-direction: row; display: flex; gap: 8px; margin-bottom: 10px; }
+.peer-form input { flex: 1; }
+.peer-list { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 8px; }
+.peer-chip {
+  display: inline-flex; align-items: center; gap: 8px;
+  border: 1px solid #2c4d6e; border-radius: 16px; padding: 3px 12px;
+  background: #12324a; font-size: 13px;
+}
+.peer-chip button { border: none; background: none; color: var(--bad);
+  padding: 0 2px; cursor: pointer; font-size: 14px; }
+.sync-note { color: var(--dim); font-size: 12px; }
+.sync-note .ok { color: var(--good); }
+.sync-note .err { color: var(--bad); }
+
+/* ---------- Flash ---------- */
+#flash { position: fixed; right: 16px; bottom: 16px; z-index: 10; display: flex;
+  flex-direction: column; gap: 8px; }
+.toast {
+  padding: 10px 14px; border-radius: 8px; background: #1d2836;
+  border: 1px solid #35435a; max-width: 420px; box-shadow: 0 4px 16px #0008;
+  font-size: 13px; white-space: pre-wrap;
+}
+.toast.ok { border-color: var(--good); }
+.toast.err { border-color: var(--bad); }
