@@ -6,6 +6,38 @@
 
 ---
 
+## 0. Einordnung: Mooncells als zweistufiger Graph
+
+Mooncells ist ein einziges zusammenhängendes **Variantennetz** mit zwei Ebenen:
+
+```
+Werk A ○─────remixt-aus──────○ Werk B         ← Ebene 1: Netz der Werke
+  │  Worktree                    │  Worktree
+  ▼                              ▼
+wurzel ──► variant-2            wurzel ──► variant-7     ← Ebene 2: Varianten-DAGs
+   └──► variant-3 (claude)         └──► variant-8
+             ↑ Befund: „hängt sofort, aber…" an Kante/Paar
+```
+
+- **Ebene 1 (inter-worktree):** Werke sind die großen Knoten des Gesamtwerks.
+  Verbunden werden sie nicht durch die Werke selbst, sondern durch ihre Varianten:
+  typisierte Kanten (`remixt-aus`, `erweitert`, `testet`, `widerspricht`, `bewertet`)
+  zwischen Varianten — auch quer über Werkgrenzen. Hier lebt das Remix-Prinzip.
+- **Ebene 2 (intra-worktree):** Jeder Werk-Knoten enthält seinen Worktree, einen
+  **Varianten-DAG**, dessen innere Kanten die append-only-`derived_from`-Referenzen
+  sind. Hier passiert parallele Arbeit: N Agenten hängen Zweige an dieselbe Wurzel.
+- **Befunde** sind dokumentierte Annotationen an Kanten und Variantenpaaren — sie
+  machen aus einem Netz ein *bewertetes* Gesamtwerk.
+
+Präzisierung: erstklassige Graphelemente sind die **Varianten**, nicht die Werke.
+Werke/Worktrees sind Container, die den Variantenraum organisieren; Beziehungen
+bestehen immer zwischen konkreten Ausprägungen — das hält Rückführbarkeit scharf.
+
+Vertiefung: `docs/konzept.md` — formales Modell, Operationen, Traversierung,
+Fitness/Selektion, Zeit, Provenienz, Föderation, autonome Agenten, Schema-v2.
+
+---
+
 ## 1. Entitätstypen
 
 ### 1.1 Agent — wer etwas erzeugt hat
