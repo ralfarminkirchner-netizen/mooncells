@@ -4,9 +4,10 @@ Lebendiges Gesamtwerk, Verfahren im Zentrum: Werke mit Worktrees paralleler
 Varianten, typisierte Kanten, dokumentierte Befunde — föderiert betrieben
 (Menschen + Modelle auf beliebig vielen Instanzen).
 
-- `docs/schema.md` — **Teil 1:** Datenmodell + Mooncells Document Format v1;
-  **Teil 2:** das Netz (zweistufiger Graph, Operations-Algebra, Traversierung,
-  Fitness/Selektion, Zeit, Provenienz, Föderation, autonome Agenten, Schema-v2)
+- `docs/schema.md` — **Teil 1:** Datenmodell + Mooncells Document Format v1
+- `docs/konzept.md` — **Teil 2:** das Netz (formales Modell, Operations-Algebra,
+  Traversierung, Fitness/Selektion, Zeit, Provenienz, Föderation, autonome
+  Agenten, Schema-v2)
 - `server/` — FastAPI-Server mit JSON-Datei-Storage und Browser-Oberfläche
 
 ## Voraussetzungen

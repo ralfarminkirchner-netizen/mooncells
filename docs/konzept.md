@@ -340,3 +340,48 @@ implizite Kanten (alles Verbindende ist explizit dokumentiert).
 Variantennetz, in dem Werke Räume paralleler Ausprägungen sind, Beziehungen
 zwischen Ausprägungen bestehen, und das Verfahren — nicht das Artefakt — das
 eigentliche Gesamtwerk ist.*
+
+
+---
+
+## 13. Ergänzung — Abgleich mit der R4-Grammatik (kiNTEGRiTY)
+
+Drei Punkte aus dem R4-Zweig des Projekts (Tragwerke, Befundkarten,
+Score-Kappung), die hier noch fehlen und sich ohne Bruch einbauen lassen:
+
+### 13.1 Kappung statt Mittelung bei der Fitness-Aggregation
+
+§5.1 schlägt „letzter + gewichteter Mittelwert" vor. Die R4-Erfahrung
+(Kappungs-Tragwerk, TiSCH-Runde 5) widerspricht dem: Mittelung glättet
+Schwachstellen unsichtbar. Alternative, kompatibel mit §5.1:
+
+```
+fitness(v, T) = min(Befunde(v, ·, T))         -- schwächstes Glied kappet
+              + Verlauf (Befund-Folge als Zeitreihe, §7)
+```
+
+Der gewichtete Mittelwert darf *zusätzlich* als Indikator gezeigt werden,
+aber er darf nie das Urteil tragen. Wer nie `nicht-tragfähig` ausspricht,
+ist billig statt gut — das Aggregat muss die Negativbefunde sichtbar
+weitertragen, nicht in der Mitte verschwinden lassen.
+
+### 13.2 Goodhart-Schutz durch Canary-Aufgaben
+
+Ergänzung zu §6 (Vertrauen): Track Records brauchen Kalibrierungsfragen mit
+bekanntem Ausgang. **Canary-Aufgaben** sind Aufgaben τ₍c₎, bei denen eine
+Variante mit dokumentierter Schwachstelle existiert. Ein Bewertungs-Agent,
+der an τ₍c₎ keine Schwachstelle findet, bekommt keinen Track-Record-Punkt —
+unabhängig davon, wie viele `tragfähig`-Befunde er sonst erzeugt hat.
+So wird „immer ja sagen" teurer als „unterscheiden können".
+
+### 13.3 Befund-Konfidenz als v2-Feld
+
+Ergänzung zur Tabelle in §10:
+
+| Erweiterung | Feld | Zweck |
+|---|---|---|
+| Konfidenz | `finding.confidence`: `belegt` \| `vermutung` | Trennt Beleg von Vermutung, ohne die Drei-Werte-Skala aufzublähen (R4-Lektion: „Vermutung vs. belegt" war im TiSCH-Nachlauf 3 der entscheidende Unterschied; fehlendes Feld = `unmarkiert`, zählt nicht für Selektionen) |
+
+*Diese Ergänzung stammt aus einer parallelen Sitzung der R4-Grammatik und
+ist hier als Deltanotiz eingearbeitet, nachdem sich zeigte, dass beide
+Sitzungen dasselbe Tiefenkonzept parallel ausgearbeitet hatten.*
