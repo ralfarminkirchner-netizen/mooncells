@@ -48,8 +48,9 @@
 
       <form id="form-variant">
         <h3>Variante</h3>
-        <select name="work_id" class="work-select" required></select>
-        <select name="derived_from" class="variant-select"></select>
+        <select name="work_id" class="work-select" aria-label="Werk für die Variante" required></select>
+        <select name="worktree_id" aria-label="Worktree für die Variante" required></select>
+        <select name="derived_from" class="variant-select" aria-label="Ausgangsvariante"></select>
         <input name="label" placeholder="Label, z. B. remix-minimal" required>
         <select name="status">
           <option value="entwurf">entwurf</option>
