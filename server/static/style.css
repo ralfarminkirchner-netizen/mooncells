@@ -127,3 +127,10 @@ td.mono, .mono { font-family: ui-monospace, monospace; font-size: 12px; color: v
 }
 .toast.ok { border-color: var(--good); }
 .toast.err { border-color: var(--bad); }
+
+.worktree { margin: 16px 0; padding: 12px; border-left: 2px solid var(--accent); }
+.worktree h3 { margin: 0 0 12px; }
+.variant-content, .technical-details { margin: 8px 0; }
+.variant-content summary, .technical-details summary { cursor: pointer; }
+.variant-content pre, .technical-details pre { white-space: pre-wrap; overflow-wrap: anywhere; font: inherit; padding: 12px; background: #101820; }
+.technical-details { color: var(--dim); font-size: 12px; }
