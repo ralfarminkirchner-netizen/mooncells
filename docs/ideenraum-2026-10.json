@@ -2,275 +2,445 @@
   "format": "mooncells-document",
   "version": "1",
   "instance_id": "mooncells-ideenraum-lokal",
-  "exported_by": "3af5c7fb-de9a-48b5-8245-ae67748e1e2c",
-  "exported_at": "2026-10-12T14:30:00Z",
+  "exported_by": "a4906840-fdfc-5e37-a551-29e77a8ee3ac",
+  "exported_at": "2026-10-12T18:30:00Z",
   "scope": {
     "work_ids": [
-      "b0fe1f16-33e8-414b-8c64-aff92e513d19"
+      "d37c7adf-d79b-5668-8f7f-956c812b9edf"
     ]
   },
   "data": {
     "agents": [
       {
-        "id": "172dd374-6863-4f44-8610-15202990cf10",
+        "id": "407c3ddb-26df-555f-8d91-153c4eef6c25",
         "handle": "ralf",
         "agent_type": "human",
         "description": "Projektgründer — Quelle der Geistesblitze und Briefe",
-        "created_at": "2026-10-12T14:30:00Z"
+        "created_at": "2026-10-12T18:30:00Z"
       },
       {
-        "id": "3af5c7fb-de9a-48b5-8245-ae67748e1e2c",
+        "id": "a4906840-fdfc-5e37-a551-29e77a8ee3ac",
         "handle": "kimi-work-session",
         "agent_type": "model",
         "description": "Kimi-Work-Session — baut den Ideenraum als Mooncell",
-        "created_at": "2026-10-12T14:30:00Z"
+        "created_at": "2026-10-12T18:30:00Z"
+      },
+      {
+        "id": "bb7b8abb-ad3e-5273-8862-eb48647c848c",
+        "handle": "codex-auftragschat",
+        "agent_type": "model",
+        "description": "Codex-Auftragschat — KiNFORMER-Aktualitätszusammenführung (22 Chats)",
+        "created_at": "2026-10-12T18:30:00Z"
       }
     ],
     "works": [
       {
-        "id": "b0fe1f16-33e8-414b-8c64-aff92e513d19",
+        "id": "d37c7adf-d79b-5668-8f7f-956c812b9edf",
         "work_type": "ideenraum",
         "title": "Ideenraum — Erkenntniswoche 7.–12.10.2026",
-        "author_id": "172dd374-6863-4f44-8610-15202990cf10",
-        "created_at": "2026-10-12T14:30:00Z"
+        "author_id": "407c3ddb-26df-555f-8d91-153c4eef6c25",
+        "created_at": "2026-10-12T18:30:00Z"
       }
     ],
     "worktrees": [
       {
-        "id": "bc0823a6-290c-4976-9b52-2d9ece3bd2be",
-        "work_id": "b0fe1f16-33e8-414b-8c64-aff92e513d19",
-        "author_id": "172dd374-6863-4f44-8610-15202990cf10",
-        "created_at": "2026-10-12T14:30:00Z"
+        "id": "aeb0583a-b0e0-5176-a660-630bf1214eae",
+        "work_id": "d37c7adf-d79b-5668-8f7f-956c812b9edf",
+        "author_id": "407c3ddb-26df-555f-8d91-153c4eef6c25",
+        "created_at": "2026-10-12T18:30:00Z"
       }
     ],
     "variants": [
       {
-        "id": "01c77403-2b17-4842-b663-4372dfab8082",
-        "worktree_id": "bc0823a6-290c-4976-9b52-2d9ece3bd2be",
+        "id": "98150d2f-44ee-5710-a87f-b57ce896c3a6",
+        "worktree_id": "aeb0583a-b0e0-5176-a660-630bf1214eae",
         "derived_from": null,
         "label": "wurzel — unverbundene Geistesblitze der Woche",
         "notes": "Rohe Sammlung: Erfahrungen, Gespräche, Bauideen, 06:36-Nachrichten — noch keine Ordnung. Genau der Zustand, für den es die App Geistesblitze gibt (roh reinwerfen, später vernetzen).",
         "content": null,
-        "author_id": "172dd374-6863-4f44-8610-15202990cf10",
-        "created_at": "2026-10-12T14:30:00Z"
+        "author_id": "407c3ddb-26df-555f-8d91-153c4eef6c25",
+        "created_at": "2026-10-12T18:30:00Z"
       },
       {
-        "id": "22e74c96-8986-47ad-80b9-80c0e639cbe5",
-        "worktree_id": "bc0823a6-290c-4976-9b52-2d9ece3bd2be",
+        "id": "cd4b05f2-0438-5dda-9b0d-a4586c432908",
+        "worktree_id": "aeb0583a-b0e0-5176-a660-630bf1214eae",
         "derived_from": null,
         "label": "RAKi-Erkenntnis-Synthese (7.–11.10.)",
         "notes": "Verbindende Lesart der Beiträge vom 7.–11.10.: Bedingungen von Erkennen, Ausdrücken, Verstehen, Gestalten, Leben. Kerne: 'Es ist Liebe' (Antrieb), Übersetzer-Gedanke (Gemeintes vs. Aufgenommenes), 'Wissen ist eine Beziehung zum Wesenden', Herkunft bestimmt Zurechnung, Teilnahme ≠ Aussagezustand, 'Zeit ist Leben'. Quelle: erkenntnis-raki.txt (vollständig im KiNTEGRiTY-Workspace).",
-        "content": "flowchart: Erfahrung -> Anliegen <-> Grundsatzfrage -> Unterscheidungen/Linsen -> Fassungen -> Erprobung -> veränderte Verfahren -> (zurück zu Erfahrung/Unterscheidungen). Neun Erkenntnisbewegungen als Tabelle: Übersetzung, Herkunft, Einwand≠Personenurteil, Teilnahme/Aussagezustand, zeitliche Handlungsmöglichkeiten, Linsen/Interferenz, Grundformationen/Remix, Gestaltung an Verwendung prüfen.",
-        "author_id": "172dd374-6863-4f44-8610-15202990cf10",
-        "created_at": "2026-10-12T14:30:00Z"
+        "content": "flowchart: Erfahrung -> Anliegen <-> Grundsatzfrage -> Unterscheidungen/Linsen -> Fassungen -> Erprobung -> veränderte Verfahren -> (zurück). Neun Erkenntnisbewegungen als Tabelle: Übersetzung, Herkunft, Einwand≠Personenurteil, Teilnahme/Aussagezustand, zeitliche Handlungsmöglichkeiten, Linsen/Interferenz, Grundformationen/Remix, Gestaltung an Verwendung prüfen.",
+        "author_id": "407c3ddb-26df-555f-8d91-153c4eef6c25",
+        "created_at": "2026-10-12T18:30:00Z"
       },
       {
-        "id": "2ba5da93-5e2e-48e7-af95-f62f2bd92f4a",
-        "worktree_id": "bc0823a6-290c-4976-9b52-2d9ece3bd2be",
+        "id": "8d32727e-6bb2-5f31-a26c-3bf85a16a6e6",
+        "worktree_id": "aeb0583a-b0e0-5176-a660-630bf1214eae",
         "derived_from": null,
         "label": "Generative Grundformationen — Gesamtzusammenhang (2026-10-11)",
         "notes": "referenz-import (Original im KiNTEGRiTY-Bestand): Wissensauswahl, Arbeitsweise und Ausdrucksform als eigenständige Gestaltungs-entscheidungen; Weiterverwendbarkeit von Entstehungsweisen; Selbstrekursion des Systems. Inhalt hier aus wörtlichen Zitaten der Synthese rekonstruiert — volle Tiefe erst nach Original-Import.",
         "content": null,
-        "author_id": "172dd374-6863-4f44-8610-15202990cf10",
-        "created_at": "2026-10-12T14:30:00Z"
+        "author_id": "407c3ddb-26df-555f-8d91-153c4eef6c25",
+        "created_at": "2026-10-12T18:30:00Z"
       },
       {
-        "id": "d3cf50d2-7e3d-4c2f-be35-badf68692766",
-        "worktree_id": "bc0823a6-290c-4976-9b52-2d9ece3bd2be",
+        "id": "3c69055c-4dde-5528-bed0-fcf8f62aeb8c",
+        "worktree_id": "aeb0583a-b0e0-5176-a660-630bf1214eae",
         "derived_from": null,
         "label": "PDA-Anforderungen und offene Zuschreibungen (Atlas/TiSCH-Entwurf)",
         "notes": "referenz-import (Original im TRAUMAATLAS-Bestand): Anforderungen als Bedrohung, Autonomie als Sicherheit, innere Regeln, die das Gehen erschweren; Trennung von Teilnahmezustand, Beitragsstand und berechtigter Wirkung. 'Ausgebliebene Antwort ist keine Zustimmung; abgebrochener Lauf ist kein Ergebnis.'",
         "content": null,
-        "author_id": "172dd374-6863-4f44-8610-15202990cf10",
-        "created_at": "2026-10-12T14:30:00Z"
+        "author_id": "407c3ddb-26df-555f-8d91-153c4eef6c25",
+        "created_at": "2026-10-12T18:30:00Z"
       },
       {
-        "id": "d5fca2db-4bdc-496f-bae3-a64f61f36163",
-        "worktree_id": "bc0823a6-290c-4976-9b52-2d9ece3bd2be",
+        "id": "d51d56b8-5e0c-53f1-b504-cdf6d9dc8b5c",
+        "worktree_id": "aeb0583a-b0e0-5176-a660-630bf1214eae",
         "derived_from": null,
         "label": "Codex PHÄNOMENATLAS — Forschung in der Spielwelt",
         "notes": "referenz-import (Original im TRAUMAATLAS-Bestand): Lesen, Fragen, Vergleichen, Zeichnen und eigene Fassungen bilden als tatsächliche Tätigkeiten in der Umgebung; Formwechsel muss bestimmen, was erhalten bleibt (Unsicherheit darf nicht unsichtbar werden).",
         "content": null,
-        "author_id": "172dd374-6863-4f44-8610-15202990cf10",
-        "created_at": "2026-10-12T14:30:00Z"
+        "author_id": "407c3ddb-26df-555f-8d91-153c4eef6c25",
+        "created_at": "2026-10-12T18:30:00Z"
       },
       {
-        "id": "bdadbeeb-b9d3-40fd-a74b-d4271fc255e6",
-        "worktree_id": "bc0823a6-290c-4976-9b52-2d9ece3bd2be",
-        "derived_from": "01c77403-2b17-4842-b663-4372dfab8082",
+        "id": "6c91f193-5066-537a-976e-710d17236c59",
+        "worktree_id": "aeb0583a-b0e0-5176-a660-630bf1214eae",
+        "derived_from": "98150d2f-44ee-5710-a87f-b57ce896c3a6",
         "label": "06:36 — Gummiband/Weltenspiegelung (roher Geistesblitz)",
         "notes": "Wörtlicher Geistesblitz: Zelda Schattenwelt als Analogie — Oberwelt/Wasserwelt/Weltraum, gleiche Graph-Logik (Knoten, Kanten, Grundordnung), verzerrte Metrik (Gummiband-Abstände), kein Skin. 'Die Form soll gleich sein, sondern die Logik dahinter, die Relationen und die Grundordnung.' → KiNFORMER/Transduktion/Invarianten.",
         "content": null,
-        "author_id": "172dd374-6863-4f44-8610-15202990cf10",
-        "created_at": "2026-10-12T14:30:00Z"
+        "author_id": "407c3ddb-26df-555f-8d91-153c4eef6c25",
+        "created_at": "2026-10-12T18:30:00Z"
       },
       {
-        "id": "0ac28939-f631-4fe1-805d-8efe7c3f7c6e",
-        "worktree_id": "bc0823a6-290c-4976-9b52-2d9ece3bd2be",
-        "derived_from": "01c77403-2b17-4842-b663-4372dfab8082",
-        "label": "INVARIANZ-TRANSDUKTION-WELTENSYSTEM (Brief, neun Abschnitte)",
-        "notes": "referenz-import aus dem wörtlichen Summary des Briefs: Vier-Schichten-Modell (Topologie/Metrik/Transduktion/Haut), Gummiband-Gesetz ('Ein Ort bleibt erkennbar an seinen Nachbarn'), Architektur im Bestand (atlasGraph, universe/-Module, niemals je Welt eine Graph-Kopie), Welten-Katalog (Meer/Orbital/Garten/Oberwelt/Schattenwelt), KiNFORMER-Verankerung. Empfehlung: Schattenwelt oder Orbital als erste neue Welt.",
+        "id": "bd8fd9b3-ec34-535a-945e-0467e0722233",
+        "worktree_id": "aeb0583a-b0e0-5176-a660-630bf1214eae",
+        "derived_from": "98150d2f-44ee-5710-a87f-b57ce896c3a6",
+        "label": "INVARIANZ-TRANSDUKTION-WELTENSYSTEM (Zitat-Rekonstruktion)",
+        "notes": "V1-Stand: Inhalt aus dem wörtlichen Summary rekonstruiert. Bleibt als Vorgänger stehen — Vollimport ist abgeleitet.",
         "content": null,
-        "author_id": "172dd374-6863-4f44-8610-15202990cf10",
-        "created_at": "2026-10-12T14:30:00Z"
+        "author_id": "407c3ddb-26df-555f-8d91-153c4eef6c25",
+        "created_at": "2026-10-12T18:30:00Z"
       },
       {
-        "id": "fc3a681d-7de2-49a1-9a7c-13c1191ff0f0",
-        "worktree_id": "bc0823a6-290c-4976-9b52-2d9ece3bd2be",
-        "derived_from": "d3cf50d2-7e3d-4c2f-be35-badf68692766",
+        "id": "0c657b72-643f-5683-b228-2cdda59f3bf9",
+        "worktree_id": "aeb0583a-b0e0-5176-a660-630bf1214eae",
+        "derived_from": "bd8fd9b3-ec34-535a-945e-0467e0722233",
+        "label": "INVARIANZ-TRANSDUKTION-WELTENSYSTEM (Vollimport)",
+        "notes": "Vollständiger Originaltext (14.175 Bytes, sha256 a05fe677e70f69c92267be7aa3af51917ba585962080b6c89eee9a1c64949a57, Quelle: TRAUMAATLAS-Workspace). Neun Abschnitte: Vier-Schichten-Modell (Topologie/Metrik/Transduktion/Haut), Gummiband-Gesetz ('Ein Ort bleibt erkennbar an seinen Nachbarn'), Architektur im Bestand (atlasGraph, universe/-Module, niemals je Welt eine Graph-Kopie), Welten-Katalog (Meer/Orbital/Garten/Oberwelt/Schattenwelt/Fraktaler-Zoom), Transduktions-Tabelle, KiNFORMER-Verankerung, Bau-Strategie, Risiken, offene Fragen. Status: Diskussionsgrundlage, kein Bau-Auftrag.",
+        "content": "# Invarianz & Transduktion — das Weltensystem des Atlas\n\n**Konzept-Arbeitsgrundlage** · 2026-10-12 · Status: Diskussionsgrundlage, kein Bau-Auftrag\nBezüge: `traumaatlas-5/src/data/graph.ts` (139 Knoten / 395 Kanten),\n`src/ocean/world.ts` (Store, Phänomen-Physik), `src/views/kosmos/layout.ts`\n(Einbettung), `docs/pda-profil/PDA-PROFIL.md` (erstes Neuroprofil)\n\n---\n\n## 0. Auslöser und Kernidee\n\nEin großes Graph-System hält konsistent, während seine Darstellung zwischen\nWelten wechselt: Die **Wasserwelt** (stehend) und eine **Weltraumwelt**\naufgelegt sind nicht deckungsgleich — im All sind die Kanten länger, alles\nist auseinandergezerrt — aber die Anordnung der Knoten, die Kanten selbst\nund alle Verbindungen sind exakt dieselben. Übertragbar, ohne die identische\nMap mehrfach zu besitzen. Vorbild: Zelda — A Link to the Past (Oberwelt /\nSchattenwelt), aber radikalisiert: nicht deckungsgleiche Spiegelung,\nsondern **verzerrte Kohärenz**. Die Form verändert sich, die Logik dahinter\n— Relationen und Grundordnung — bleibt invariant.\n\nDas führt direkt zu KiNFORMER, Transduktion und Invarianz: Der KiNFORMER\nliest die Invariante; jede Welt ist eine Transduktion derselben in ein\nanderes Vokabular — relationstreu, formverzerrend.\n\n---\n\n## 1. Das Vier-Schichten-Modell\n\nJede Welt des Atlas ist eine Projektion desselben Kerns in vier klar\ngetrennten Schichten. Verwechslung der Schichten ist die Hauptfehlerquelle\nbei der Umsetzung.\n\n### Schicht 1 — Topologie (INVARIANTE)\n\nKnoten, Kanten, Relationstypen, Nachbarschaft. Der `atlasGraph`:\n139 Knoten, 395 Kanten, 8+2 Typen. Ändert sich in **keiner** Welt.\nHier leben auch: Persistenz, Sog/Barriere-Physik (als abstrakte Kraft),\nDirektsteuerung, „Integration, niemals Abweisung\", PDA-Prinzipien,\nKiNFORMER-Befund. Weltunabhängig.\n\n### Schicht 2 — Metrik (GUMMIBAND)\n\nAbstände, Skalierung, Dichte, Verzerrung, Clustering. Pro Welt ein\n**Metrik-Profil**: globale Stretch-Faktoren, regionale Dehnung, Dichte-\nGradienten. Kanten**länge** ist Welt-Parameter; Kanten**existenz** ist\nInvariante.\n\n### Schicht 3 — Transduktion (VOKABULAR)\n\nDieselbe ID, anderes Erscheinen und andere Grammatik pro Welt:\nEin Symptom ist im Meer ein Wildling, im All ein Mond, im Garten eine\nPflanze, in der Schattenwelt eine Schutzgestalt. Implementiert als\nTabelle (nodeType/edgeType → Welt-Vokabular), IDs unverändert. Nicht\nAnstrich — neue Sprache, 1:1 auf dieselbe Struktur abgebildet.\n\n### Schicht 4 — Haut (austauschbar)\n\nFarben, Licht, Material, Sound. Die billigste Schicht. Darf niemals als\n„neue Welt\" verkauft werden; dient nur der Abstimmung innerhalb einer Welt.\n\n---\n\n## 2. Das Gummiband-Gesetz (Lernbarkeitsbedingung)\n\nVerzerrung ohne Desorientierung braucht eine harte Regel:\n\n> **Ein Ort bleibt erkennbar an seinen Nachbarn.**\n\nZwei Phänomene, die im Meer eng beieinanderliegen, dürfen im All weit\nauseinanderragen — sie bleiben Nachbarn, und der erfahrene Nutzer\n„erkennt die Küste\". Das Erkennungsmerkmal einer Welt ist nie die\nGeometrie, sondern die **Adjazenz**.\n\nDaraus folgen drei Konstruktionsregeln:\n\n1. **Basis-Einbettung einmal, verzerren oft.** Ein Referenz-Layout\n   (Force-Layout aus der Topologie) wird genau einmal berechnet und ist\n   der unsichtbare Maßstab. Jede Welt ist eine *verzerrte Projektion*\n   davon, keine handgebaute neue Map.\n2. **Verzerrung ist ein Tensor, kein Zufall.** Pro Welt definiert ein\n   Metrik-Profil, *welche Regionen* gedehnt, geschrumpft oder geclustert\n   werden (z. B. All: radiale Dehnung nach außen, Faktor 3–5; Garten:\n   hohe Dichte, verwachsene Pfade; Meeresenge: zwei Cluster werden\n   künstlich genähert).\n3. **Overlay-Erkennbarkeit als Test.** Legt man zwei Welten deckungsgleich\n   übereinander, muss man dieselbe Anordnung erkennen, andere Maßstäbe\n   sehen — sonst ist die Verzerrung zu frei und die Kohärenz gebrochen.\n\n---\n\n## 3. Architektur im Bestand\n\nDer Kern existiert bereits; das Modell erklärt ihn und zeigt die\nErweiterungsstellen.\n\n```\natlasGraph (graph.ts)          ← Schicht 1, einzige Invariante\n  ├─ world.ts (Store, Kräfte)  ← Schicht 1 (abstrakte Physik)\n  ├─ kosmos/layout.ts          ← eine Metrik-Einbettung (Referenzmuster\n  │                               für Schicht 2: clusterAnchor, Force-Sim)\n  ├─ OceanStage / Meer-3D      ← Schichten 2+3+4 für die Wasserwelt\n  └─ GraphFallback             ← medium-agnostischer Invarianten-Ausdruck\n                                  (Reduced Motion / No-WebGL) — bleibt\n                                  in allen Welten gültig\n```\n\n**Neue Bausteine (konzeptionell):**\n\n- `src/universe/baseEmbedding.ts` — Basis-Einbettung: Force-Layout aus\n  `atlasGraph`, einmal deterministisch (seeded, wie `layout.ts` heute).\n- `src/universe/metrics.ts` — Metrik-Profile pro Welt: verzerrbare\n  Projektion der Basis-Einbettung (Stretch pro Region/Cluster, Dichte,\n  ggf. dimensionsarme Zwangsbedingungen wie „Ringe um Zentren\").\n- `src/universe/transduction.ts` — Transduktionstabellen: pro Welt eine\n  Abbildung nodeType/edgeType → Welt-Vokabular (Avatar, Begriff, Physik-\n  Metapher). IDs bleiben; nur die Lesart wechselt.\n- `src/universe/worlds.ts` — Welt-Registry: jede Welt = { Metrik-Profil,\n  Transduktion, Haut, Physik-Modul }.\n- KiNFORMER bleibt auf Schicht 1: Der Befund ist weltkonstant. Die Welt\n  liefert nur die Metapher, in der der Befund sich zeigt.\n\n**Entscheidend:** Niemals je Welt eine Kopie des Graphen, der Daten,\nder Texte. Eine Invariante, beliebig viele Transduktionen.\n\n---\n\n## 4. Der Welten-Katalog\n\nJede Welt muss einen **semantischen Mehrwert** liefern — sonst ist sie\nAnstrich. Fünf Welten mit je eigenem Anspruch sind auch fünfmal\nInhaltsarbeit (jede Transduktion muss textlich und fachlich stehen).\n\n### 4.1 Wasserwelt — „Die Welle\" (steht, Referenz)\n\n- **Physik:** Gerstner-Wellen, Druckfeld, Sog/Barriere, Tauchen\n- **Semantik:** Durchdringen, Integrieren — „das Meer trägt\"\n- **Metrik:** mittlere Dichte, Insel-Cluster, Untiefen\n- **Status:** Stand `traumaatlas-5`, definiert das Vokabular, gegen das\n  alle anderen Welten transduziert werden\n\n### 4.2 Orbital — „Der Komet\" (All-Welt)\n\n- **Physik:** Gravitation statt Druck, Kepler-Orbits statt Schwimmpfade,\n  Inertialflug; das Wellenpaket wird zum Kometen (Energie ∝ v² bleibt;\n  Ablation ersetzt Gischt); Sog/Barriere wird wörtlich: Anziehung und\n  Strahlungsdruck\n- **Semantik:** Weite und Perspektive — Abstand macht Muster sichtbar.\n  Verzerrung nach außen (der Satz des Anstoßes: alles auseinandergezerrt)\n- **Metrik:** starke radiale Dehnung, Faktor 3–5; lange Kanten, leere\n  Zwischenräume lebendig halten (Partikel, Schiffe, Staub)\n- **Besonderheit:** Der Gerstner-/Wellenpaket-Ansatz transduziert fast\n  wörtlich in Gravitationswellen-Pakete (Dispersion gilt im Vakuum)\n\n### 4.3 Garten — „Anbau statt Behandlung\"\n\n- **Physik:** Wachstum, Saison, verwachsene Pfade; keine Flut, kein\n  Abgrund — alles wächst langsam; Pflege als Interaktion\n- **Semantik:** Integration als Gärtnern. **Die PDA-wahrste aller\n  Welten:** Ein Garten verlangt nichts, er lädt ein. Kein Countdown,\n  kein Sammelzwang — Dinge reifen, wenn sie reifen\n- **Metrik:** hohe Dichte, enge verwachsene Strukturen, enge Kanten\n  (Gegenteil All); Saison als eigener milder Zyklus neben Tag/Nacht\n- **Transduktions-Beispiele:** Symptom = Pflanze (manchmal stachlig,\n  immer gewachsen aus einem Grund); Übung = Pflegehandlung; Verfahren =\n  Gartenbaustil; Neuroprofil = Bodenart/Standort\n\n### 4.4 Oberwelt Landkarte — „Die klassische Karte\"\n\n- **Physik:** Kartografie: Wege, Höhenlinien, Legende, Kompass;\n  ruhigste aller Welten — beinahe die Ansicht der Karte (Overview),\n  aber bewohnbar\n- **Semantik:** Orientierung, Übersicht, Einstieg; **direkter Spiegel der\n  AD(H)S-/Neurospiele-Grammatik**: Interesse als Kompass, Minimap-Logik,\n  keine Fail-States, sofortige Reversibilität — die Welt, in der\n  spielerische Vertrautheit abgeholt wird\n- **Metrik:** kartografisch gedrungen, verzerrt wie alte Karten\n  (zielgerichtete Verzerrung im Dienst der Lesbarkeit)\n\n### 4.5 Schattenwelt — „Die Schutz-Lesart\" (der eigentliche Treffer)\n\nNicht eine Haut, sondern eine **zweite Wahrheit über dieselbe Karte**.\nVorbild: Zeldas Dark World — dieselben Orte, umgedrehte Bedeutung.\nTraumapedagogisch exakt: Jedes Symptom ist eine Überlebensstrategie,\ndie ausgedient hat.\n\n- **Physik:** gespiegelte Metrik, andere Lichtsetzung (dämmrig, aber\n  niemals bedrohlich — die Schattenwelt ist sicher); Übergang frei\n  betretbar und verlassbar (PDA-kompatibel: nie als Befehl)\n- **Semantik:** Auf der Karte stehen nicht die Symptome, sondern ihre\n  Schutzfunktionen:\n  - `erstarrung` → „die Notbremse, die dich damals gerettet hat\"\n  - `hypervigilanz` → „der Wächter, der nie Feierabend macht\"\n  - `vermeidung` → „der Leibwächter, der die gefährlichen Orte kennt\"\n  - `scham` → „das Urteil, das du dir abgenommen hast, um es zu tragen\"\n- **Metrik:** Topologie identisch; Metrik leicht verzerrt (die Welt\n  „atmet\" langsamer); Beschilderung und Avatar vollständig transduziert\n- **Durchgang:** passt zum Tag-/Nacht-Zyklus und zum Tauch-Modus —\n  Oberfläche = Symptom-Lesart, Tauch-/Schattenebene = Schutz-Lesart\n\n### 4.6 Fraktaler Zoom (durch alle Welten)\n\nKnoten aufklappbar: Jede Nachbarschaft ist selbst eine kleine Welt —\nInsel → Planet → Gartengrundstück, je nach Haut. Dasselbe Gesetz,\ndrei Vergrößerungen. Der Kosmos (heute: Kapitel „Der große Graph\") ist\nder Sonderfall „Zoom = maximal\": die ganze Karte als Konstellation.\n\n---\n\n## 5. Transduktion — Arbeitsbeispiel\n\n| Knoten (ID, invariant) | Wasserwelt | Orbital | Garten | Schattenwelt |\n|---|---|---|---|---|\n| `flashbacks` | Wildling, treibend | heißer Mond, unruhiger Orbit | Distel, sticht nur bei Berührung | „der Bote, der die Wahrheit wiederholt, bis sie gehört wird\" |\n| `e:pendeln` | Übung: Pendeln | Manöver: Hin-und-Her mit Rückkehrrecht | Pflege: zwischen Beet und Bank wechseln | „der Weg, der immer nach Hause führt\" |\n| `m:se` | Verfahren-Insel | Raumstation, Titration-Kuppel | Gartenbaustil: Schrittweise, nie reißen | „das Handwerk des sanften Zurückweichens\" |\n| `p:pda` | Profil-Tiefsee-Form | Asteroidengürtel um Autonomie-Zentrum | Standort: karger, freier Boden | „der Wächter der Selbstbestimmung\" |\n| `state:dorsal` | Tiefwasser-Schicht | fernes, kaltes Außensystem | Winterbeet, Ruhephase | „der Schutz des Zurückziehens\" |\n\nRegel: Die Schattenwelt transduziert **immer in die Schutzfunktion**,\nnie in Pathologie und nie in Kitsch. Jede Formulierung fachlich gegenlesen.\n\n---\n\n## 6. KiNFORMER, Transduktion, Invarianz — die begriffliche Verankerung\n\n- **Invarianz** = Schicht 1. Was KiNFORMER liest, ändert sich zwischen\n  Welten nicht: Befund, Relationen, Tiefgang-Stufen, QuerLeser-Wege.\n- **Transduktion** = Schicht 3. Der Übergang von einer Welt in die\n  nächste ist eine relationstreue Abbildung: Struktur bleibt, Vokabular\n  wechselt. „Transduktion bewahrt die Relation, während die Form sich\n  verzerrt\" — Spezifikation statt Slogan.\n- **Metrik-Verzerrung** = Schicht 2. Das Gummiband zwischen den Welten:\n  die Freiheitsgrade, die jede Welt hat, ohne die Kohärenz zu brechen.\n- Praktisch: Ein im Meer erkannter Ort (`erstarrung`, neben `state:dorsal`)\n  ist im All, im Garten und in der Schattenwelt *derselbe Ort* — nur\n  anders ausgesprochen. Erkenntnis des Nutzers: „Ich kenne diese Küste.\"\n\n---\n\n## 7. Bau-Strategie (Empfehlung, kein Auftrag)\n\n1. **Gerüst zuerst:** `universe/`-Module (Basis-Einbettung, Metrik,\n   Transduktion, Welt-Registry) gegen den Bestand — ohne neue Welt.\n   Bildbeweis: dieselbe Karte in zwei Metrik-Profilen übereinandergelegt\n   (Overlay-Test aus §2).\n2. **Zwei Welten bauen:** Wasserwelt bleibt Referenz; **eine** neue Welt\n   zuerst. Empfehlung: Schattenwelt (höchster semantischer Mehrwert,\n   geringster Grafik-Aufwand — Metrik nur leicht verzerrt, Haut\n   existiert als Nacht-Modus bereits) **oder** Orbital (höchster\n   visueller Impact, Physik-Verwandtschaft zum Wellenpaket).\n3. **Rest als Registry-Eintrag:** Garten, Oberwelt, Zoom-Stufen als\n   Profile anlegen, aber nicht bauen — erst wenn Inhalte (Transduktions-\n   Texte) stehen.\n4. **Inhalt vor Haut:** Jede Welt braucht ihre transduzierten Texte\n   (Schattenwelt-Beschilderungen, Garten-Vokabular) *vor* dem\n   Grafik-Feinschliff. Das ist der teuerste Teil und der, der den Atlas\n   von der Spielerei unterscheidet.\n\n## 8. Risiken und Warnungen\n\n- **Anstrich-Falle:** Welten ohne semantischen Mehrwert zerstören die\n  Glaubwürdigkeit des Atlas. Jede Welt muss beantworten: Was kann der\n  Nutzer *hier* verstehen, was er dort nicht konnte?\n- **Orientierungsbudget:** Zu viele verzerrte Welten ohne Anker\n  überfordern. Anker = Nachbarschaft (§2) + ein fester Übergangsritus\n  (Weltwechsel als erkennbarer, reversibler Akt).\n- **Ton im Vakuum:** Das All ist kühl; der Atlas ist warm (Ruhe, Wärme,\n  Würde). Orbital braucht explizite Wärme-Regie (Sonnennähe als\n  Verbundenheit, Komet als „schmutziger Schneeball\" — verletzlich,\n  nicht heroisch).\n- **Semantische Doppelbelastung:** Symptom- und Schutz-Lesart dürfen\n  nie widersprüchlich wirken — die Schattenwert-Formulierungen sind\n  therapeutische Statements und brauchen Fach-Review.\n- **PDA in allen Welten:** Kein Sammelzwang, keine Fail-States, keine\n  unumkehrbaren Übergänge — das Garten-Prinzip („einladen, nicht\n  verlangen\") gilt universell.\n\n## 9. Offene Fragen\n\n- Weltwechsel: frei wählbarer Skin oder narrative Ebene (Orte, die den\n  Übergang *sind*)? — Empfehlung: zuerst frei wählbar, später verorten.\n- Wie viele Welten maximal gleichzeitig sichtbar? (Empfehlung: eine, mit\n  sanftem Übergang — Split-Screen bricht die Immersion.)\n- Zoom-Stufen: fest (3) oder kontinuierlich? (Empfehlung: fest, mit\n  Marker-Anker.)\n- Soll die Schattenwelt als Spiegel (deckungsgleich) oder als Verzerrung\n  gebaut werden? (Empfehlung: leichte Verzerrung — sonst droht der\n  billige Skin-Eindruck, den das Gummiband-Gesetz gerade vermeidet.)\n",
+        "author_id": "407c3ddb-26df-555f-8d91-153c4eef6c25",
+        "created_at": "2026-10-12T18:30:00Z"
+      },
+      {
+        "id": "ed7b065f-eb0b-537d-a7ce-fbb2644a21bb",
+        "worktree_id": "aeb0583a-b0e0-5176-a660-630bf1214eae",
+        "derived_from": "3c69055c-4dde-5528-bed0-fcf8f62aeb8c",
         "label": "Atlas PDA-Neuroprofil (Commit 8a1f3f8)",
         "notes": "Umgesetzter Bauauftrag: 15 Profil-Knoten, 66 Kanten, Atlas jetzt 139 Knoten / 395 Kanten, 0 Dangling-Edges; neuer NodeType 'profile' (Lavendel) und EdgeType 'profil'. Demand-Arten, F-Antworten, Maskierung, Geschlecht, Erwachsene, Familie/Schule, ADHS/AuDHD/Komplextrauma-Überlappungen. Fix: e:orientieren → e:sos-orientieren.",
         "content": null,
-        "author_id": "172dd374-6863-4f44-8610-15202990cf10",
-        "created_at": "2026-10-12T14:30:00Z"
+        "author_id": "407c3ddb-26df-555f-8d91-153c4eef6c25",
+        "created_at": "2026-10-12T18:30:00Z"
       },
       {
-        "id": "5917d1a5-57ca-4505-a0aa-b3045a8cdde4",
-        "worktree_id": "bc0823a6-290c-4976-9b52-2d9ece3bd2be",
-        "derived_from": "01c77403-2b17-4842-b663-4372dfab8082",
+        "id": "eab0ed0a-d5ed-541a-9041-de824c622a71",
+        "worktree_id": "aeb0583a-b0e0-5176-a660-630bf1214eae",
+        "derived_from": "98150d2f-44ee-5710-a87f-b57ce896c3a6",
         "label": "Stufung: Geistesblitze (rohe Sammlung)",
         "notes": "Die App Geistesblitze (Watch/Phone/iPad-Companion) ist der Eingang: Ideen wild reinwerfen, noch roh, noch unvernetzt. Der Ideenraum/Ideenwerk IST diese Sammlung — nichts weiter.",
         "content": null,
-        "author_id": "172dd374-6863-4f44-8610-15202990cf10",
-        "created_at": "2026-10-12T14:30:00Z"
+        "author_id": "407c3ddb-26df-555f-8d91-153c4eef6c25",
+        "created_at": "2026-10-12T18:30:00Z"
       },
       {
-        "id": "c41a3123-6bb6-451e-81d4-4b411dd308ec",
-        "worktree_id": "bc0823a6-290c-4976-9b52-2d9ece3bd2be",
-        "derived_from": "5917d1a5-57ca-4505-a0aa-b3045a8cdde4",
+        "id": "02bd746b-6b20-5cad-b794-db70551fd2f2",
+        "worktree_id": "aeb0583a-b0e0-5176-a660-630bf1214eae",
+        "derived_from": "eab0ed0a-d5ed-541a-9041-de824c622a71",
         "label": "Stufung: Ideenatelier (fortgeschritten)",
         "notes": "Zwischenstufe: Geistesblitze werden geordnet, verglichen, erste Fassungen — aber noch keine verdichtete Struktur, noch kein Werk.",
         "content": null,
-        "author_id": "172dd374-6863-4f44-8610-15202990cf10",
-        "created_at": "2026-10-12T14:30:00Z"
+        "author_id": "407c3ddb-26df-555f-8d91-153c4eef6c25",
+        "created_at": "2026-10-12T18:30:00Z"
       },
       {
-        "id": "c22a39e7-0e4c-44f1-a905-2085c4abf6b3",
-        "worktree_id": "bc0823a6-290c-4976-9b52-2d9ece3bd2be",
-        "derived_from": "c41a3123-6bb6-451e-81d4-4b411dd308ec",
+        "id": "84ae6a5c-1c82-569d-97d7-9224b0bf6374",
+        "worktree_id": "aeb0583a-b0e0-5176-a660-630bf1214eae",
+        "derived_from": "02bd746b-6b20-5cad-b794-db70551fd2f2",
         "label": "Stufung: Mooncell (verdichtetes Werk)",
         "notes": "Aus einem Ideenatelier-Stoff kann eine Mooncell entstehen: Werk mit Worktree, Varianten, Kanten, Befunden. Dieser Ideenraum ist der Status DAVOR — der Gegenpol zur Einbahnstraße: aus rohem Material wird verdichtetes, nie umgekehrt ohne neue Episode.",
         "content": null,
-        "author_id": "172dd374-6863-4f44-8610-15202990cf10",
-        "created_at": "2026-10-12T14:30:00Z"
+        "author_id": "407c3ddb-26df-555f-8d91-153c4eef6c25",
+        "created_at": "2026-10-12T18:30:00Z"
+      },
+      {
+        "id": "13e49e7b-7c84-5a0a-82e2-2b6bf264db40",
+        "worktree_id": "aeb0583a-b0e0-5176-a660-630bf1214eae",
+        "derived_from": "cd4b05f2-0438-5dda-9b0d-a4586c432908",
+        "label": "KiNFORMER-Aktualität und Auftragsrevision (2026-10-12)",
+        "notes": "Zusammenführung aus 22 ChatGPT-Chats + bisherigem Auftragschat (Codex). Fünf Entwicklungslinien: (1) Lesen→Recherchieren→Weitergestalten als zusammenhängender Arbeitsweg (Buchsystem vernetzen, Buchkapitel-Zusammenfassung); (2) agentische TiSCH-Sitze — Aufgabe, Linse, Agenteninstanz, Modellroute und Beitrag getrennt, Quellen nachforderbar; (3) Mooncells als Variantenraum mit konkreten PRs (Navigator PR 10, Mooncells PR 1+2) — keine zweite Werkdatenbank; (4) Weltwechsel trägt Forschungsarbeit (Feldbuch/Logbuch/Missionsbuch als Erscheinungen desselben Arbeitsstands); (5) Qualität und Revision als eigene Kriterien (Stimme, Rhythmus, Reimführung; situativer Handlungsspielraum; unvollständige Anliegen aufnehmen können). Technik: Formformer-Release c01cd87, Browser-originale in PR 2 (32 Manifestdateien hashgleich), M0-PR 5 offen, T-05 auf main 4058203, Railway-Deployment 3048a034 (16:43, Quellzuordnung offen), Vault 770→1059 Einträge. Autor: Codex.",
+        "content": "Befundtabelle: KiNFORMER-Releasebranch c01cd87 (13 Dateien bytegleich); Browseroriginale PR 2, action.interrupted Tick 12154 + object.released Tick 12702 belegen Unterbrechung/Loslassen, engerer Blickfall bleibt offen; M0 PR 5 = begrenzter V2-Patch, kein Browsernachweis; Mooncells PR 2 baut auf PR 1; Atlas 6 Checkout 77d7e56; Railway 3048a034 SUCCESS 16:43 MESZ, f2952b56 REMOVED; Vault-Ingest 289 Spuren. Erster Schnitt: Releasequelle abgleichen, M0 PR 5 + Importweg integrieren, einen benutzbaren Weg schließen, begrenzten agentischen TiSCH-Lauf, zwei Weltprofile, Transferversuch.",
+        "author_id": "bb7b8abb-ad3e-5273-8862-eb48647c848c",
+        "created_at": "2026-10-12T18:30:00Z"
+      },
+      {
+        "id": "7207e71d-a64d-5f57-9d66-975a230fefb0",
+        "worktree_id": "aeb0583a-b0e0-5176-a660-630bf1214eae",
+        "derived_from": "13e49e7b-7c84-5a0a-82e2-2b6bf264db40",
+        "label": "QuerLeser=KiNFORMER — gemeinsamer Werkraum (Grundverschiebung V3)",
+        "notes": "Erneuter Mitte-Versatz (Codex, Delta-Abgleich ab 18:03 MESZ): QuerLeser und KiNFORMER sind nicht Zugang plus angeschlossene Forminstanz, sondern DERSSELBE erfahrbare Werkraum. Fünf Präzisierungen: (1) Die gerade betrachtete Stelle (Buchpassage, Songzeile, Szenengegenstand, Appbereich) ist der Einstieg — Gegenstellen, Herkunft und Weiterführungen öffnen sich von dort; (2) einzelne ergiebige Chats werden eigene ausführliche Kapitel — wachsender Fundus, Buchkomposition baut darauf ('Vollständiger Chat vor früher Mehrchat-Synthese'); (3) ein Gegenstand kann mehreren Mooncells angehören — einmalige Identität, begründete Mitgliedschaften, spukhafte Fernwirkung als Netzzugehörigkeit, keine Physik; (4) eingebetteter Dialog vermittelt Aufträge an TiSCH/Werkdienst/Harness — Rückgabe öffnet an der Ausgangsstelle, während die Benutzung weiterging; (5) Geistesblitze bleiben rohe Eingänge — Aufnahme vor Themenwahl, Entwicklung freiwillig und umkehrbar, keine Pflichtleiter. Neuer Prüfstein: Herkunftsdichte ≠ Bedeutungsdichte (Maurus-/Meltdown-Auswertungen — viele Herkunftskanten beweisen keine vielfache inhaltliche Bestätigung; lexikalische Treffer sind Suchspuren, keine fachlichen Beziehungen). Erster Nachweis als Abnahmeprobe: Einzelchat-Kapitel → Stelle → belegte Gegenstelle + zwei Mooncells → gespeicherte Konstellation → Dialogauftrag → Rückgabe am Ausgangsbezug → Schließen/Wiederöffnen/Revision/Weltwechsel in derselben Kette. Quellstände bestätigt geschlossen: TRAGWERK b942187 (T-05-Lauf 2, Fassung 4), Mooncells 1a06a86 (Ideenraum V1). Autor: Codex.",
+        "content": "# QuerLeser und KiNFORMER im gemeinsamen Werkraum\n\nFortschreibung vom 12. Oktober 2026 nach dem erneuten Abgleich ab 18:03 MESZ. Die neue Mitte ist die gerade erlebte Stelle: Von dort werden andere Fassungen, ihre Herkunft, eigene Verbindungen und mögliche nächste Tätigkeiten erreichbar. RAKi setzt ausdrücklich, dass QuerLeser und KiNFORMER eins sein müssen. Damit verändert sich der bisher als Verbindung mehrerer Werkzeuge beschriebene Weg zu einem gemeinsamen Wahrnehmungs-, Erkenntnis- und Werkraum von KiNTEGRiTY.\n\nDie vorherige Fassung bleibt in ihren Quellen-, Form-, Revisions- und Weltprofilanforderungen brauchbar. Ihr Hauptzweck und ihr erster Umsetzungsschnitt müssen jedoch neu gefasst werden. Lesen, Hören, Spielen, Vergleichen, Forschen und Gestalten beginnen am aktuellen Gegenstand; die Person bleibt in demselben Raum. Bestehende Dienste und ausführende Harnesses können technisch eigenständig bleiben.\n\n## Die Veränderungen gegenüber der vorherigen Fassung\n\n| Vorherige Fassung | Neue Präzisierung | Folge für die Umsetzung |\n|---|---|---|\n| QuerLeser eröffnet den Weg; KiNFORMER wird daran angeschlossen. | QuerLeser und KiNFORMER sind ein gemeinsamer Werkraum. | Tätigkeiten am selben Arbeitsstand öffnen; keinen erzwungenen Wechsel zwischen zwei Produkten verlangen. |\n| Werk oder Passage ist Ausgangspunkt von Formbildung und Recherche. | Jede konkrete betrachtete Stelle kann quer über Buch, Song, Spiel und App erschlossen werden. | Mediengerechte Stellen und tatsächliche Gegenstellen adressieren; Zuordnungen und ihre Grenzen bearbeiten. |\n| Vault-Material führt zu Kapiteln und Büchern. | Die ergiebigen einzelnen Chats sollen eigene ausführliche Kapitel bilden. | Chatweise Lesefassungen als wachsender Fundus; thematische Zusammenstellung und Buchkomposition darauf aufbauen. |\n| Varianten kehren in einen Werkraum zurück. | Derselbe Kapitel-/Stellengegenstand kann mehreren Mooncells gleichzeitig zugehören. | Einmalige logische Identität und begründete Mitgliedschaften; aktuelle und historische Verwendungen unterscheiden. |\n| Ein Graph erschließt den vorhandenen Zusammenhang. | Beim Lesen eigene Gegenstände wählen, weitere entdecken und eine persönliche Konstellation speichern. | Wirkliche eigene Ansichts-/Werkgestaltung mit Mitgliedsbezügen im gemeinsamen Netz; Filterung und neue inhaltliche Beziehung unterscheiden. |\n| Asynchrone Arbeit besitzt Status und Rückgabe. | Ein eingebetteter LLM-Dialog klärt und vermittelt; Rückgaben werden während der Weiterbenutzung im selben Raum geöffnet. | Tatsächlichen Auftrag, Ausführungsanschluss, Rückgabehinweis und Rückweg zur zwischenzeitlich erreichten Stelle verbinden. |\n| Unvollständige Entwürfe können aufgenommen werden. | Geistesblitze hält ausdrücklich die rohen Companion-Eingänge; Ideenatelier bezeichnet Bearbeitung und Mooncells gebildete Zusammenhänge. | Aufnahme funktioniert vor Themenwahl und Ordnung. Eine mögliche Entwicklung wird keine Pflichtleiter. |\n\nDie ersten sechs Linien sind in den neuen Nutzereingaben zu QuerLeser und Kapitelbestand belegt. Die rohe Companion-Sammlung ist im zusätzlich erschlossenen Codex-Auftrag „Geistesblitze zu Mooncell bündeln“ ausdrücklich formuliert. Die letzte hiesige Prüfung hatte diesen kurz zuvor entstandenen Auftrag noch nicht als eigene Quelle aufgenommen. Hier bedeutet „neu“ deshalb auch neu erschlossen, nicht ausschließlich nach 16:53 Uhr entstanden.\n\n## Die Stelle als Zugang zum Gesamtwerk\n\nEin Song läuft; eine Zeile fällt auf. Die Person kann ihre anderen Text- oder Aufnahmefassungen daneben öffnen, Quellen betrachten, einen Gedanken ergänzen oder im Gespräch einen Auftrag klären. Während der Auftrag ausgeführt wird, kann der Song weiterlaufen. Die tatsächliche Rückgabe wird anschließend an derselben Ausgangsstelle zugänglich; danach kehrt die Person an ihre inzwischen erreichte Hör- oder Lesestelle zurück.\n\nDasselbe Prinzip gilt für eine Buchpassage, einen Szenengegenstand oder eine Appkomponente. Der Vergleich verlangt dokumentierte Entsprechungen. Ein geteilter Absatz, ein anders aufgebauter Song oder eine im Ziel fehlende Funktion darf nicht durch eine erfundene Gleichheit geglättet werden. Eine Auswahl kann mehrere Gegenstellen besitzen; eine Zuordnung kann fehlen oder bestritten sein.\n\nDie technische Unterscheidung lautet: Eine Stelle identifiziert den konkreten Ausschnitt einer Fassung; eine Zuordnung begründet ihren Bezug zu einer anderen Stelle. Herkunft, gleiche Funktion, gestalterische Variante, Ähnlichkeit und lexikalischer Treffer haben verschiedene Bedeutungen. Eine identische Pixelposition oder derselbe Zeitanteil ist keine hinreichende Zuordnung.\n\nGEGENÜBER wird aus dieser aktuellen Erfahrung heraus geöffnet. Liveansichten, Spiegelungen und Screenshots können dafür dienen, tragen aber unterschiedliche Zeit- und Zustandsbezüge. Die Person kann eine Vergleichsgruppe frei wählen. Eine gemeinsame Auswahl erzeugt keine automatische gemeinsame Schreibzuständigkeit. Die Möglichkeit, alle Varianten zu erreichen, erfordert keinen gleichzeitigen Start aller Laufzeiten.\n\nQuellen: [Denkatlas entwickeln](https://chatgpt.com/c/6aa90476-f6f8-83eb-8e93-9ff05a4f5cbd), [Buchsystem vernetzen](https://chatgpt.com/c/6aca5efd-66fc-83ed-8947-e76b9f066af1), [Isomorphie zur Form](https://chatgpt.com/c/6ac9ebbf-2924-83eb-ab82-cec66bf825a4).\n\n## Kapitel werden eigenständiges weiterführbares Material\n\nRAKis Korrektur richtet sich gegen eine Verkürzung seines Buchwunsches auf wenige thematische Sammelessays. Der einzelne ergiebige Chat soll als ausführliches Kapitel bearbeitet werden. Seine Entwicklung, Fragen, Unterschiede und späteren Korrekturen gehören dazu. Die Kapitel bilden einen wachsenden Fundus in einer gemeinsamen Stimme, aus dem verschiedene Bücher und weitere Werke entstehen können.\n\nDie operationalisierte Empfehlung ist: den tatsächlich zugänglichen Einzelchat im Kontext lesen, eine eigenständige Kapitel-Lesefassung herstellen und erst anschließend seine Themenbezüge und möglichen Buchkompositionen bearbeiten. „Vollständiger Chat vor früher Mehrchat-Synthese“ ist diese Umsetzungsauslegung des Nutzerwunsches. Ein Teilzugriff muss als begrenzt ausgewiesen bleiben. Gemeinsam klingende Stimme vereinheitlicht nicht rückwirkend alle Positionen und macht hineinkopierte fremde Texte nicht zu RAKis eigenen Überzeugungen.\n\nDas Kapitel wird einmal als adressierter Werkgegenstand geführt und kann an mehrere Mooncells anschließen. Passagen können andere Bezüge besitzen als das ganze Kapitel. Buchfassungen und persönliche Konstellationen referenzieren diese Gegenstände; sie brauchen keine auseinanderlaufenden Hauptkopien. Replikate, Sicherungen und ausdrücklich eingefrorene historische Fassungen bleiben möglich.\n\nDie Mehrfachzugehörigkeit macht Herkunftspflege produktiv: Neue Ergänzungen und Korrekturen können die betroffenen aktuellen Verwendungen erreichen. Historische Buchfassungen behalten ihren damaligen Stand. Das Nutzerbild der spukhaften Fernwirkung bezeichnet diese Netzzugehörigkeit; es ist keine physikalische Aussage.\n\nQuellen: [Buchkapitel Zusammenfassung](https://chatgpt.com/c/6acce3da-0a9c-83eb-9e04-738e5fd22e16), [Denkatlas entwickeln](https://chatgpt.com/c/6aa90476-f6f8-83eb-8e93-9ff05a4f5cbd), [New chat](https://chatgpt.com/c/6acd0230-d43c-83ed-9506-e820e272b4a9).\n\n## Die eigene Konstellation bleibt im gemeinsamen Zusammenhang\n\nBeim Lesen können hervorgehobene Namen und Gegenstände ausgewählt, Nachbarschaften geöffnet und weitere Bezüge entdeckt werden. Die Person stellt sich dadurch ihren eigenen Graphen zusammen. Diese Konstellation ist eine wirkliche eigene Gestaltung mit Frage, Auswahl, Anordnung und Fortsetzungsstand. Ihre Gegenstände behalten zugleich ihre gemeinsame Identität und ihre anderen Zugehörigkeiten.\n\nEine gespeicherte Auswahl oder Filterung ist etwas anderes als eine neu vorgeschlagene fachliche Beziehung. Die erste bestimmt den Blick; die zweite ergänzt den Erkenntnisbestand mit Urheber, Begründung und Prüfstatus. Ein Darstellungsfilter löscht nichts aus der Quelle. Ein explorativ erzeugter Verbindungsvorschlag wird nicht allein durch seine Sichtbarkeit zur bestätigten Tatsache.\n\nDas vertieft die schon vorhandene Welt-/Linsentrennung. Weltgestaltung verändert Geometrie und sinnliche Erscheinung; Linse verändert Auswahl und Deutungsfrage; eine inhaltliche Variante kann einen neuen Graphstand erzeugen. Diese Operationen bleiben aus derselben Oberfläche zugänglich und trotzdem in ihren Folgen unterscheidbar.\n\n## Der Dialog vermittelt und die Rückgabe bleibt im Fluss\n\nRAKi verlangt einen vollwertigen LLM-Zugang im Werkraum, der Anliegen klärt und an die zuständige Instanz vermittelt. Nicht jede Frage braucht sofort eine ganze TiSCH-Runde. Ein tatsächlich angeschlossener Einzelauftrag oder eine passende Konstellation kann gewählt werden. Die gewünschte niedrigere Modellklasse ist eine Betriebspräferenz; die wirksame Route ist gesondert zu erfassen.\n\nDer Auftrag behält Ausgangsstelle, Fassung, Kontext, Mandat und Rückgabeadresse. Die Person kann während seiner Bearbeitung weiter lesen, hören, spielen oder entspannen. Ein Hinweis öffnet eine tatsächlich vorhandene Rückgabe oder einen konkret handlungsrelevanten Fehler. Das Ergebnis ersetzt weder automatisch die Ausgangsfassung noch den währenddessen erreichten Arbeitsstand.\n\nDamit wird der bisher allgemeine Worker-/Rückgabevertrag zu einer konkreten täglichen Bedienung. Vorgefertigte Knöpfe allein erfüllen den Dialogwunsch nicht. Umgekehrt beweist ein gelungener Dialog noch keinen gestarteten Harness oder ausgeführten TiSCH. Klärung, Vermittlung, Ausführung, Rückgabe und Übernahme behalten eigene Nachweise.\n\n## Rohe Eingänge und gebildete Werkzusammenhänge\n\nDer zusätzlich gelesene Geistesblitze-Auftrag unterscheidet die ungeordnete Aufnahme von ihrer späteren Bearbeitung. Thema, Zielwerk, Linse und Verknüpfung sind beim Hereinwerfen keine Pflichtangaben. Eine Aufnahme darf zunächst nur lokal gesichert sein; Übertragung und bestätigter Empfang sind weitere Zustände.\n\nIdeenatelier bezeichnet die Arbeit mit ausgewählten Eingängen. Eine Mooncell kann daraus einen zusammenhängenden Gegenstandsraum und dessen Varianten erschließen. Der Gedankenweg bleibt freiwillig und umkehrbar. Ein roher Gedanke kann mehreren Mooncells angehören und weiterhin roh bleiben. Auch ein fertiges Dokument kann ein neuer Eingang sein. Länge und Verdichtungsgrad allein bestimmen keine Werkrolle.\n\nDas Ideenwerk als übergreifende Produktrolle ist in der erreichbaren Ausarbeitung ein Vorschlag. Die lokalen Dateien enthalten eine hilfreiche Begriffsordnung und 43 erhaltene Quellensnapshots; das begründet keinen fertigen Watch-/Handy-/iPad-Companion. Der neue Mooncells-Main-Commit enthält zudem eine andere, stärker stufige Begriffsordnung. Dieser Unterschied bleibt als zu bearbeitende Variante erhalten; er wird nicht durch Wortgleichheit verdeckt.\n\nQuellen: [Geistesblitze zu Mooncell bündeln](codex://threads/01a13093-ec97-71a2-87e8-9739eb0d6f42), [lokale Raumordnung](/Users/raki/.codex/visualizations/2026/10/12/01a13093-ec97-71a2-87e8-9739eb0d6f42/ideenwerk/worktrees/ideenwerk/01-raumordnung.md), [Mooncells Ideenraumdokument](https://github.com/ralfarminkirchner-netizen/mooncells/blob/1a06a863d1793792b6d10ddaad6d2ea077a2a72c/docs/ideenraum-2026-10.md).\n\n## Herkunftsdichte und Bedeutungsdichte getrennt halten\n\nDie neuesten Maurus-/Meltdown-Auswertungen liefern einen konkreten Prüfstein: Viele Kanten können aus gemeinsamem Quellenmaterial, Versionsfolgen und einem gleichen Wort entstehen. Das ist ein Dokument- und Herkunftsnetz. Es beweist noch nicht, dass die dargestellten Fassungen verschiedene inhaltliche Erkenntnisse oder unabhängige Perspektiven tragen.\n\nEin lexikalischer Treffer bleibt als Suchspur brauchbar. Seine fachliche Relevanz muss eigens begründet werden. Mehrere gespeicherte Vorschläge aus einem Lauf, wiederholter Import desselben Ergebnisses und fehlgeschlagene weitere Modellläufe erhöhen die Zahl unabhängiger Beiträge nicht.\n\nDie jüngste Korrespondenz-Ausarbeitung stützt diese Unterscheidung auf einen gelesenen Export. Die Originalanhänge dieses neuen Exports waren in den hier verwendeten Chatabrufen nicht enthalten. Die dort berichteten Zahlen und Modellzustände werden deshalb als Auswertungsbericht geführt. Übertragbar ist der konkrete Abnahmefall: Herkunft, Versionsfolge, lexikalische Suche und inhaltliche Beziehungen getrennt öffnen und zählen. Layout, Cluster oder Gravitation dürfen aus vielen Herkunftskanten keine scheinbar vielfache Bestätigung erzeugen.\n\nQuellen: [Korrespondenz mit Maurus](https://chatgpt.com/c/6acb8b1a-0928-83eb-8242-ccd5ebf11409), [Meltdownprotokoll verstehen](https://chatgpt.com/c/6acb86ad-26dc-83ed-8527-970714edab5e).\n\n## Neue technische Stände mit ihren Grenzen\n\n| Bereich | Erneut geprüft | Aussagegrenze |\n|---|---|---|\n| TRAGWERK main | Neu `b9421875b8f73fe9747f83e237e782d58de145e4`; IMPORT-Episode jetzt veröffentlicht, neuer T-05-Lauf und vierte Werkbankfassung mit erhaltenen Vorgängern. | Der Laufbericht beschreibt 306/306, enthält in einzelnen Messgrößen noch 305. Eine statisch erkennbare Leerkette greift auf ein fehlendes letztes Ereignis zu; Reproduktion und Reparatur bleiben Aufgabe des begrenzten M0-Patches. |\n| Mooncells main | Neu `1a06a863d1793792b6d10ddaad6d2ea077a2a72c`; Ideenraum-MDF mit 11 Varianten, 9 Kanten und 3 Befunden gespeichert. | Vier wichtige Studien sind Referenzimporte aus Zitaten oder Zusammenfassung; keine vollständig eingelesenen Original-MDs und kein Companion-Betrieb. |\n| Formformer und Entwurfs-PRs | Release `c01cd87…`, main und die sieben geprüften PR-Heads/-Zustände bleiben gleich. | Die alte textuelle M0-Mergeprüfung bezog sich auf main `4058203`; der neue Stand wird dadurch nicht gemeinsam getestet. |\n| Railway M0 | Erneute Dienstabfrage: Deployment `3048a034…`, SUCCESS, Instanz RUNNING. | Kein Commit-Hash im Upload; kein neuer Browser-Gesamtweg ausgeführt. |\n\nQuellen: [aktuelles TRAGWERK main](https://github.com/ralfarminkirchner-netizen/kinegrity-tragwerk/tree/b9421875b8f73fe9747f83e237e782d58de145e4), [T-05-Lauf 2](https://github.com/ralfarminkirchner-netizen/kinegrity-tragwerk/blob/b9421875b8f73fe9747f83e237e782d58de145e4/r4-grammatik/ergebnisse/t05_gelaufen_20261012T151339Z.json), [Mooncells main](https://github.com/ralfarminkirchner-netizen/mooncells/tree/1a06a863d1793792b6d10ddaad6d2ea077a2a72c). Rohbelege und Dienstzuordnung: `recherche/v2/quellstatus-delta.json`.\n\n## Der passende erste Nachweis\n\nEin tatsächliches Einzelchat-Kapitel öffnet eine Stelle. Von dort werden eine belegte Gegenstelle und zwei Mooncells-Zugehörigkeiten geöffnet. Eine persönliche Graphkonstellation wird gespeichert. Im selben Raum klärt ein realer Dialog einen Auftrag; während der Ausführung geht die Benutzung weiter. Die tatsächliche Rückgabe öffnet am Ausgangsbezug, wird verglichen und gegebenenfalls übernommen. Die zwischenzeitlich erreichte Stelle bleibt erreichbar. Schließen, Wiederöffnen, eine inhaltliche Revision und ein begrenzter Weltwechsel gehören zur selben nachvollziehbaren Werk-/Fassungskette.\n\nDieser Lauf ist eine Abnahmeprobe, keine Pflichtfolge der Benutzung. Die frühere Körper-/Handlungsengine, Quellenprüfung, freie Schöpfung und relationstreue Weltprofile bleiben Bestandteile. Einzelne erfolgreiche Handlungs-, Speicher- und Revisionsprüfungen reichen für den gemeinsamen Werkraum erst dann aus, wenn auch ihr Zusammenhang am tatsächlichen Produkteinstieg trägt.\n\n## Quellenabdeckung und erhaltene Fassungen\n\nDie Delta-Prüfung erschließt die sechs wesentlich fortgeschriebenen Chatlinien Isomorphie, Denkatlas, Gesamtzusammenhang, Buchkapitel, Buchsystem und Der Bau sowie New chat, die neueren Maurus-/Meltdown-Auswertungen und den Geistesblitze-Auftrag. Für die drei Buch-/Werkchats wurden wegen begrenzter direkter Abfragen die zugehörigen erreichbaren Codex-Arbeitsgeschichten gelesen. Längere Assistenztexte sind teilweise bei 20.000 Zeichen gekürzt; neu berichtete Sandbox-Dateien sind dadurch keine hier vollständig geprüften Datei-Artefakte.\n\nDie drei jüngsten umfangreichen Nutzerpakete in Isomorphie, Denkatlas und Gesamtzusammenhang sind bytegleich. Weitere Chats verwenden denselben Gedankengang. Die Ausarbeitungen bleiben verschiedene Fortführungen einer gemeinsamen Quelle. Eine neue externe empirische Studie wird daraus nicht behauptet. Direkte Nutzerentscheidungen, Umsetzungsvorschläge, gemeldete Dokumente und geprüfter Quellbestand sind getrennt geführt.\n\nDie vorige hiesige Auftragsdatei stimmt weiterhin bytegleich mit ihrem bereits gelieferten ZIP überein. V3 wird eigenständig gespeichert; Original und vorige Fassung bleiben erhalten. Die frühere Inventur von 22 ausgewählten Chats bleibt eine frühere Momentaufnahme. Der aktuelle Delta-Abgleich ist keine neue vollständige Kontoinventur.\n",
+        "author_id": "bb7b8abb-ad3e-5273-8862-eb48647c848c",
+        "created_at": "2026-10-12T18:30:00Z"
       }
     ],
     "edges": [
       {
-        "id": "706608fc-1d5e-483b-b291-faae96a34ef0",
+        "id": "1162b2b3-b4ee-5c78-9b53-4f81b8f2cfe8",
         "edge_type": "erweitert",
-        "from_variant_id": "22e74c96-8986-47ad-80b9-80c0e639cbe5",
-        "to_variant_id": "2ba5da93-5e2e-48e7-af95-f62f2bd92f4a",
+        "from_variant_id": "cd4b05f2-0438-5dda-9b0d-a4586c432908",
+        "to_variant_id": "8d32727e-6bb2-5f31-a26c-3bf85a16a6e6",
         "note": "Synthese zitiert und vertieft die Grundformationen: 'Wissen ist eine Beziehung zum Wesenden' — Brauchbarkeit ersetzt nicht den Gegenstand.",
-        "author_id": "3af5c7fb-de9a-48b5-8245-ae67748e1e2c",
-        "created_at": "2026-10-12T14:30:00Z"
+        "author_id": "a4906840-fdfc-5e37-a551-29e77a8ee3ac",
+        "created_at": "2026-10-12T18:30:00Z"
       },
       {
-        "id": "faeb17a8-2dd9-4d49-91ea-31ca8dd2c687",
+        "id": "1dec9755-6e84-5ce5-97cb-f53d464c0ae1",
         "edge_type": "erweitert",
-        "from_variant_id": "22e74c96-8986-47ad-80b9-80c0e639cbe5",
-        "to_variant_id": "d3cf50d2-7e3d-4c2f-be35-badf68692766",
+        "from_variant_id": "cd4b05f2-0438-5dda-9b0d-a4586c432908",
+        "to_variant_id": "3c69055c-4dde-5528-bed0-fcf8f62aeb8c",
         "note": "Synthese zitiert und vertieft: Teilnahmezustand, Beitragsstand und berechtigte Wirkung getrennt; 'ausgebliebene Antwort ist keine Zustimmung'.",
-        "author_id": "3af5c7fb-de9a-48b5-8245-ae67748e1e2c",
-        "created_at": "2026-10-12T14:30:00Z"
+        "author_id": "a4906840-fdfc-5e37-a551-29e77a8ee3ac",
+        "created_at": "2026-10-12T18:30:00Z"
       },
       {
-        "id": "14ee64d5-af5f-4a06-886b-fac8ac913fbe",
+        "id": "d0dc04bb-4e46-5ae0-b1b6-b751bd3f606e",
         "edge_type": "erweitert",
-        "from_variant_id": "22e74c96-8986-47ad-80b9-80c0e639cbe5",
-        "to_variant_id": "d5fca2db-4bdc-496f-bae3-a64f61f36163",
+        "from_variant_id": "cd4b05f2-0438-5dda-9b0d-a4586c432908",
+        "to_variant_id": "d51d56b8-5e0c-53f1-b504-cdf6d9dc8b5c",
         "note": "Synthese zitiert und vertieft: Formwechsel muss Erhaltenes bestimmen; Forschungswelt als produktive Tätigkeiten, nicht als Anzeige.",
-        "author_id": "3af5c7fb-de9a-48b5-8245-ae67748e1e2c",
-        "created_at": "2026-10-12T14:30:00Z"
+        "author_id": "a4906840-fdfc-5e37-a551-29e77a8ee3ac",
+        "created_at": "2026-10-12T18:30:00Z"
       },
       {
-        "id": "40969ee3-e519-453c-9f2a-5d5ed063b4eb",
+        "id": "c9370423-b037-5462-b58e-ca14b89bf91a",
         "edge_type": "remixt-aus",
-        "from_variant_id": "0ac28939-f631-4fe1-805d-8efe7c3f7c6e",
-        "to_variant_id": "bdadbeeb-b9d3-40fd-a74b-d4271fc255e6",
+        "from_variant_id": "bd8fd9b3-ec34-535a-945e-0467e0722233",
+        "to_variant_id": "6c91f193-5066-537a-976e-710d17236c59",
         "note": "Der Brief verdichtet den rohen Geistesblitz: Zelda-Analogie und Gummiband werden zu Vier-Schichten-Modell und Gummiband-Gesetz.",
-        "author_id": "3af5c7fb-de9a-48b5-8245-ae67748e1e2c",
-        "created_at": "2026-10-12T14:30:00Z"
+        "author_id": "a4906840-fdfc-5e37-a551-29e77a8ee3ac",
+        "created_at": "2026-10-12T18:30:00Z"
       },
       {
-        "id": "c3c898f7-0c44-4165-86bb-b23c14877a7e",
+        "id": "49f2697c-9839-55a1-8c0e-7c276ee01ffc",
         "edge_type": "erweitert",
-        "from_variant_id": "bdadbeeb-b9d3-40fd-a74b-d4271fc255e6",
-        "to_variant_id": "0ac28939-f631-4fe1-805d-8efe7c3f7c6e",
+        "from_variant_id": "6c91f193-5066-537a-976e-710d17236c59",
+        "to_variant_id": "bd8fd9b3-ec34-535a-945e-0467e0722233",
         "note": "Umgekehrt trägt der Geistesblitz den Brief: 'Die Form soll gleich sein, sondern die Logik dahinter' ist der Satz, aus dem alles folgt.",
-        "author_id": "3af5c7fb-de9a-48b5-8245-ae67748e1e2c",
-        "created_at": "2026-10-12T14:30:00Z"
+        "author_id": "a4906840-fdfc-5e37-a551-29e77a8ee3ac",
+        "created_at": "2026-10-12T18:30:00Z"
       },
       {
-        "id": "bf3ea365-2868-4c97-91cf-02b8bb0e92f7",
+        "id": "5382759c-901f-5102-a7b3-c63678a66f23",
         "edge_type": "erweitert",
-        "from_variant_id": "fc3a681d-7de2-49a1-9a7c-13c1191ff0f0",
-        "to_variant_id": "d3cf50d2-7e3d-4c2f-be35-badf68692766",
+        "from_variant_id": "0c657b72-643f-5683-b228-2cdda59f3bf9",
+        "to_variant_id": "bd8fd9b3-ec34-535a-945e-0467e0722233",
+        "note": "Vollimport ersetzt die Zitat-Rekonstruktion durch den vollständigen Originaltext (sha256 a05fe677…); die Rekonstruktion bleibt als Vorgänger und zeigt, was eine Summary trägt und was nicht.",
+        "author_id": "a4906840-fdfc-5e37-a551-29e77a8ee3ac",
+        "created_at": "2026-10-12T18:30:00Z"
+      },
+      {
+        "id": "5dca04d1-f294-5559-b0e8-0b81203607c3",
+        "edge_type": "erweitert",
+        "from_variant_id": "ed7b065f-eb0b-537d-a7ce-fbb2644a21bb",
+        "to_variant_id": "3c69055c-4dde-5528-bed0-fcf8f62aeb8c",
         "note": "Das Atlas-Profil baut den Anforderungs-Entwurf als Graph: 15 Knoten, 66 Kanten, NodeType profile, EdgeType profil — Entwurf wurde Werk.",
-        "author_id": "3af5c7fb-de9a-48b5-8245-ae67748e1e2c",
-        "created_at": "2026-10-12T14:30:00Z"
+        "author_id": "a4906840-fdfc-5e37-a551-29e77a8ee3ac",
+        "created_at": "2026-10-12T18:30:00Z"
       },
       {
-        "id": "926fbd4f-1de2-4af1-90c3-159b0aadf3d4",
+        "id": "e03ace21-503d-5a5c-9532-aebbbb68d791",
         "edge_type": "erweitert",
-        "from_variant_id": "5917d1a5-57ca-4505-a0aa-b3045a8cdde4",
-        "to_variant_id": "01c77403-2b17-4842-b663-4372dfab8082",
+        "from_variant_id": "eab0ed0a-d5ed-541a-9041-de824c622a71",
+        "to_variant_id": "98150d2f-44ee-5710-a87f-b57ce896c3a6",
         "note": "Die Stufung benennt, was die Wurzel ist: rohe Geistesblitze, noch unvernetzt, genau der Companion-App-Zustand.",
-        "author_id": "3af5c7fb-de9a-48b5-8245-ae67748e1e2c",
-        "created_at": "2026-10-12T14:30:00Z"
+        "author_id": "a4906840-fdfc-5e37-a551-29e77a8ee3ac",
+        "created_at": "2026-10-12T18:30:00Z"
       },
       {
-        "id": "ae5e1ea5-b409-4a97-bd78-f4b1af3fff85",
+        "id": "d6cbadb6-baea-5958-ba3e-43dfa0c1ac0e",
         "edge_type": "erweitert",
-        "from_variant_id": "c41a3123-6bb6-451e-81d4-4b411dd308ec",
-        "to_variant_id": "5917d1a5-57ca-4505-a0aa-b3045a8cdde4",
+        "from_variant_id": "02bd746b-6b20-5cad-b794-db70551fd2f2",
+        "to_variant_id": "eab0ed0a-d5ed-541a-9041-de824c622a71",
         "note": "Atelier = Geistesblitze geordnet und verglichen, erste Fassungen.",
-        "author_id": "3af5c7fb-de9a-48b5-8245-ae67748e1e2c",
-        "created_at": "2026-10-12T14:30:00Z"
+        "author_id": "a4906840-fdfc-5e37-a551-29e77a8ee3ac",
+        "created_at": "2026-10-12T18:30:00Z"
       },
       {
-        "id": "f12fefff-d451-4725-9181-b72aae6ae7be",
+        "id": "6ba296b3-d64b-5ae3-89ec-e9207df5a700",
         "edge_type": "erweitert",
-        "from_variant_id": "c22a39e7-0e4c-44f1-a905-2085c4abf6b3",
-        "to_variant_id": "c41a3123-6bb6-451e-81d4-4b411dd308ec",
+        "from_variant_id": "84ae6a5c-1c82-569d-97d7-9224b0bf6374",
+        "to_variant_id": "02bd746b-6b20-5cad-b794-db70551fd2f2",
         "note": "Mooncell = verdichtetes Werk aus Atelier-Stoff; dieser Ideenraum steht bewusst davor.",
-        "author_id": "3af5c7fb-de9a-48b5-8245-ae67748e1e2c",
-        "created_at": "2026-10-12T14:30:00Z"
+        "author_id": "a4906840-fdfc-5e37-a551-29e77a8ee3ac",
+        "created_at": "2026-10-12T18:30:00Z"
+      },
+      {
+        "id": "373dcb30-166e-5c23-9e5d-f9c7d304bc4b",
+        "edge_type": "erweitert",
+        "from_variant_id": "13e49e7b-7c84-5a0a-82e2-2b6bf264db40",
+        "to_variant_id": "cd4b05f2-0438-5dda-9b0d-a4586c432908",
+        "note": "Die Aktualisierung macht die Synthese betrieblich: 'Forschung verändert die weitere Verwendung' — R4-Rückführungen, T-05-Akten und Werkbankfassungen sind die konkreten Anschlüsse.",
+        "author_id": "a4906840-fdfc-5e37-a551-29e77a8ee3ac",
+        "created_at": "2026-10-12T18:30:00Z"
+      },
+      {
+        "id": "47539eec-277b-533b-9b3d-aea244d5e73a",
+        "edge_type": "erweitert",
+        "from_variant_id": "13e49e7b-7c84-5a0a-82e2-2b6bf264db40",
+        "to_variant_id": "84ae6a5c-1c82-569d-97d7-9224b0bf6374",
+        "note": "Mooncells wird vom Konzept zum Anschluss: Navigator PR 10 und Mooncells PR 1+2 sind offene Drafts — Variantenraum, Quellenräume und Rückwege konkret; keine zweite Werkdatenbank nötig.",
+        "author_id": "a4906840-fdfc-5e37-a551-29e77a8ee3ac",
+        "created_at": "2026-10-12T18:30:00Z"
+      },
+      {
+        "id": "e5c9f722-6891-535e-af9a-5c5e2fb06269",
+        "edge_type": "erweitert",
+        "from_variant_id": "13e49e7b-7c84-5a0a-82e2-2b6bf264db40",
+        "to_variant_id": "0c657b72-643f-5683-b228-2cdda59f3bf9",
+        "note": "'Weltwechsel trägt Forschungsarbeit': Feldbuch/Logbuch/Missionsbuch als Erscheinungen desselben Arbeitsstands — die INVARIANZ-Transduktion bekommt damit eine zweite, forschungspraktische Stütze.",
+        "author_id": "a4906840-fdfc-5e37-a551-29e77a8ee3ac",
+        "created_at": "2026-10-12T18:30:00Z"
+      },
+      {
+        "id": "3f8c4017-5d0d-534b-afa5-a097b9094ee5",
+        "edge_type": "erweitert",
+        "from_variant_id": "7207e71d-a64d-5f57-9d66-975a230fefb0",
+        "to_variant_id": "13e49e7b-7c84-5a0a-82e2-2b6bf264db40",
+        "note": "V3 verschiebt die Mitte erneut: aus dem Anschluss zweier Werkzeuge wird ein gemeinsamer Werkraum. Die V2 bleibt in Quellen-, Form-, Revisions- und Weltprofilanforderungen brauchbar — Hauptzweck und erster Schnitt sind neu zu fassen.",
+        "author_id": "a4906840-fdfc-5e37-a551-29e77a8ee3ac",
+        "created_at": "2026-10-12T18:30:00Z"
+      },
+      {
+        "id": "6d0a9e90-93be-5888-9761-b0614cb15dfb",
+        "edge_type": "erweitert",
+        "from_variant_id": "7207e71d-a64d-5f57-9d66-975a230fefb0",
+        "to_variant_id": "eab0ed0a-d5ed-541a-9041-de824c622a71",
+        "note": "V3 verankert die Stufung explizit: Geistesblitze = rohe Companion-Eingänge (Aufnahme vor Themenwahl), Ideenatelier = Bearbeitung, Mooncell = gebildete Zusammenhänge — mögliche Weiterführungen ohne verpflichtende Reifungsleiter.",
+        "author_id": "a4906840-fdfc-5e37-a551-29e77a8ee3ac",
+        "created_at": "2026-10-12T18:30:00Z"
+      },
+      {
+        "id": "b5344e14-93b9-517c-9e7e-736b851179eb",
+        "edge_type": "erweitert",
+        "from_variant_id": "7207e71d-a64d-5f57-9d66-975a230fefb0",
+        "to_variant_id": "0c657b72-643f-5683-b228-2cdda59f3bf9",
+        "note": "V3 schärft die Schichtentrennung: Weltgestaltung (Geometrie), Linse (Auswahl/Deutung) und inhaltliche Variante (neuer Graphstand) sind verschiedene Operationen — aus derselben Oberfläche, in ihren Folgen unterscheidbar.",
+        "author_id": "a4906840-fdfc-5e37-a551-29e77a8ee3ac",
+        "created_at": "2026-10-12T18:30:00Z"
       }
     ],
     "findings": [
       {
-        "target_edge_id": "706608fc-1d5e-483b-b291-faae96a34ef0",
+        "id": "dcd57171-6eaa-52fb-96ab-1b049a7eb326",
+        "target_edge_id": "1162b2b3-b4ee-5c78-9b53-4f81b8f2cfe8",
         "target_variant_ids": null,
         "criterion": "Herkunftstiefe des Imports",
         "task": "Ideenraum kuratieren",
         "verdict": "teilweise",
-        "rationale": "Inhalte der drei Brief-MDs sind hier nur aus wörtlichen Zitaten rekonstruiert — volle Tiefe erst nach Original-Import aus dem TRAUMAATLAS/KiNTEGRiTY-Bestand.",
-        "author_id": "3af5c7fb-de9a-48b5-8245-ae67748e1e2c",
-        "created_at": "2026-10-12T14:30:00Z"
+        "rationale": "V1: Inhalte der drei Brief-MDs nur aus wörtlichen Zitaten rekonstruiert. INVARIANZ ist inzwischen vollständig importiert (s. findings:herkunft-v2).",
+        "author_id": "a4906840-fdfc-5e37-a551-29e77a8ee3ac",
+        "created_at": "2026-10-12T18:30:00Z"
       },
       {
-        "target_edge_id": "40969ee3-e519-453c-9f2a-5d5ed063b4eb",
+        "id": "f969b4d1-0f70-5126-8595-6b1bdb308e85",
+        "target_edge_id": "c9370423-b037-5462-b58e-ca14b89bf91a",
         "target_variant_ids": null,
         "criterion": "Verdichtungsgrad",
         "task": "TRAUMAATLAS-Welten bauen",
         "verdict": "tragfähig",
-        "rationale": "Der Brief fasst den Geistesblitz präziser als der Ursprung: Vier Schichten, Gummiband-Gesetz, harter Test (Overlay-Erkennbarkeit). Baue Schattenwelt leicht verzerrt, nicht deckungsgleich — sonst billiger Skin.",
-        "author_id": "3af5c7fb-de9a-48b5-8245-ae67748e1e2c",
-        "created_at": "2026-10-12T14:30:00Z"
+        "rationale": "Der Brief fasst den Geistesblitz präziser als der Ursprung: Vier Schichten, Gummiband-Gesetz, harter Test (Overlay-Erkennbarkeit). Bauregel: Schattenwelt leicht verzerrt, nicht deckungsgleich — sonst billiger Skin.",
+        "author_id": "a4906840-fdfc-5e37-a551-29e77a8ee3ac",
+        "created_at": "2026-10-12T18:30:00Z"
       },
       {
+        "id": "59e1dfdc-e851-5f1a-abf1-58aaebebd790",
         "target_edge_id": null,
         "target_variant_ids": [
-          "5917d1a5-57ca-4505-a0aa-b3045a8cdde4",
-          "c22a39e7-0e4c-44f1-a905-2085c4abf6b3"
+          "eab0ed0a-d5ed-541a-9041-de824c622a71",
+          "84ae6a5c-1c82-569d-97d7-9224b0bf6374"
         ],
         "criterion": "Statusklarheit der Stufung",
         "task": "Companion-App-Architektur",
         "verdict": "tragfähig",
         "rationale": "Geistesblitze = roh, Ideenatelier = fortgeschritten, Mooncell = verdichtet; der Ideenraum/Ideenwerk ist die Sammlung selbst und damit der Status davor. Genau dieser Differenzierungspunkt verdient einen eigenen Tragwerks-Eintrag.",
-        "author_id": "3af5c7fb-de9a-48b5-8245-ae67748e1e2c",
-        "created_at": "2026-10-12T14:30:00Z"
+        "author_id": "a4906840-fdfc-5e37-a551-29e77a8ee3ac",
+        "created_at": "2026-10-12T18:30:00Z"
+      },
+      {
+        "id": "256a176c-dd9b-5aad-ac11-7e52a1c6eb3a",
+        "target_edge_id": "5382759c-901f-5102-a7b3-c63678a66f23",
+        "target_variant_ids": null,
+        "criterion": "Herkunftstiefe nach Import",
+        "task": "Ideenraum kuratieren",
+        "verdict": "teilweise",
+        "rationale": "INVARIANZ ist vollständig importiert und inhaltlich tragfähig (Volltext liegt docs/quellen/). Grundformationen, PDA-Anforderungen und Codex bleiben Zitat-Rekonstruktionen — nächster Import aus dem KiNTEGRiTY-/TRAUMAATLAS-Bestand.",
+        "author_id": "a4906840-fdfc-5e37-a551-29e77a8ee3ac",
+        "created_at": "2026-10-12T18:30:00Z"
+      },
+      {
+        "id": "8aec879c-2686-5422-93e4-33096c4178e9",
+        "target_edge_id": null,
+        "target_variant_ids": [
+          "13e49e7b-7c84-5a0a-82e2-2b6bf264db40",
+          "13e49e7b-7c84-5a0a-82e2-2b6bf264db40"
+        ],
+        "criterion": "Technik-Befundtreue",
+        "task": "Auftrag weiterführen",
+        "verdict": "vermutung",
+        "rationale": "Railway-Deployment 3048a034 (16:43 MESZ) ist direkt abgefragt, aber der CLI-Upload nennt keinen Commit-Hash — Quellzuordnung und aktuelle Bedienprüfung bleiben offen. Der T-05-Bericht (f2952b56) beschreibt einen inzwischen REMOVEDen Stand.",
+        "author_id": "bb7b8abb-ad3e-5273-8862-eb48647c848c",
+        "created_at": "2026-10-12T18:30:00Z"
+      },
+      {
+        "id": "f4ea5929-a403-5102-b149-efe69856ee87",
+        "target_edge_id": null,
+        "target_variant_ids": [
+          "13e49e7b-7c84-5a0a-82e2-2b6bf264db40",
+          "cd4b05f2-0438-5dda-9b0d-a4586c432908"
+        ],
+        "criterion": "Rückführungs-Anschlussfähigkeit",
+        "task": "Gesamtwerk integrieren",
+        "verdict": "tragfähig",
+        "rationale": "R4 enthält mit versionierten Tragwerken, Tragfähigkeitstests, Ergebnisakten (Manifest-Kette) und Werkbankfassungen genau die Typen, die 'neue Erkenntnisse erreichen aktuelle Verwendung' brauchen. Ablage ≠ universelle Autorität — aber die Öffnungen sind belegt (main 4058203).",
+        "author_id": "a4906840-fdfc-5e37-a551-29e77a8ee3ac",
+        "created_at": "2026-10-12T18:30:00Z"
+      },
+      {
+        "id": "0a564772-a7dc-536a-8334-9ae790087fb7",
+        "target_edge_id": null,
+        "target_variant_ids": [
+          "7207e71d-a64d-5f57-9d66-975a230fefb0",
+          "7207e71d-a64d-5f57-9d66-975a230fefb0"
+        ],
+        "criterion": "Herkunftsdichte vs. Bedeutungsdichte",
+        "task": "Graphgestaltung QuerLeser",
+        "verdict": "tragfähig",
+        "rationale": "V3-Maßstab aus den Maurus-/Meltdown-Auswertungen: viele Kanten aus gemeinsamem Quellenmaterial, Versionsfolgen und einem gleichen Wort ergeben ein Dokument- und Herkunftsnetz — sie beweisen nicht vielfache inhaltliche Bestätigung. Lexikalische Treffer bleiben Suchspuren; ihre fachliche Relevanz muss eigens begründet werden. Layout, Cluster und Gravitation dürfen aus Herkunftskanten keine scheinbare Mehrfach-Bestätigung erzeugen. Direkter Anknüpfungspunkt an mooncells konzept.md §13 (Kappung statt Mittelung) und §6 (Track Records).",
+        "author_id": "a4906840-fdfc-5e37-a551-29e77a8ee3ac",
+        "created_at": "2026-10-12T18:30:00Z"
+      },
+      {
+        "id": "f9973218-4a31-513a-a519-11437239c0d5",
+        "target_edge_id": null,
+        "target_variant_ids": [
+          "7207e71d-a64d-5f57-9d66-975a230fefb0",
+          "84ae6a5c-1c82-569d-97d7-9224b0bf6374"
+        ],
+        "criterion": "Quellstand-Bestätigung des Ideenraums",
+        "task": "Ideenraum pflegen",
+        "verdict": "tragfähig",
+        "rationale": "V3 bestätigt die eigene Basis geschlossen: TRAGWERK main b942187 (T-05-Lauf 2, Werkbankfassung 4) und Mooncells 1a06a86 (Ideenraum V1) sind exakt zitiert. Der Ideenraum ist damit nicht nur Konzept, sondern vom Auftragsdokument referenzierte Infrastruktur. Offen bleibt nur noch der Original-Import der drei Briefe (Grundformationen, PDA-Anforderungen, Codex-Forschungswelt).",
+        "author_id": "a4906840-fdfc-5e37-a551-29e77a8ee3ac",
+        "created_at": "2026-10-12T18:30:00Z"
       }
     ]
   }

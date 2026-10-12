@@ -3,10 +3,11 @@
 Eine Mooncell im ursprünglichsten Sinn: **noch kein verdichtetes Werk, sondern
 der Status davor** — ein Worktree, in dem die Geistesblitze der Woche als
 Varianten nebeneinander liegen und erste Kanten ziehen. Maschinenlesbar in
-[ideenraum-2026-10.json](ideenraum-2026-10.json) (MDF v1, 11 Varianten,
-9 Kanten, 3 Befunde); regenerierbar via `scripts/build_ideenraum.py`.
+[ideenraum-2026-10.json](ideenraum-2026-10.json) (MDF v1, **14 Varianten,
+16 Kanten, 8 Befunde**, deterministische IDs — idempotent regenerierbar);
+Generator: `scripts/build_ideenraum.py`.
 
-## Die Variante
+## Die Varianten
 
 | Variante | Was sie trägt | Status |
 |---|---|---|
@@ -16,32 +17,55 @@ Varianten nebeneinander liegen und erste Kanten ziehen. Maschinenlesbar in
 | **PDA-Anforderungen** | Anforderung als Bedrohung, Autonomie als Sicherheit; Teilnahmezustand/Beitragsstand/berechtigte Wirkung | referenz-import (Zitate) |
 | **Codex Forschungswelt** | Lesen/Fragen/Vergleichen/Zeichnen als Tätigkeiten; Formwechsel-Erhalt | referenz-import (Zitate) |
 | **06:36 Gummiband** | Zelda-Schattenwelt-Analogie: gleiche Graph-Logik, verzerrte Metrik, kein Skin | roh, wörtlich |
-| **INVARIANZ-TRANSDUKTION-WELTENSYSTEM** | Vier-Schichten-Modell, Gummiband-Gesetz, universe/-Architektur, Welten-Katalog | referenz-import (Summary) |
+| **INVARIANZ (Zitat-Rekonstruktion)** | V1-Stand aus dem Summary — bleibt als Vorgänger stehen | ersetzt, nicht gelöscht |
+| **INVARIANZ (Vollimport)** | vollständiger Originaltext ([quellen/](quellen/INVARIANZ-TRANSDUKTION-WELTENSYSTEM.md), sha256 a05fe677…): Vier-Schichten-Modell, Gummiband-Gesetz, universe/-Architektur, Welten-Katalog, Bau-Strategie | **vollständig importiert** |
 | **Atlas PDA-Neuroprofil** | umgesetzt: 139 Knoten / 395 Kanten, NodeType `profile`, 0 Dangling-Edges | belegt (8a1f3f8) |
-| **Stufung: Geistesblitze → Ideenatelier → Mooncell** | die drei Zustände des Ideenmaterials als eigene Variante-Kette | tragfähig |
+| **Stufung: Geistesblitze → Ideenatelier → Mooncell** | die drei Zustände des Ideenmaterials als Variante-Kette | tragfähig |
+| **KiNFORMER-Aktualität und Auftragsrevision (V2)** | Codex-Zusammenführung (22 Chats): fünf Entwicklungslinien + Technik-Befunde | vollständig importiert |
+| **QuerLeser=KiNFORMER — Grundverschiebung V3** | der **gemeinsame Werkraum**: Stelle als Einstieg, Chat-Kapitel als Fundus, Mehrfachzugehörigkeit zu Mooncells, Vermittlungsdialog mit Ergebnisrücklauf, Geistesblitze roh ohne Pflichtleiter; Volltext in [quellen/](quellen/kinformer-grundverschiebungen-v3.md), sha256 8028c863… | **vollständig importiert** |
 
 ## Zentrale Kanten
 
 - Synthese **erweitert** Grundformationen, PDA-Anforderungen, Codex — sie ist
   die verbindende Lesart, nicht die Quelle.
-- INVARIANZ-Brief **remixt-aus** dem 06:36-Geistesblitz — und der Geistesblitz
-  **erweitert** zurück („Die Form soll gleich sein, sondern die Logik").
+- INVARIANZ **remixt-aus** dem 06:36-Geistesblitz; der Geistesblitz **erweitert**
+  zurück („Die Form soll gleich sein, sondern die Logik").
+- INVARIANZ-Vollimport **erweitert** die Zitat-Rekonstruktion — was eine
+  Summary trägt und was nicht, bleibt als Vorgänger sichtbar.
+- KiNFORMER-Aktualität **erweitert** Synthese, Stufung:Mooncell und
+  INVARIANZ-Voll — aus der Erkenntnis wird Betrieb.
+- **V3 erweitert** die Aktualität (Mitte erneut verschoben: ein Werkraum
+  statt zweier Werkzeuge), die Stufung (Geistesblitze explizit roh) und
+  INVARIANZ-Voll (Welt/Linse/Variante als getrennte Operationen).
 - Atlas-Profil **erweitert** den PDA-Entwurf: Entwurf wurde Werk.
 - Stufungs-Kette: wurzel → Geistesblitze → Ideenatelier → Mooncell.
 
-## Befunde (Auswahl)
+## Befunde
 
-1. **Herkunftstiefe — teilweise:** die drei Brief-MDs sind hier nur aus
-   wörtlichen Zitaten rekonstruiert; volle Tiefe erst nach Original-Import.
-2. **Verdichtungsgrad — tragfähig:** der Brief fasst den Geistesblitz präziser;
-   Bauregel: Schattenwelt leicht verzerrt bauen, nicht deckungsgleich.
-3. **Statusklarheit — tragfähig:** Geistesblitze = roh, Ideenatelier =
-   fortgeschritten, Mooncell = verdichtet; dieser Raum ist der Status davor —
-   der Differenzierungspunkt verdient einen eigenen Tragwerks-Eintrag.
+1. **Herkunftstiefe (V1) — teilweise** — drei Brief-MDs nur als Zitate.
+2. **Verdichtungsgrad — tragfähig** — Bauregel: Schattenwelt leicht verzerrt,
+   nicht deckungsgleich.
+3. **Statusklarheit — tragfähig** — Geistesblitze/Ideenatelier/Mooncell als
+   eigene Stufen; der Ideenraum ist der Status davor.
+4. **Herkunftstiefe nach Import — teilweise** — INVARIANZ vollständig; drei
+   Briefe warten auf Original-Import.
+5. **Technik-Befundtreue — vermutung** — Railway-Deployment 3048a034 (16:43)
+   ohne Commit-Zuordnung; T-05-Bericht beschreibt einen REMOVEDen Stand.
+6. **Rückführungs-Anschlussfähigkeit — tragfähig** — R4-Typen tragen die
+   „Erkenntnis erreicht Verwendung"-Bewegung.
+7. **Herkunftsdichte ≠ Bedeutungsdichte — tragfähig** — V3-Prüfstein: viele
+   Herkunftskanten beweisen keine vielfache inhaltliche Bestätigung;
+   lexikalische Treffer sind Suchspuren. Anknüpfung an konzept.md §13/§6.
+8. **Kreis-Schluss — tragfähig** — V3 zitiert TRAGWERK b942187 und Mooncells
+   1a06a86 exakt: der Ideenraum ist vom Auftragsdokument referenzierte
+   Infrastruktur, nicht nur Konzept.
 
 ## Offen
 
-- Original-Import der vier referenzierten MDs (KiNTEGRiTY-/TRAUMAATLAS-Bestand)
-  als vollwertige Varianten mit Inhalt statt Zitat-Rekonstruktion.
-- Tragwerks-Eintrag „Ideenwerk / Geistesblitze" im R4-Katalog (Vorschlag →
-  erst nach erster Companion-App-Episode erproben).
+- Original-Import der drei verbliebenen Brief-MDs (Grundformationen,
+  PDA-Anforderungen, Codex-Forschungswelt).
+- Tragwerks-Eintrag „Ideenwerk / Geistesblitze" im R4-Katalog (erst nach
+  erster Companion-App-Episode erproben — Vorschlag reicht nicht).
+- Auftragsrevision umsetzen: M0-PR 5 mit Importweg integrieren, dann den
+  V3-Abnahmelauf (Einzelchat-Kapitel → Stelle → Gegenstellen → Konstellation
+  → Dialogauftrag → Rückgabe am Ausgangsbezug).
