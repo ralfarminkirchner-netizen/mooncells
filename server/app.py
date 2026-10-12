@@ -11,16 +11,17 @@ import argparse
 import os
 import threading
 from typing import Optional
+from urllib.parse import urlsplit
 
 import httpx
-from fastapi import FastAPI, HTTPException, Query
-from fastapi.responses import FileResponse
+from fastapi import FastAPI, HTTPException, Query, Request
+from fastapi.responses import FileResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 
 from .models import (Agent, AgentCreate, Edge, EdgeCreate, Finding,
-                     FindingCreate, StatusUpdate, Variant, VariantCreate,
-                     Work, WorkCreate, Worktree, utcnow)
+                     FindingCreate, SourceReference, StatusUpdate, Variant, VariantCreate,
+                     Work, WorkCreate, Worktree, WorktreeCreate, utcnow)
 from . import queries
 from .store import JsonStore, new_uuid
 
@@ -30,6 +31,37 @@ store = JsonStore(os.environ.get("MOONCELLS_DATA", "data/state.json"))
 INSTANCE_ID = os.environ.get("MOONCELLS_INSTANCE", "mooncells-local")
 
 app = FastAPI(title="Mooncells", version="0.1.0")
+
+
+def _local_address(value: str, port: int, *, origin: bool = False) -> bool:
+    """Accept only this loopback listener, never an arbitrary Host alias."""
+    try:
+        address = urlsplit(value if origin else "http://" + value)
+        return (address.scheme == "http"
+                and address.hostname in ("127.0.0.1", "localhost", "::1")
+                and (address.port or 80) == port
+                and not address.username and not address.password
+                and not address.path and not address.query and not address.fragment)
+    except ValueError:
+        return False
+
+
+@app.middleware("http")
+async def protect_local_moonfingers(request: Request, call_next):
+    # The installed Moonfingers connector uses a separate, explicitly local
+    # instance. Preserve the existing standalone/hosted Mooncells contract.
+    if INSTANCE_ID == "mooncells-moonfingers":
+        port = request.scope["server"][1]
+        origin = request.headers.get("origin")
+        cross_site = request.headers.get("sec-fetch-site") == "cross-site"
+        navigation = (request.method in ("GET", "HEAD")
+                      and request.headers.get("sec-fetch-mode") == "navigate")
+        if (not _local_address(request.headers.get("host", ""), port)
+                or (origin is not None and not _local_address(origin, port, origin=True))
+                or (cross_site and not navigation)):
+            return JSONResponse({"error": "Zugriff auf diese lokale Mooncells-Instanz nicht zugelassen."},
+                                status_code=403)
+    return await call_next(request)
 
 # ------------------------------------------------------------- Auto-Sync
 
@@ -97,6 +129,16 @@ def autosync_log():
 # ==================================================================== API
 
 
+@app.get("/api/health")
+def health():
+    return {
+        "service": "mooncells",
+        "instance_id": INSTANCE_ID,
+        "data_path": os.path.abspath(store.path),
+        "capabilities": ["source-spaces", "worktrees", "source-ref"],
+    }
+
+
 @app.post("/api/agents", response_model=Agent, status_code=201)
 def create_agent(body: AgentCreate):
     if store.find_by("agents", "handle", body.handle):
@@ -153,11 +195,53 @@ def get_work(work_id: str):
         raise HTTPException(404, "Werk nicht gefunden")
     wt = store.find_by("worktrees", "work_id", work_id)
     variants = store.list("variants")
+    tree_ids = {t["id"] for t in wt}
     return {
         "work": w,
         "worktree": wt[0] if wt else None,
-        "variants": [v for v in variants if v["worktree_id"] == (wt[0]["id"] if wt else "")],
+        "worktrees": wt,
+        "variants": [v for v in variants if v["worktree_id"] in tree_ids],
     }
+
+
+@app.post("/api/worktrees", response_model=Worktree, status_code=201)
+def create_worktree(body: WorktreeCreate):
+    if not store.get("works", body.work_id):
+        raise HTTPException(422, "Werk nicht gefunden")
+    if not store.get("agents", body.author_id):
+        raise HTTPException(422, "Autor nicht gefunden")
+    result = store.add("worktrees", Worktree(id=new_uuid(), **body.model_dump()).model_dump())
+    trigger_autosync()
+    return result
+
+
+class SourceSpaceCreate(BaseModel):
+    source_ref: SourceReference
+    title: str
+    content: str
+    notes: str = ""
+    author_id: str
+
+
+@app.post("/api/source-spaces")
+def create_source_space(body: SourceSpaceCreate):
+    """Belegten Moonfingers-Einstieg ohne Titelheuristik materialisieren."""
+    if not store.get("agents", body.author_id):
+        raise HTTPException(422, "Autor nicht gefunden")
+    ref = body.source_ref.model_dump()
+    work = Work(id=new_uuid(), work_type="text", title=body.title,
+                author_id=body.author_id, source_ref=ref).model_dump()
+    tree = Worktree(id=new_uuid(), work_id=work["id"], author_id=body.author_id).model_dump()
+    variant = Variant(id=new_uuid(), worktree_id=tree["id"], label="Quellfassung",
+                      content=body.content, notes=body.notes, author_id=body.author_id,
+                      source_ref=ref).model_dump()
+    try:
+        result = store.ensure_source_space(work, tree, variant)
+    except ValueError as e:
+        raise HTTPException(409, str(e))
+    if result["created"]:
+        trigger_autosync()
+    return result
 
 
 # ----------------------------------------------------------------- Variants
