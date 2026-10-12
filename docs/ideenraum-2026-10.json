@@ -1,0 +1,277 @@
+{
+  "format": "mooncells-document",
+  "version": "1",
+  "instance_id": "mooncells-ideenraum-lokal",
+  "exported_by": "3af5c7fb-de9a-48b5-8245-ae67748e1e2c",
+  "exported_at": "2026-10-12T14:30:00Z",
+  "scope": {
+    "work_ids": [
+      "b0fe1f16-33e8-414b-8c64-aff92e513d19"
+    ]
+  },
+  "data": {
+    "agents": [
+      {
+        "id": "172dd374-6863-4f44-8610-15202990cf10",
+        "handle": "ralf",
+        "agent_type": "human",
+        "description": "Projektgründer — Quelle der Geistesblitze und Briefe",
+        "created_at": "2026-10-12T14:30:00Z"
+      },
+      {
+        "id": "3af5c7fb-de9a-48b5-8245-ae67748e1e2c",
+        "handle": "kimi-work-session",
+        "agent_type": "model",
+        "description": "Kimi-Work-Session — baut den Ideenraum als Mooncell",
+        "created_at": "2026-10-12T14:30:00Z"
+      }
+    ],
+    "works": [
+      {
+        "id": "b0fe1f16-33e8-414b-8c64-aff92e513d19",
+        "work_type": "ideenraum",
+        "title": "Ideenraum — Erkenntniswoche 7.–12.10.2026",
+        "author_id": "172dd374-6863-4f44-8610-15202990cf10",
+        "created_at": "2026-10-12T14:30:00Z"
+      }
+    ],
+    "worktrees": [
+      {
+        "id": "bc0823a6-290c-4976-9b52-2d9ece3bd2be",
+        "work_id": "b0fe1f16-33e8-414b-8c64-aff92e513d19",
+        "author_id": "172dd374-6863-4f44-8610-15202990cf10",
+        "created_at": "2026-10-12T14:30:00Z"
+      }
+    ],
+    "variants": [
+      {
+        "id": "01c77403-2b17-4842-b663-4372dfab8082",
+        "worktree_id": "bc0823a6-290c-4976-9b52-2d9ece3bd2be",
+        "derived_from": null,
+        "label": "wurzel — unverbundene Geistesblitze der Woche",
+        "notes": "Rohe Sammlung: Erfahrungen, Gespräche, Bauideen, 06:36-Nachrichten — noch keine Ordnung. Genau der Zustand, für den es die App Geistesblitze gibt (roh reinwerfen, später vernetzen).",
+        "content": null,
+        "author_id": "172dd374-6863-4f44-8610-15202990cf10",
+        "created_at": "2026-10-12T14:30:00Z"
+      },
+      {
+        "id": "22e74c96-8986-47ad-80b9-80c0e639cbe5",
+        "worktree_id": "bc0823a6-290c-4976-9b52-2d9ece3bd2be",
+        "derived_from": null,
+        "label": "RAKi-Erkenntnis-Synthese (7.–11.10.)",
+        "notes": "Verbindende Lesart der Beiträge vom 7.–11.10.: Bedingungen von Erkennen, Ausdrücken, Verstehen, Gestalten, Leben. Kerne: 'Es ist Liebe' (Antrieb), Übersetzer-Gedanke (Gemeintes vs. Aufgenommenes), 'Wissen ist eine Beziehung zum Wesenden', Herkunft bestimmt Zurechnung, Teilnahme ≠ Aussagezustand, 'Zeit ist Leben'. Quelle: erkenntnis-raki.txt (vollständig im KiNTEGRiTY-Workspace).",
+        "content": "flowchart: Erfahrung -> Anliegen <-> Grundsatzfrage -> Unterscheidungen/Linsen -> Fassungen -> Erprobung -> veränderte Verfahren -> (zurück zu Erfahrung/Unterscheidungen). Neun Erkenntnisbewegungen als Tabelle: Übersetzung, Herkunft, Einwand≠Personenurteil, Teilnahme/Aussagezustand, zeitliche Handlungsmöglichkeiten, Linsen/Interferenz, Grundformationen/Remix, Gestaltung an Verwendung prüfen.",
+        "author_id": "172dd374-6863-4f44-8610-15202990cf10",
+        "created_at": "2026-10-12T14:30:00Z"
+      },
+      {
+        "id": "2ba5da93-5e2e-48e7-af95-f62f2bd92f4a",
+        "worktree_id": "bc0823a6-290c-4976-9b52-2d9ece3bd2be",
+        "derived_from": null,
+        "label": "Generative Grundformationen — Gesamtzusammenhang (2026-10-11)",
+        "notes": "referenz-import (Original im KiNTEGRiTY-Bestand): Wissensauswahl, Arbeitsweise und Ausdrucksform als eigenständige Gestaltungs-entscheidungen; Weiterverwendbarkeit von Entstehungsweisen; Selbstrekursion des Systems. Inhalt hier aus wörtlichen Zitaten der Synthese rekonstruiert — volle Tiefe erst nach Original-Import.",
+        "content": null,
+        "author_id": "172dd374-6863-4f44-8610-15202990cf10",
+        "created_at": "2026-10-12T14:30:00Z"
+      },
+      {
+        "id": "d3cf50d2-7e3d-4c2f-be35-badf68692766",
+        "worktree_id": "bc0823a6-290c-4976-9b52-2d9ece3bd2be",
+        "derived_from": null,
+        "label": "PDA-Anforderungen und offene Zuschreibungen (Atlas/TiSCH-Entwurf)",
+        "notes": "referenz-import (Original im TRAUMAATLAS-Bestand): Anforderungen als Bedrohung, Autonomie als Sicherheit, innere Regeln, die das Gehen erschweren; Trennung von Teilnahmezustand, Beitragsstand und berechtigter Wirkung. 'Ausgebliebene Antwort ist keine Zustimmung; abgebrochener Lauf ist kein Ergebnis.'",
+        "content": null,
+        "author_id": "172dd374-6863-4f44-8610-15202990cf10",
+        "created_at": "2026-10-12T14:30:00Z"
+      },
+      {
+        "id": "d5fca2db-4bdc-496f-bae3-a64f61f36163",
+        "worktree_id": "bc0823a6-290c-4976-9b52-2d9ece3bd2be",
+        "derived_from": null,
+        "label": "Codex PHÄNOMENATLAS — Forschung in der Spielwelt",
+        "notes": "referenz-import (Original im TRAUMAATLAS-Bestand): Lesen, Fragen, Vergleichen, Zeichnen und eigene Fassungen bilden als tatsächliche Tätigkeiten in der Umgebung; Formwechsel muss bestimmen, was erhalten bleibt (Unsicherheit darf nicht unsichtbar werden).",
+        "content": null,
+        "author_id": "172dd374-6863-4f44-8610-15202990cf10",
+        "created_at": "2026-10-12T14:30:00Z"
+      },
+      {
+        "id": "bdadbeeb-b9d3-40fd-a74b-d4271fc255e6",
+        "worktree_id": "bc0823a6-290c-4976-9b52-2d9ece3bd2be",
+        "derived_from": "01c77403-2b17-4842-b663-4372dfab8082",
+        "label": "06:36 — Gummiband/Weltenspiegelung (roher Geistesblitz)",
+        "notes": "Wörtlicher Geistesblitz: Zelda Schattenwelt als Analogie — Oberwelt/Wasserwelt/Weltraum, gleiche Graph-Logik (Knoten, Kanten, Grundordnung), verzerrte Metrik (Gummiband-Abstände), kein Skin. 'Die Form soll gleich sein, sondern die Logik dahinter, die Relationen und die Grundordnung.' → KiNFORMER/Transduktion/Invarianten.",
+        "content": null,
+        "author_id": "172dd374-6863-4f44-8610-15202990cf10",
+        "created_at": "2026-10-12T14:30:00Z"
+      },
+      {
+        "id": "0ac28939-f631-4fe1-805d-8efe7c3f7c6e",
+        "worktree_id": "bc0823a6-290c-4976-9b52-2d9ece3bd2be",
+        "derived_from": "01c77403-2b17-4842-b663-4372dfab8082",
+        "label": "INVARIANZ-TRANSDUKTION-WELTENSYSTEM (Brief, neun Abschnitte)",
+        "notes": "referenz-import aus dem wörtlichen Summary des Briefs: Vier-Schichten-Modell (Topologie/Metrik/Transduktion/Haut), Gummiband-Gesetz ('Ein Ort bleibt erkennbar an seinen Nachbarn'), Architektur im Bestand (atlasGraph, universe/-Module, niemals je Welt eine Graph-Kopie), Welten-Katalog (Meer/Orbital/Garten/Oberwelt/Schattenwelt), KiNFORMER-Verankerung. Empfehlung: Schattenwelt oder Orbital als erste neue Welt.",
+        "content": null,
+        "author_id": "172dd374-6863-4f44-8610-15202990cf10",
+        "created_at": "2026-10-12T14:30:00Z"
+      },
+      {
+        "id": "fc3a681d-7de2-49a1-9a7c-13c1191ff0f0",
+        "worktree_id": "bc0823a6-290c-4976-9b52-2d9ece3bd2be",
+        "derived_from": "d3cf50d2-7e3d-4c2f-be35-badf68692766",
+        "label": "Atlas PDA-Neuroprofil (Commit 8a1f3f8)",
+        "notes": "Umgesetzter Bauauftrag: 15 Profil-Knoten, 66 Kanten, Atlas jetzt 139 Knoten / 395 Kanten, 0 Dangling-Edges; neuer NodeType 'profile' (Lavendel) und EdgeType 'profil'. Demand-Arten, F-Antworten, Maskierung, Geschlecht, Erwachsene, Familie/Schule, ADHS/AuDHD/Komplextrauma-Überlappungen. Fix: e:orientieren → e:sos-orientieren.",
+        "content": null,
+        "author_id": "172dd374-6863-4f44-8610-15202990cf10",
+        "created_at": "2026-10-12T14:30:00Z"
+      },
+      {
+        "id": "5917d1a5-57ca-4505-a0aa-b3045a8cdde4",
+        "worktree_id": "bc0823a6-290c-4976-9b52-2d9ece3bd2be",
+        "derived_from": "01c77403-2b17-4842-b663-4372dfab8082",
+        "label": "Stufung: Geistesblitze (rohe Sammlung)",
+        "notes": "Die App Geistesblitze (Watch/Phone/iPad-Companion) ist der Eingang: Ideen wild reinwerfen, noch roh, noch unvernetzt. Der Ideenraum/Ideenwerk IST diese Sammlung — nichts weiter.",
+        "content": null,
+        "author_id": "172dd374-6863-4f44-8610-15202990cf10",
+        "created_at": "2026-10-12T14:30:00Z"
+      },
+      {
+        "id": "c41a3123-6bb6-451e-81d4-4b411dd308ec",
+        "worktree_id": "bc0823a6-290c-4976-9b52-2d9ece3bd2be",
+        "derived_from": "5917d1a5-57ca-4505-a0aa-b3045a8cdde4",
+        "label": "Stufung: Ideenatelier (fortgeschritten)",
+        "notes": "Zwischenstufe: Geistesblitze werden geordnet, verglichen, erste Fassungen — aber noch keine verdichtete Struktur, noch kein Werk.",
+        "content": null,
+        "author_id": "172dd374-6863-4f44-8610-15202990cf10",
+        "created_at": "2026-10-12T14:30:00Z"
+      },
+      {
+        "id": "c22a39e7-0e4c-44f1-a905-2085c4abf6b3",
+        "worktree_id": "bc0823a6-290c-4976-9b52-2d9ece3bd2be",
+        "derived_from": "c41a3123-6bb6-451e-81d4-4b411dd308ec",
+        "label": "Stufung: Mooncell (verdichtetes Werk)",
+        "notes": "Aus einem Ideenatelier-Stoff kann eine Mooncell entstehen: Werk mit Worktree, Varianten, Kanten, Befunden. Dieser Ideenraum ist der Status DAVOR — der Gegenpol zur Einbahnstraße: aus rohem Material wird verdichtetes, nie umgekehrt ohne neue Episode.",
+        "content": null,
+        "author_id": "172dd374-6863-4f44-8610-15202990cf10",
+        "created_at": "2026-10-12T14:30:00Z"
+      }
+    ],
+    "edges": [
+      {
+        "id": "706608fc-1d5e-483b-b291-faae96a34ef0",
+        "edge_type": "erweitert",
+        "from_variant_id": "22e74c96-8986-47ad-80b9-80c0e639cbe5",
+        "to_variant_id": "2ba5da93-5e2e-48e7-af95-f62f2bd92f4a",
+        "note": "Synthese zitiert und vertieft die Grundformationen: 'Wissen ist eine Beziehung zum Wesenden' — Brauchbarkeit ersetzt nicht den Gegenstand.",
+        "author_id": "3af5c7fb-de9a-48b5-8245-ae67748e1e2c",
+        "created_at": "2026-10-12T14:30:00Z"
+      },
+      {
+        "id": "faeb17a8-2dd9-4d49-91ea-31ca8dd2c687",
+        "edge_type": "erweitert",
+        "from_variant_id": "22e74c96-8986-47ad-80b9-80c0e639cbe5",
+        "to_variant_id": "d3cf50d2-7e3d-4c2f-be35-badf68692766",
+        "note": "Synthese zitiert und vertieft: Teilnahmezustand, Beitragsstand und berechtigte Wirkung getrennt; 'ausgebliebene Antwort ist keine Zustimmung'.",
+        "author_id": "3af5c7fb-de9a-48b5-8245-ae67748e1e2c",
+        "created_at": "2026-10-12T14:30:00Z"
+      },
+      {
+        "id": "14ee64d5-af5f-4a06-886b-fac8ac913fbe",
+        "edge_type": "erweitert",
+        "from_variant_id": "22e74c96-8986-47ad-80b9-80c0e639cbe5",
+        "to_variant_id": "d5fca2db-4bdc-496f-bae3-a64f61f36163",
+        "note": "Synthese zitiert und vertieft: Formwechsel muss Erhaltenes bestimmen; Forschungswelt als produktive Tätigkeiten, nicht als Anzeige.",
+        "author_id": "3af5c7fb-de9a-48b5-8245-ae67748e1e2c",
+        "created_at": "2026-10-12T14:30:00Z"
+      },
+      {
+        "id": "40969ee3-e519-453c-9f2a-5d5ed063b4eb",
+        "edge_type": "remixt-aus",
+        "from_variant_id": "0ac28939-f631-4fe1-805d-8efe7c3f7c6e",
+        "to_variant_id": "bdadbeeb-b9d3-40fd-a74b-d4271fc255e6",
+        "note": "Der Brief verdichtet den rohen Geistesblitz: Zelda-Analogie und Gummiband werden zu Vier-Schichten-Modell und Gummiband-Gesetz.",
+        "author_id": "3af5c7fb-de9a-48b5-8245-ae67748e1e2c",
+        "created_at": "2026-10-12T14:30:00Z"
+      },
+      {
+        "id": "c3c898f7-0c44-4165-86bb-b23c14877a7e",
+        "edge_type": "erweitert",
+        "from_variant_id": "bdadbeeb-b9d3-40fd-a74b-d4271fc255e6",
+        "to_variant_id": "0ac28939-f631-4fe1-805d-8efe7c3f7c6e",
+        "note": "Umgekehrt trägt der Geistesblitz den Brief: 'Die Form soll gleich sein, sondern die Logik dahinter' ist der Satz, aus dem alles folgt.",
+        "author_id": "3af5c7fb-de9a-48b5-8245-ae67748e1e2c",
+        "created_at": "2026-10-12T14:30:00Z"
+      },
+      {
+        "id": "bf3ea365-2868-4c97-91cf-02b8bb0e92f7",
+        "edge_type": "erweitert",
+        "from_variant_id": "fc3a681d-7de2-49a1-9a7c-13c1191ff0f0",
+        "to_variant_id": "d3cf50d2-7e3d-4c2f-be35-badf68692766",
+        "note": "Das Atlas-Profil baut den Anforderungs-Entwurf als Graph: 15 Knoten, 66 Kanten, NodeType profile, EdgeType profil — Entwurf wurde Werk.",
+        "author_id": "3af5c7fb-de9a-48b5-8245-ae67748e1e2c",
+        "created_at": "2026-10-12T14:30:00Z"
+      },
+      {
+        "id": "926fbd4f-1de2-4af1-90c3-159b0aadf3d4",
+        "edge_type": "erweitert",
+        "from_variant_id": "5917d1a5-57ca-4505-a0aa-b3045a8cdde4",
+        "to_variant_id": "01c77403-2b17-4842-b663-4372dfab8082",
+        "note": "Die Stufung benennt, was die Wurzel ist: rohe Geistesblitze, noch unvernetzt, genau der Companion-App-Zustand.",
+        "author_id": "3af5c7fb-de9a-48b5-8245-ae67748e1e2c",
+        "created_at": "2026-10-12T14:30:00Z"
+      },
+      {
+        "id": "ae5e1ea5-b409-4a97-bd78-f4b1af3fff85",
+        "edge_type": "erweitert",
+        "from_variant_id": "c41a3123-6bb6-451e-81d4-4b411dd308ec",
+        "to_variant_id": "5917d1a5-57ca-4505-a0aa-b3045a8cdde4",
+        "note": "Atelier = Geistesblitze geordnet und verglichen, erste Fassungen.",
+        "author_id": "3af5c7fb-de9a-48b5-8245-ae67748e1e2c",
+        "created_at": "2026-10-12T14:30:00Z"
+      },
+      {
+        "id": "f12fefff-d451-4725-9181-b72aae6ae7be",
+        "edge_type": "erweitert",
+        "from_variant_id": "c22a39e7-0e4c-44f1-a905-2085c4abf6b3",
+        "to_variant_id": "c41a3123-6bb6-451e-81d4-4b411dd308ec",
+        "note": "Mooncell = verdichtetes Werk aus Atelier-Stoff; dieser Ideenraum steht bewusst davor.",
+        "author_id": "3af5c7fb-de9a-48b5-8245-ae67748e1e2c",
+        "created_at": "2026-10-12T14:30:00Z"
+      }
+    ],
+    "findings": [
+      {
+        "target_edge_id": "706608fc-1d5e-483b-b291-faae96a34ef0",
+        "target_variant_ids": null,
+        "criterion": "Herkunftstiefe des Imports",
+        "task": "Ideenraum kuratieren",
+        "verdict": "teilweise",
+        "rationale": "Inhalte der drei Brief-MDs sind hier nur aus wörtlichen Zitaten rekonstruiert — volle Tiefe erst nach Original-Import aus dem TRAUMAATLAS/KiNTEGRiTY-Bestand.",
+        "author_id": "3af5c7fb-de9a-48b5-8245-ae67748e1e2c",
+        "created_at": "2026-10-12T14:30:00Z"
+      },
+      {
+        "target_edge_id": "40969ee3-e519-453c-9f2a-5d5ed063b4eb",
+        "target_variant_ids": null,
+        "criterion": "Verdichtungsgrad",
+        "task": "TRAUMAATLAS-Welten bauen",
+        "verdict": "tragfähig",
+        "rationale": "Der Brief fasst den Geistesblitz präziser als der Ursprung: Vier Schichten, Gummiband-Gesetz, harter Test (Overlay-Erkennbarkeit). Baue Schattenwelt leicht verzerrt, nicht deckungsgleich — sonst billiger Skin.",
+        "author_id": "3af5c7fb-de9a-48b5-8245-ae67748e1e2c",
+        "created_at": "2026-10-12T14:30:00Z"
+      },
+      {
+        "target_edge_id": null,
+        "target_variant_ids": [
+          "5917d1a5-57ca-4505-a0aa-b3045a8cdde4",
+          "c22a39e7-0e4c-44f1-a905-2085c4abf6b3"
+        ],
+        "criterion": "Statusklarheit der Stufung",
+        "task": "Companion-App-Architektur",
+        "verdict": "tragfähig",
+        "rationale": "Geistesblitze = roh, Ideenatelier = fortgeschritten, Mooncell = verdichtet; der Ideenraum/Ideenwerk ist die Sammlung selbst und damit der Status davor. Genau dieser Differenzierungspunkt verdient einen eigenen Tragwerks-Eintrag.",
+        "author_id": "3af5c7fb-de9a-48b5-8245-ae67748e1e2c",
+        "created_at": "2026-10-12T14:30:00Z"
+      }
+    ]
+  }
+}
