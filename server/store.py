@@ -86,6 +86,17 @@ class JsonStore:
             self._save()
             return True
 
+    def update_fields(self, coll: str, entity_id: str, fields: dict) -> Optional[dict]:
+        """Selektives Update einzelner Felder — v2 nur für `variant.status`
+        zugelassen; alle anderen Kern-Felder bleiben append-only."""
+        with self._lock:
+            e = self._state[coll].get(entity_id)
+            if e is None:
+                return None
+            e.update(fields)
+            self._save()
+            return e
+
     # ----------------------------------------------------- Document I/O
 
     def export_document(self, instance_id: str, exported_by: str,
@@ -161,17 +172,28 @@ class JsonStore:
         data = doc.get("data") or {}
         report: dict[str, dict[str, int]] = {}
         with self._lock:
-            for coll in COLLECTIONS:
-                added = skipped = 0
+            # Peers sind instanzlokale Konfiguration — werden niemals
+            # exportiert/importiert (Datenschutz + keine UUID-Wanderung).
+            for coll in (c for c in COLLECTIONS if c != "peers"):
+                added = skipped = updated = 0
                 for entity in data.get(coll, []):
                     eid = entity.get("id")
                     if not eid:
                         raise ValueError(f"{coll}: Eintrag ohne id")
-                    if eid in self._state[coll]:
-                        skipped += 1  # Duplikat → nichts überschreiben
-                    else:
+                    existing = self._state[coll].get(eid)
+                    if existing is None:
                         self._state[coll][eid] = entity
                         added += 1
-                report[coll] = {"added": added, "skipped": skipped}
+                    elif coll == "variants" and \
+                            existing.get("status", "entwurf") != entity.get("status", "entwurf"):
+                        # Einzige sanktionierte Ausnahme von "first write wins":
+                        # variant.status (der v2-mutable Feld) darf sich
+                        # föderiert verbreiten — alles andere wird nie überschrieben.
+                        existing["status"] = entity.get("status", "entwurf")
+                        updated += 1
+                    else:
+                        skipped += 1  # Duplikat → nichts überschreiben
+                report[coll] = {"added": added, "skipped": skipped,
+                                **({"updated": updated} if updated else {})}
             self._save()
         return report

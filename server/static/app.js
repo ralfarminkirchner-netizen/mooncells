@@ -155,6 +155,8 @@ function renderTree(vars) {
       <div class="vrow">
         <span class="label">${esc(v.label)}</span>
         ${v.derived_from === null ? `<span class="root-tag">WURZEL</span>` : ""}
+        <span class="pill status-${esc(v.status || "entwurf")}" title="Status ändern" data-set-status="${v.id}" style="cursor:pointer">${esc(v.status || "entwurf")}</span>
+        ${(v.tags || []).map(t => `<span class="badge">${esc(t)}</span>`).join("")}
         <span class="vid">${short(v.id)}</span>
         <span class="notes">${esc(v.notes || "")}</span>
       </div>
@@ -196,6 +198,7 @@ function renderFindings() {
 function formData(form) {
   const d = Object.fromEntries(new FormData(form).entries());
   for (const k of Object.keys(d)) if (d[k] === "") d[k] = null;
+  if (d.tags) d.tags = d.tags.split(",").map(s => s.trim()).filter(Boolean);
   return d;
 }
 
@@ -217,6 +220,8 @@ wireForm("#form-variant", async d => {
     worktree_id: wt.id,
     derived_from: d.derived_from,
     label: d.label, notes: d.notes || "", content: d.content,
+    status: d.status || "entwurf",
+    tags: d.tags || [],
     author_id: d.author_id,
   });
 });
@@ -282,6 +287,73 @@ $("#btn-sync").addEventListener("click", async () => {
 });
 
 $("#btn-refresh").addEventListener("click", load);
+
+// ---------------------------------------------------- Status (delegiert)
+$("#works").addEventListener("click", async (ev) => {
+  const el = ev.target.closest("[data-set-status]");
+  if (!el) return;
+  const cur = G.variants.find(v => v.id === el.dataset.setStatus);
+  const next = prompt("Neuer Status (entwurf / geprüft / grundformation / verworfen):",
+                      cur?.status || "entwurf");
+  if (!next) return;
+  try {
+    await post(`/variants/${el.dataset.setStatus}/status`, { status: next.trim() });
+    toast(`Status → ${next.trim()}${next.trim() === "grundformation" ? " ✦ Kristallisiert!" : ""}`);
+    await load();
+  } catch (e) { toast("Fehler: " + e.message, false); }
+});
+
+// --------------------------------------------------------------- Queries
+const NEEDS_VARIANT = new Set(["ancestors", "descendants", "remix-line",
+                               "findings-for", "provenance"]);
+
+(async () => {
+  try {
+    const patterns = await api("/patterns");
+    $("#query-pattern").innerHTML = Object.entries(patterns)
+      .map(([k, desc]) => `<option value="${k}">${k}</option>`).join("");
+  } catch {}
+})();
+
+function renderQueryResult(res) {
+  const vLabel = (id) => {
+    const v = variantOf(id);
+    return v ? `${esc(v.label)} <span class="mono">${short(id)}</span>` : short(id);
+  };
+  const fLine = (f) => `${esc(f.verdict)} · ${esc(f.criterion)} · Aufgabe „${esc(f.task)}" — ${esc(f.rationale)} (${agentLabel(f.author_id)})`;
+  let html = `<strong>${esc(res.pattern)}</strong> — ${esc(res.description)}<br>`;
+  if (res.chain) html += res.chain.map(v => `${vLabel(v.id)} <span class="sync-note">(${agentLabel(v.author_id)})</span>`).join(" ← ") + ` <span class="sync-note">(Tiefe ${res.depth})</span>`;
+  if (res.descendants) html += `<span class="sync-note">Fan-out ${res.fanout}:</span> ` + res.descendants.map(v => vLabel(v.id)).join(", ");
+  if (res.ranking) html += `<table><tr><th>Variante</th><th>Fitness</th><th>Adoption</th><th>Status</th></tr>` +
+    res.ranking.map(r => `<tr><td>${vLabel(r.variant.id)}</td><td>${r.fitness}</td><td>${r.adoption}</td><td>${esc(r.status)}</td></tr>`).join("") + "</table>";
+  if (res.clusters) html += res.clusters.map(c => `Cluster (${c.size}): ` + c.variants.map(v => vLabel(v.id)).join(", ")).join("<br>") || "Keine Widerspruchs-Kanten.";
+  if (res.findings) html += `<span class="sync-note"> tragfähig ${res.summary["tragfähig"]} · teilweise ${res.summary["teilweise"]} · nicht ${res.summary["nicht-tragfähig"]}</span><br>` +
+    res.findings.map(fLine).join("<br>");
+  if (res.lineage) {
+    html += res.lineage.map(v => `${vLabel(v.id)} <span class="sync-note">(${agentLabel(v.author_id)}, ${esc(v.created_at.slice(0, 10))})</span>`).join(" ← ");
+    if (res.edges?.length) html += `<br><span class="sync-note">Kanten:</span> ` + res.edges.map(e => `<span class="pill ${esc(e.edge_type)}">${esc(e.edge_type)}</span> ${vLabel(e.from_variant_id)}→${vLabel(e.to_variant_id)}`).join(" · ");
+  }
+  if (res.variants && res.pattern === "remix-line")
+    html += `<span class="sync-note">Remix-Verband (${res.variants.length}):</span> ` + res.variants.map(v => vLabel(v.id)).join(", ");
+  $("#query-result").innerHTML = html;
+}
+
+$("#form-query").addEventListener("submit", async (ev) => {
+  ev.preventDefault();
+  const d = formData(ev.target);
+  if (NEEDS_VARIANT.has(d.pattern) && !d.variant_id) {
+    toast("Dieses Muster braucht eine Variante.", false);
+    return;
+  }
+  try {
+    const res = await post("/query", {
+      pattern: d.pattern,
+      variant_id: NEEDS_VARIANT.has(d.pattern) ? d.variant_id : null,
+      task: d.task,
+    });
+    renderQueryResult(res);
+  } catch (e) { toast("Query fehlgeschlagen: " + e.message, false); }
+});
 
 // --------------------------------------------------------------- Start
 load().catch(e => toast("Laden fehlgeschlagen: " + e.message, false));

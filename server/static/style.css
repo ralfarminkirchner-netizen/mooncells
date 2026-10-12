@@ -95,6 +95,12 @@ td.mono, .mono { font-family: ui-monospace, monospace; font-size: 12px; color: v
 .pill.tragfähig        { background: #123526; color: var(--good); }
 .pill.teilweise        { background: #3a3413; color: var(--mid); }
 .pill.nicht-tragfähig  { background: #3d1a1a; color: var(--bad); }
+.pill.status-entwurf        { background: #2a2f3a; color: var(--dim); }
+.pill.status-geprüft        { background: #123526; color: var(--good); }
+.pill.status-grundformation { background: #12324a; color: var(--accent); border: 1px solid #2c4d6e; }
+.pill.status-verworfen      { background: #3d1a1a; color: var(--bad); text-decoration: line-through; }
+#query-result { line-height: 1.7; }
+#query-result table { margin-top: 6px; }
 
 /* ---------- Peers ---------- */
 .peer-form { flex-direction: row; display: flex; gap: 8px; margin-bottom: 10px; }

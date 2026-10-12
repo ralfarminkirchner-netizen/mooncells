@@ -35,6 +35,7 @@ class Agent(AgentCreate):
 class WorkCreate(BaseModel):
     work_type: str
     title: str
+    tags: list[str] = []
     author_id: str
 
 
@@ -58,6 +59,8 @@ class Worktree(WorktreeCreate):
 
 # -------------------------------------------------------------- Variants
 
+VARIANT_STATUSES = ["entwurf", "geprüft", "grundformation", "verworfen"]
+
 
 class VariantCreate(BaseModel):
     worktree_id: str
@@ -65,12 +68,22 @@ class VariantCreate(BaseModel):
     label: str
     notes: str = ""
     content: Optional[str] = None
+    status: Literal["entwurf", "geprüft", "grundformation", "verworfen"] = "entwurf"
+    tags: list[str] = []
     author_id: str
 
 
 class Variant(VariantCreate):
     id: str
     created_at: str = Field(default_factory=utcnow)
+
+
+class StatusUpdate(BaseModel):
+    """Der einzige mutable Kern-Feld: semantischer Zustand (v2).
+
+    Alles andere an Varianten bleibt append-only — „Änderung" = neue Variante.
+    """
+    status: Literal["entwurf", "geprüft", "grundformation", "verworfen"]
 
 
 # ----------------------------------------------------------------- Edges
@@ -97,9 +110,10 @@ VERDICTS = ["tragfähig", "teilweise", "nicht-tragfähig"]
 
 
 class FindingCreate(BaseModel):
-    # genau eines der beiden Zielfelder muss gesetzt sein
+    # genau eines der Zielfelder muss gesetzt sein (target_finding_id = Meta-Befund v2)
     target_edge_id: Optional[str] = None
     target_variant_ids: Optional[tuple[str, str]] = None
+    target_finding_id: Optional[str] = None
     criterion: str
     task: str
     verdict: Literal["tragfähig", "teilweise", "nicht-tragfähig"]

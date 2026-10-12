@@ -19,8 +19,9 @@ from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 
 from .models import (Agent, AgentCreate, Edge, EdgeCreate, Finding,
-                     FindingCreate, Variant, VariantCreate, Work, WorkCreate,
-                     Worktree, utcnow)
+                     FindingCreate, StatusUpdate, Variant, VariantCreate,
+                     Work, WorkCreate, Worktree, utcnow)
+from . import queries
 from .store import JsonStore, new_uuid
 
 STATIC_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "static")
@@ -209,15 +210,18 @@ def create_edge(body: EdgeCreate):
 
 @app.post("/api/findings", response_model=Finding, status_code=201)
 def create_finding(body: FindingCreate):
-    if (body.target_edge_id is None) == (body.target_variant_ids is None):
+    targets = [body.target_edge_id, body.target_variant_ids, body.target_finding_id]
+    if sum(t is not None for t in targets) != 1:
         raise HTTPException(422,
-                            "Genau eines von target_edge_id / target_variant_ids setzen")
+                            "Genau eines von target_edge_id / target_variant_ids / target_finding_id setzen")
     if body.target_edge_id and not store.get("edges", body.target_edge_id):
         raise HTTPException(422, f"Kante '{body.target_edge_id}' unbekannt")
     if body.target_variant_ids:
         for vid in body.target_variant_ids:
             if not store.get("variants", vid):
                 raise HTTPException(422, f"Variante '{vid}' unbekannt")
+    if body.target_finding_id and not store.get("findings", body.target_finding_id):
+        raise HTTPException(422, f"Befund '{body.target_finding_id}' unbekannt")
     if not store.get("agents", body.author_id):
         raise HTTPException(422, f"author_id '{body.author_id}' unbekannt")
     data = body.model_dump()
@@ -226,6 +230,46 @@ def create_finding(body: FindingCreate):
     result = store.add("findings", Finding(id=new_uuid(), **data).model_dump())
     trigger_autosync()
     return result
+
+
+# ------------------------------------------------------------ Status (v2)
+
+
+@app.post("/api/variants/{variant_id}/status")
+def set_variant_status(variant_id: str, body: StatusUpdate):
+    """Semantischer Zustandswechsel — der einzige mutable Kern-Feld.
+
+    `grundformation` = Kristallisieren (konzept.md §3.6): sozialer Akt,
+    bewusst separater Endpunkt statt generischem Update.
+    """
+    v = store.update_fields("variants", variant_id, {"status": body.status})
+    if not v:
+        raise HTTPException(404, "Variante nicht gefunden")
+    trigger_autosync()
+    return {"ok": True, "variant_id": variant_id, "status": body.status}
+
+
+# ------------------------------------------------------------------ Query
+
+
+class QueryRequest(BaseModel):
+    pattern: str
+    variant_id: Optional[str] = None
+    task: Optional[str] = None
+
+
+@app.get("/api/patterns")
+def list_patterns():
+    return queries.PATTERNS
+
+
+@app.post("/api/query")
+def run_query(body: QueryRequest):
+    """Traversierungsmuster (konzept.md §4) serverseitig ausführen."""
+    try:
+        return queries.run(store, body.pattern, body.variant_id, body.task)
+    except ValueError as e:
+        raise HTTPException(422, str(e))
 
 
 # ------------------------------------------------------------------- Graph

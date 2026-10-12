@@ -77,6 +77,16 @@ nicht überschrieben). Gleicher Import zweimal → alles `skipped`, Zustand unve
 | `POST /api/import` | Document importieren (UUID-Dedupe-Merge) |
 | `GET /api/changes?since=…` | Nur Neu-Einfügungen seit Zeitstempel (Pull-Sync-Feed) |
 | `POST /api/sync` | `{peer: "http://…"}` — bidirektional: push + pull, beide Seiten konvergieren |
+| `GET/POST /api/peers` · `DELETE /api/peers/{id}` | Peer-Liste für Auto-Sync |
+| `GET /api/autosync-log` | Ergebnisse der letzten Auto-Sync-Läufe |
+| `POST /api/variants/{id}/status` | Statuswechsel: `entwurf`/`geprüft`/`grundformation`/`verworfen` (Kristallisieren) — der einzige mutable Kern-Feld, verbreitet sich föderiert |
+| `GET /api/patterns` · `POST /api/query` | Traversierungsmuster (konzept.md §4): `ancestors`, `descendants`, `remix-line`, `contradiction-clusters`, `findings-for`, `fitness`, `provenance` |
+
+Schema v2 (additiv, bruchfrei zu v1): `variant.status`, `variant.tags`,
+`work.tags`, `finding.target_finding_id` (Meta-Befund). Peers sind
+instanzlokale Konfiguration und werden niemals über MDF exportiert/importiert.
+Ausnahme von „first write wins": `variant.status` darf sich föderiert
+verbreiten — alles andere wird beim Import nie überschrieben.
 
 ## Live-Synchronisation zwischen Instanzen
 
