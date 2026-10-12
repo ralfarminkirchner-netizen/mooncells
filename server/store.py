@@ -76,6 +76,41 @@ class JsonStore:
         with self._lock:
             return [e for e in self._state[coll].values() if e.get(field) == value]
 
+    def ensure_source_space(self, work: dict, worktree: dict, variant: dict) -> dict:
+        """Quellenraum atomar anlegen oder über seine belegte Identität finden.
+
+        Ein Wiederaufruf ändert weder Inhalt noch Herkunft einer Quellfassung.
+        Drei Entitäten werden mit einem einzigen atomaren Save veröffentlicht.
+        """
+        identity = tuple(work["source_ref"][k] for k in ("system", "kind", "source_id"))
+        with self._lock:
+            for existing in self._state["works"].values():
+                ref = existing.get("source_ref") or {}
+                if tuple(ref.get(k) for k in ("system", "kind", "source_id")) != identity:
+                    continue
+                trees = [t for t in self._state["worktrees"].values()
+                         if t["work_id"] == existing["id"]]
+                tree_ids = {t["id"] for t in trees}
+                roots = [v for v in self._state["variants"].values()
+                         if v["worktree_id"] in tree_ids and v.get("derived_from") is None
+                         and tuple((v.get("source_ref") or {}).get(k)
+                                   for k in ("system", "kind", "source_id")) == identity]
+                if not roots:
+                    raise ValueError("Bestehender Quellenraum hat keine belegte Quellfassung")
+                root = roots[0]
+                tree = next(t for t in trees if t["id"] == root["worktree_id"])
+                return {"work": existing, "worktree": tree, "variant": root, "created": False}
+            additions = [("works", work), ("worktrees", worktree), ("variants", variant)]
+            for coll, entity in additions:
+                self._state[coll][entity["id"]] = entity
+            try:
+                self._save()
+            except Exception:
+                for coll, entity in additions:
+                    del self._state[coll][entity["id"]]
+                raise
+            return {"work": work, "worktree": worktree, "variant": variant, "created": True}
+
     def delete(self, coll: str, entity_id: str) -> bool:
         """Löschen nur für Konfigurations-Collections (z. B. peers) — die
         Kerndaten (agents…findings) bleiben append-only."""

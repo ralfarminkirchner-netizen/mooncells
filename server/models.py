@@ -29,6 +29,16 @@ class Agent(AgentCreate):
     created_at: str = Field(default_factory=utcnow)
 
 
+class SourceReference(BaseModel):
+    """Belegte externe Identität; Titel allein begründen keine Zuordnung."""
+    system: str = Field(min_length=1)
+    kind: str = Field(min_length=1)
+    source_id: str = Field(min_length=1)
+    title: str = Field(min_length=1)
+    locator: Optional[str] = None
+    content_sha256: Optional[str] = None
+
+
 # ----------------------------------------------------------------- Works
 
 
@@ -37,6 +47,7 @@ class WorkCreate(BaseModel):
     title: str
     tags: list[str] = []
     author_id: str
+    source_ref: Optional[SourceReference] = None
 
 
 class Work(WorkCreate):
@@ -71,6 +82,7 @@ class VariantCreate(BaseModel):
     status: Literal["entwurf", "geprüft", "grundformation", "verworfen"] = "entwurf"
     tags: list[str] = []
     author_id: str
+    source_ref: Optional[SourceReference] = None
 
 
 class Variant(VariantCreate):
@@ -88,7 +100,7 @@ class StatusUpdate(BaseModel):
 
 # ----------------------------------------------------------------- Edges
 
-EDGE_TYPES = ["remixt-aus", "erweitert", "testet", "widerspricht", "bewertet"]
+EDGE_TYPES = ["remixt-aus", "erweitert", "testet", "widerspricht", "bewertet", "verweist-auf"]
 
 
 class EdgeCreate(BaseModel):
@@ -97,6 +109,7 @@ class EdgeCreate(BaseModel):
     to_variant_id: str
     note: Optional[str] = None
     author_id: str
+    source_ref: Optional[SourceReference] = None
 
 
 class Edge(EdgeCreate):
