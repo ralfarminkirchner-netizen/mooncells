@@ -282,6 +282,38 @@ edge("erweitert", "querleser_kinformer_v3", "invarianz_voll",
      "sind verschiedene Operationen — aus derselben Oberfläche, in ihren "
      "Folgen unterscheidbar.")
 
+V["v3_abnahme_teillauf"] = variant("v3_abnahme_teillauf",
+    "V3-Abnahme-Teillauf — Dialog und Rückgabe am Ausgangsbezug (2026-10-14)",
+    "Ausgeführter Teillauf des Abnahme-Protokolls (docs/v3-abnahmelauf.md "
+    "@e59ca5f, Branch kimi/m0-pr5-importweg-2026-10-12, PR #12): Stelle "
+    "adressiert, Gegenstellen geöffnet (T-05-Akte cfd92d04 — Rückgabe am "
+    "Ausgangsbezug; PRUEFEHRLICHKEIT-V2.md — Vergleichs-Disziplin). M0-"
+    "Auftrag lokal erteilt (Dialog, Event #001 AUFTRAG_ERTEILT), Akte "
+    "geführt (8 Events, Badge 'Kette gültig · 8/8'), Aktentasche "
+    "exportiert (sha256 4eccdcb3…), nach begrenztem Weltwechsel (Reload) "
+    "in frischer Oberfläche über den Importweg geöffnet: 'Kette gültig · "
+    "9/9', Import-Episode als Event #009 (anker = Hash #008), Herkunfts-"
+    "zeile sichtbar. Beleg: Browser-Trace v3-teillauf-browser-trace.json "
+    "im R4-Repo (Knoten: gelaufene Testfassung mit Manifest-Eintrag). "
+    "Zugehörigkeit: Ideenraum-Mooncell (dieses Werk); der Verweis auf "
+    "eine zweite Mooncell 'M0-Betrieb' ist als Kante geplant, sobald "
+    "diese als Dokument existiert — bis dahin im Befund konstellation-"
+    "v3-teillauf festgehalten.",
+    derived_from=V["querleser_kinformer_v3"]["id"])
+
+edge("testet", "v3_abnahme_teillauf", "querleser_kinformer_v3",
+     "Der Teillauf erprobt den V3-Maßstab als Abnahmeprobe auf vorhandenem "
+     "Fundament: Stelle → belegte Gegenstellen → Dialogauftrag → Rückgabe am "
+     "Ausgangsbezug → Revision in derselben Werk-/Fassungskette. Ergebnis: "
+     "die R4-Schiene trägt (9/9, Episode in der Kette), die Produktschichten "
+     "QuerLeser-Kapitel, Konstellations-Objekt und eingebetteter Dialog "
+     "fehlen weiterhin (s. Tragfähigkeits-Matrix im Protokoll).")
+edge("erweitert", "v3_abnahme_teillauf", "invarianz_voll",
+     "Der begrenzte Weltwechsel des Laufs (Reload = neue Oberflächen-"
+     "Instanz, Graph-Stand unverändert aus der Tasche rekonstruiert und "
+     "weitergeführt) prüft die Schichtentrennung: Topologie trägt über "
+     "den Wechsel, Haut/Metrik bleiben austauschbar.")
+
 F = []
 def finding(key, target_edge, pair, criterion, task, verdict, rationale, author=None):
     F.append({"id": u(f"finding:{key}"),
@@ -358,6 +390,21 @@ finding("kreis-schluss", None,
         "Konzept, sondern vom Auftragsdokument referenzierte Infrastruktur. "
         "Offen bleibt nur noch der Original-Import der drei Briefe "
         "(Grundformationen, PDA-Anforderungen, Codex-Forschungswelt).")
+
+finding("konstellation-v3-teillauf", None,
+        (V["v3_abnahme_teillauf"]["id"], V["querleser_kinformer_v3"]["id"]),
+        "Persönliche Graphkonstellation (V3-Schritte 4–5)", 
+        "QuerLeser=KiNFORMER — gemeinsamer Werkraum", "teilweise",
+        "Die gezielte Auswahl — Stelle: V3-Protokoll docs/v3-abnahmelauf.md "
+        "@e59ca5f; Gegenstellen: T-05-Akte cfd92d04 (Rückgabe am "
+        "Ausgangsbezug) + PRUEFEHRLICHKEIT-V2.md (Vergleichs-Disziplin); "
+        "Zugehörigkeit: Ideenraum-Mooncell (dieses Werk) plus geplanter "
+        "Verweis auf eine zweite Mooncell 'M0-Betrieb' per Kante, nicht "
+        "Kopie — ist als Variante v3_abnahme_teillauf und dieser Befund "
+        "gespeichert. Das Konstellations-Objekt (Auswahl + Anordnung + "
+        "Fortsetzungsstand) existiert noch nicht; bis dahin trägt der "
+        "Befund den Platz ehrlich aus, ohne eine Mehrfachzugehörigkeit "
+        "als Kopie zu fälschen.")
 
 doc = {
     "format": "mooncells-document",

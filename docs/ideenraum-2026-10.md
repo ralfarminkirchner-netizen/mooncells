@@ -3,8 +3,8 @@
 Eine Mooncell im ursprünglichsten Sinn: **noch kein verdichtetes Werk, sondern
 der Status davor** — ein Worktree, in dem die Geistesblitze der Woche als
 Varianten nebeneinander liegen und erste Kanten ziehen. Maschinenlesbar in
-[ideenraum-2026-10.json](ideenraum-2026-10.json) (MDF v1, **14 Varianten,
-16 Kanten, 8 Befunde**, deterministische IDs — idempotent regenerierbar);
+[ideenraum-2026-10.json](ideenraum-2026-10.json) (MDF v1, **15 Varianten,
+18 Kanten, 9 Befunde**, deterministische IDs — idempotent regenerierbar);
 Generator: `scripts/build_ideenraum.py`.
 
 ## Die Varianten
@@ -23,6 +23,7 @@ Generator: `scripts/build_ideenraum.py`.
 | **Stufung: Geistesblitze → Ideenatelier → Mooncell** | die drei Zustände des Ideenmaterials als Variante-Kette | tragfähig |
 | **KiNFORMER-Aktualität und Auftragsrevision (V2)** | Codex-Zusammenführung (22 Chats): fünf Entwicklungslinien + Technik-Befunde | vollständig importiert |
 | **QuerLeser=KiNFORMER — Grundverschiebung V3** | der **gemeinsame Werkraum**: Stelle als Einstieg, Chat-Kapitel als Fundus, Mehrfachzugehörigkeit zu Mooncells, Vermittlungsdialog mit Ergebnisrücklauf, Geistesblitze roh ohne Pflichtleiter; Volltext in [quellen/](quellen/kinformer-grundverschiebungen-v3.md), sha256 8028c863… | **vollständig importiert** |
+| **V3-Abnahme-Teillauf (14.10.)** | ausgeführter Teillauf des Abnahme-Protokolls: Stelle + Gegenstellen (T-05-Akte cfd92d04, PRUEFEHRLICHKEIT-V2) geöffnet, M0-Auftrag erteilt, Akte geführt (8 Events), Tasche exportiert und in frischer Oberfläche über den Importweg wieder geöffnet — 9/9 gültig, Import-Episode als Event #009; Beleg: Browser-Trace im R4-Repo | **gelaufen, als Befund festgehalten** |
 
 ## Zentrale Kanten
 
@@ -39,6 +40,11 @@ Generator: `scripts/build_ideenraum.py`.
   INVARIANZ-Voll (Welt/Linse/Variante als getrennte Operationen).
 - Atlas-Profil **erweitert** den PDA-Entwurf: Entwurf wurde Werk.
 - Stufungs-Kette: wurzel → Geistesblitze → Ideenatelier → Mooncell.
+- **V3-Abnahme-Teillauf testet** die V3 (Abnahmeprobe auf vorhandenem
+  Fundament: R4-Schiene trägt 9/9 mit Episode in der Kette; QuerLeser-Kapitel,
+  Konstellations-Objekt, eingebetteter Dialog fehlen weiterhin).
+- V3-Abnahme-Teillauf **erweitert** INVARIANZ-Voll: Reload als begrenzter
+  Weltwechsel — Topologie trägt über die neue Oberflächen-Instanz.
 
 ## Befunde
 
@@ -59,6 +65,11 @@ Generator: `scripts/build_ideenraum.py`.
 8. **Kreis-Schluss — tragfähig** — V3 zitiert TRAGWERK b942187 und Mooncells
    1a06a86 exakt: der Ideenraum ist vom Auftragsdokument referenzierte
    Infrastruktur, nicht nur Konzept.
+9. **Konstellation (V3-Schritte 4–5) — teilweise** — die gezielte Auswahl
+   (Stelle V3-Protokoll @e59ca5f, Gegenstellen T-05-Akte cfd92d04 +
+   PRUEFEHRLICHKEIT-V2.md, Zugehörigkeit Ideenraum + geplanter „M0-Betrieb"-
+   Verweis per Kante statt Kopie) ist als Variante + Befund gespeichert;
+   das Konstellations-Objekt selbst existiert noch nicht.
 
 ## Offen
 
@@ -66,6 +77,8 @@ Generator: `scripts/build_ideenraum.py`.
   PDA-Anforderungen, Codex-Forschungswelt).
 - Tragwerks-Eintrag „Ideenwerk / Geistesblitze" im R4-Katalog (erst nach
   erster Companion-App-Episode erproben — Vorschlag reicht nicht).
-- Auftragsrevision umsetzen: M0-PR 5 mit Importweg integrieren, dann den
-  V3-Abnahmelauf (Einzelchat-Kapitel → Stelle → Gegenstellen → Konstellation
-  → Dialogauftrag → Rückgabe am Ausgangsbezug).
+- Auftragsrevision umsetzen: M0-PR 5 mit Importweg integrieren (erledigt,
+  PR #12), der V3-Abnahmelauf ist als **Teillauf am 14.10. gelaufen**
+  (Variante v3_abnahme_teillauf, Befund konstellation-v3-teillauf);
+  die fehlenden Bauten bleiben offen: QuerLeser-Kapitel-Fundus,
+  Konstellations-Objekt, eingebetteter Dialog, Weltprofile.
