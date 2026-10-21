@@ -10,6 +10,15 @@ Varianten, typisierte Kanten, dokumentierte Befunde — föderiert betrieben
   Agenten, Schema-v2)
 - `server/` — FastAPI-Server mit JSON-Datei-Storage und Browser-Oberfläche
 
+Die Werkansicht zeigt alle vorhandenen Worktrees getrennt, einschließlich ihrer
+Variantenbäume. Beim Anlegen einer Variante lassen sich Werk und Worktree wählen;
+die Ausgangsvariante bleibt auf diesen Worktree begrenzt. Hinterlegte Inhalte sind
+aufklappbar. Vollständige Kennungen bleiben in den standardmäßig geschlossenen
+technischen Details erhalten; Verknüpfungen zeigen Werktitel und Variantennamen.
+
+Die Oberflächenregressionen laufen ohne zusätzliche Abhängigkeiten mit
+`node --test tests/ui.test.cjs`.
+
 ## Voraussetzungen
 
 ```bash
