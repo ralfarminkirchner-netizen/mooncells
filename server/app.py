@@ -296,7 +296,7 @@ def export(work_ids: Optional[str] = Query(None),
 
 @app.post("/api/import")
 def import_document(doc: dict):
-    """Merge per UUID-Dedupe — überschreibt niemals bestehende Einträge."""
+    """Import. Gleiche Kennung mit anderem Inhalt ergibt einen Konfliktbericht und überschreibt den öffentlichen Eintrag nicht."""
     try:
         report = store.import_document(doc)
     except ValueError as e:
@@ -349,9 +349,10 @@ class SyncRequest(BaseModel):
 def sync_with_peer(body: SyncRequest):
     """Bidirektionale Synchronisation mit einer Peer-Instanz.
 
-    1. Eigener Zustand wird an den Peer gepusht (dort per Dedupe gemergt).
+    1. Eigener Zustand wird an den Peer gepusht.
     2. Peer-Zustand wird zurückgeholt und lokal gemergt.
-    Beide Instanzen konvergieren — konfliktfrei durch Append-only + UUIDs.
+    Gleicher Inhalt wird vereinigt. Abweichender Inhalt derselben Kennung
+    wird als Konflikt gemeldet und überschreibt den öffentlichen Eintrag nicht.
     """
     pushed = _push_to_peer(body.peer)
     pulled = _pull_from_peer(body.peer)

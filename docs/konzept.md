@@ -58,8 +58,10 @@ Fast alles Folgende ist Konsequenz einer einzigen Entscheidung:
 
 Daraus folgt automatisch:
 
-1. **Kein Overwrite, also kein Merge-Konflikt.** Zwei Agenten schreiben
-   gleichzeitig ⇒ zwei neue UUIDs ⇒ beide existieren.
+1. **Kein Overwrite, also kein stiller Merge.** Zwei Agenten schreiben
+   gleichzeitig ⇒ zwei neue UUIDs ⇒ beide existieren. Trifft dieselbe Kennung
+   dennoch mit anderem Inhalt ein, meldet der Import den Konflikt und lässt
+   die Reihenfolge keinen Gewinner wählen.
 2. **Konfliktfreie Föderation.** Mengen-Vereinigung ist die einzige nötige
    Merge-Operation; Insert-only-Mengen konvergieren (CRDT-Äquivalent, §8).
 3. **Vollständige Provenienz.** Jeder Zustand ist rückführbar bis zur Wurzel;
@@ -237,9 +239,11 @@ Vereinigungsoperation; Sync (Push/Pull/Auto-Sync) ist Gossip.
   Zustand — solange alle Entitäten irgendwann alle Wege gehen (Gossip-Annahme).
 - **Partitionstoleranz by Design**: fällt eine Instanz weg, lebt der Rest;
   kommt sie zurück, holt sie sich fehlende UUIDs über `changes?since`.
-- **Keine Reihenfolge nötig**: Da nichts überschrieben wird, ist die
-  Ankunftsordnung irrelevant. `created_at` ist *Dokumentation*, kein
-  Ordnungskriterium für Korrektheit. (Grenze: v1 vertraut Uhrzeiten für
+- **Keine Reihenfolge als Gewinner**: Gleicher Inhalt ist von der
+  Ankunftsordnung unabhängig. Gleicher Kennung mit anderem Inhalt, auch nur
+  mit anderem `variant.status`, wird als Konflikt gemeldet; ein öffentlicher
+  Eintrag wird dadurch nicht überschrieben. `created_at` ist *Dokumentation*,
+  kein Ordnungskriterium für Korrektheit. (Grenze: v1 vertraut Uhrzeiten für
   Filter; für harte Kausalität später Hybride Logische Uhren je Instanz.)
 
 ### 8.3 Instanz = Sichtweise
