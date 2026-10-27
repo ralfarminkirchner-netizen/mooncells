@@ -1,0 +1,80 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:mooncells:public-variants-catalog:1",
+  "title": "Öffentlicher Vorschlagskatalog des Gesamtvariantenraums",
+  "$comment": "Struktureller Vertrag. Globale Eindeutigkeit, Referenzen und unveränderte bekannte Varianten prüft zusätzlich validateCatalog in core.mjs. Quellen-Prüfsummen belegen ausschließlich den jeweils benannten Inhaltsumfang; keine ausführbaren Werkstände oder produktive Synchronisation werden zugesagt.",
+  "type": "object",
+  "required": ["schemaVersion", "title", "revision", "sources", "rooms", "components", "variants", "relations", "dissent"],
+  "properties": {
+    "schemaVersion": {"const": 1}, "title": {"$ref": "#/$defs/text"}, "revision": {"$ref": "#/$defs/text"},
+    "sources": {"type": "array", "items": {"$ref": "#/$defs/source"}},
+    "rooms": {"type": "array", "items": {"$ref": "#/$defs/room"}},
+    "components": {"type": "array", "items": {"$ref": "#/$defs/component"}},
+    "variants": {"type": "array", "items": {"$ref": "#/$defs/variant"}},
+    "relations": {"type": "array", "items": {"$ref": "#/$defs/relation"}},
+    "dissent": {"type": "array", "items": {"$ref": "#/$defs/dissent"}},
+    "receipts": {"type": "array", "items": {"$ref": "#/$defs/receipt"}},
+    "technicalDetails": {"type": "object"}
+  },
+  "$defs": {
+    "text": {"type": "string", "minLength": 1, "pattern": "\\S"},
+    "ids": {"type": "array", "uniqueItems": true, "items": {"$ref": "#/$defs/text"}},
+    "hash": {"type": ["string", "null"], "pattern": "^[a-fA-F0-9]{64}$"},
+    "revision": {"anyOf": [{"$ref": "#/$defs/text"}, {"type": "null"}]},
+    "source": {"type": "object", "required": ["id", "title", "visibility", "status"], "properties": {
+      "id": {"$ref": "#/$defs/text"}, "title": {"$ref": "#/$defs/text"}, "visibility": {"const": "public"},
+      "status": {"enum": ["verified", "unverified", "unknown"]}, "revision": {"$ref": "#/$defs/revision"},
+      "contentHash": {"$ref": "#/$defs/hash"}, "url": {"type": "string"}, "summary": {"type": "string"},
+      "sourceType": {"enum": ["public-baseline", "local-inventory-summary", "provider-contribution"]}, "hashScope": {"$ref": "#/$defs/text"}, "technicalDetails": {"type": "object"}
+    }},
+    "room": {"type": "object", "required": ["id", "title", "description", "contributionStatus"], "properties": {
+      "id": {"$ref": "#/$defs/text"}, "title": {"$ref": "#/$defs/text"}, "description": {"$ref": "#/$defs/text"},
+      "contributionStatus": {"enum": ["open", "available"]}, "knowledgeStatus": {"enum": ["known", "partial", "unknown"]}
+    }},
+    "component": {"type": "object", "required": ["id", "title", "workIdentity"], "properties": {
+      "id": {"$ref": "#/$defs/text"}, "title": {"$ref": "#/$defs/text"}, "workIdentity": {"$ref": "#/$defs/text"},
+      "description": {"type": "string"}, "roomId": {"$ref": "#/$defs/text"}
+    }},
+    "binding": {"type": "object", "required": ["componentId", "sourceId", "bindingStatus", "role", "roomId"], "properties": {
+      "componentId": {"$ref": "#/$defs/text"}, "sourceId": {"$ref": "#/$defs/text"}, "roomId": {"$ref": "#/$defs/text"},
+      "role": {"$ref": "#/$defs/text"}, "bindingStatus": {"enum": ["pinned", "unknown"]},
+      "requiresRelationIds": {"$ref": "#/$defs/ids"},
+      "revision": {"$ref": "#/$defs/revision"}, "contentHash": {"$ref": "#/$defs/hash"}, "workIdentity": {"$ref": "#/$defs/text"}
+    }, "allOf": [{"if": {"properties": {"bindingStatus": {"const": "pinned"}}}, "then": {"anyOf": [
+      {"required": ["revision"], "properties": {"revision": {"$ref": "#/$defs/text"}}},
+      {"required": ["contentHash"], "properties": {"contentHash": {"type": "string", "pattern": "^[a-fA-F0-9]{64}$"}}}
+    ]}}]},
+    "context": {"type": "object", "required": ["question", "conditions"], "properties": {
+      "question": {"$ref": "#/$defs/text"}, "conditions": {"type": "array", "items": {"$ref": "#/$defs/text"}}
+    }},
+    "mandate": {"type": "object", "required": ["status", "actor", "scope"], "properties": {
+      "status": {"$ref": "#/$defs/text"}, "actor": {"$ref": "#/$defs/text"}, "scope": {"$ref": "#/$defs/text"}
+    }},
+    "stage": {"type": "object", "required": ["status", "summary"], "properties": {
+      "status": {"$ref": "#/$defs/text"}, "summary": {"$ref": "#/$defs/text"}
+    }},
+    "provenance": {"type": "object", "required": ["kind", "sourceVariantIds"], "properties": {
+      "kind": {"$ref": "#/$defs/text"}, "sourceVariantIds": {"$ref": "#/$defs/ids"}, "operationId": {"$ref": "#/$defs/text"}, "componentIds": {"$ref": "#/$defs/ids"}
+    }},
+    "variant": {"type": "object", "required": ["id", "title", "parentIds", "componentBindings", "context", "mandate", "proposal", "implementation", "verification", "humanAcceptance", "dissentIds", "provenance"], "properties": {
+      "id": {"$ref": "#/$defs/text"}, "title": {"$ref": "#/$defs/text"}, "parentIds": {"$ref": "#/$defs/ids"},
+      "componentBindings": {"type": "array", "items": {"$ref": "#/$defs/binding"}}, "context": {"$ref": "#/$defs/context"},
+      "mandate": {"$ref": "#/$defs/mandate"}, "proposal": {"$ref": "#/$defs/stage"}, "implementation": {"$ref": "#/$defs/stage"},
+      "verification": {"$ref": "#/$defs/stage"}, "humanAcceptance": {"$ref": "#/$defs/stage"}, "dissentIds": {"$ref": "#/$defs/ids"}, "provenance": {"$ref": "#/$defs/provenance"}, "dependencyReview": {"type": "object"}
+    }},
+    "relation": {"type": "object", "required": ["id", "fromVariantId", "toVariantId", "type", "summary"], "properties": {
+      "id": {"$ref": "#/$defs/text"}, "fromVariantId": {"$ref": "#/$defs/text"}, "toVariantId": {"$ref": "#/$defs/text"}, "type": {"$ref": "#/$defs/text"}, "summary": {"$ref": "#/$defs/text"},
+      "compatibility": {"enum": ["unknown", "blocked", "compatible"]}, "dependsOnRelationIds": {"$ref": "#/$defs/ids"}
+    }},
+    "dissent": {"type": "object", "required": ["id", "title", "summary", "variantIds", "status"], "properties": {
+      "id": {"$ref": "#/$defs/text"}, "title": {"$ref": "#/$defs/text"}, "summary": {"$ref": "#/$defs/text"}, "variantIds": {"$ref": "#/$defs/ids"}, "status": {"$ref": "#/$defs/text"}
+    }},
+    "receipt": {"type": "object", "required": ["id", "operationId", "request", "variantId"], "properties": {
+      "id": {"$ref": "#/$defs/text"}, "operationId": {"$ref": "#/$defs/text"}, "request": {"type": "object"}, "variantId": {"$ref": "#/$defs/text"},
+      "evidenceDisposition": {"enum": ["not-reviewed", "reviewed-rejected", "received"]}, "evidenceSourceIds": {"$ref": "#/$defs/ids"},
+      "testRun": {"$ref": "#/$defs/text"}, "blockedBy": {"$ref": "#/$defs/text"}, "finding": {"$ref": "#/$defs/text"}
+    }, "allOf": [{"if": {"required": ["evidenceDisposition"], "properties": {"evidenceDisposition": {"const": "reviewed-rejected"}}}, "then": {
+      "required": ["blockedBy", "finding"], "anyOf": [{"required": ["testRun"]}, {"required": ["evidenceSourceIds"], "properties": {"evidenceSourceIds": {"minItems": 1}}}]
+    }}]}
+  }
+}
