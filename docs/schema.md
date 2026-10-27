@@ -240,22 +240,26 @@ interface MooncellsDocument {
   nur *Anlegen*. Was als „gelöscht" gilt, entscheidet sich später auf
   Anwendungsebene (z. B. per Befund/Statusfeld), nicht im Speicher-Layer.
 
-### 3.3 Merge beim Import — UUID-Dedupe, kein Überschreiben
+### 3.3 Merge beim Import — gleiche Kennung, kein stiller Gewinner
 
-Import-Algorithmus (pro Entitätstyp, in Abhängigkeitsreihenfolge):
+Import-Algorithmus je Entitätstyp:
 
-1. Index der vorhandenen UUIDs je Typ aufbauen.
-2. Für jede eingehende Entität: UUID schon bekannt → **überspringen** (skip),
-   unbekannt → **einfügen** (add).
-3. Bei gleicher UUID wird **kein Feld verglichen und nichts aktualisiert** —
-   „first write wins". Konflikte zwischen zwei unterschiedlichen Entitäten mit
-   gleicher UUID können per Definition nicht auftreten, solange UUIDs korrekt
-   vergeben werden (UUIDv4-Kollision ist vernachlässigbar).
-4. Ergebnis: `{"agents": {"added": n, "skipped": n}, …}` als Import-Report.
+1. Neue Kennung mit einheitlichem Inhalt wird eingefügt.
+2. Gleiche Kennung und gleicher Inhalt werden übersprungen. Der gespeicherte
+   Zustand bleibt unverändert.
+3. Gleiche Kennung und abweichender Inhalt sind ein Konflikt. Die Reihenfolge
+   wählt keinen Gewinner. Der Bericht nennt `kind: content-conflict`, die
+   Kennung und die geänderten Feldnamen, ohne die Rohwerte zu wiederholen.
+   Ein vorhandener öffentlicher Eintrag wird nicht überschrieben. Liegt der
+   abweichende Inhalt nur in den Importen selbst, bleibt keiner dieser Inhalte
+   als reihenfolgeabhängiger öffentlicher Eintrag stehen.
+4. `variant.status` ist Inhalt dieser Regel und wird beim Import nicht nachträglich
+   ersetzt.
 
-Konsequenz: Zwei Instanzen, die gegenseitig exportieren/importieren, konvergieren
-gegen denselben Zustand (CRDT-ähnlich für Insert-only-Mengen), ohne dass ein
-Conflict-Resolution-Protokoll nötig wäre.
+Ergebnis je Collection: `{"added": n, "skipped": n, "conflicts": […]}`.
+
+Gleicher Inhalt konvergiert weiterhin durch Einfügen und Überspringen. Abweichender
+Inhalt derselben Kennung konvergiert nicht durch Überschreiben.
 
 ### 3.4 Zukunftsfelder ohne Schema-Bruch
 

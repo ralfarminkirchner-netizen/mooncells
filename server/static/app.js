@@ -249,6 +249,13 @@ wireForm("#form-peer", async d => {
 });
 
 // -------------------------------------------------------- Export / Import
+function formatImportReport(report) {
+  return Object.entries(report).map(([name, row]) => {
+    const conflicts = Array.isArray(row.conflicts) ? row.conflicts.length : 0;
+    return `${name}: +${row.added}/~${row.skipped}${conflicts ? ` !${conflicts}` : ""}`;
+  }).join("  ");
+}
+
 $("#btn-export").addEventListener("click", async () => {
   const doc = await api("/export");
   const blob = new Blob([JSON.stringify(doc, null, 2)], { type: "application/json" });
@@ -266,8 +273,7 @@ $("#import-file").addEventListener("change", async (ev) => {
   try {
     const doc = JSON.parse(await file.text());
     const res = await post("/import", doc);
-    const parts = Object.entries(res.report)
-      .map(([k, v]) => `${k}: +${v.added}/~${v.skipped}`).join("  ");
+    const parts = formatImportReport(res.report);
     toast(`Import OK — ${parts}`);
     await load();
   } catch (e) { toast("Import fehlgeschlagen: " + e.message, false); }
@@ -279,8 +285,7 @@ $("#btn-sync").addEventListener("click", async () => {
   if (!peer) return;
   try {
     const res = await post("/sync", { peer });
-    const fmt = (r) => Object.entries(r)
-      .map(([k, v]) => `${k} +${v.added}/~${v.skipped}`).join("  ");
+    const fmt = formatImportReport;
     toast(`Sync mit ${res.peer} OK\nHin → ${fmt(res.pushed.report)}\nHer ← ${fmt(res.pulled_report)}`);
     await load();
   } catch (e) { toast("Sync fehlgeschlagen: " + e.message, false); }

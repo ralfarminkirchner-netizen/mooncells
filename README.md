@@ -47,7 +47,7 @@ python -m server.app --port 8401 --data runs/b/state.json --instance instanz-b &
 # 1) A exportiert (per API oder Download-Button in der Oberfläche)
 curl -s http://127.0.0.1:8400/api/export > export-a.json
 
-# 2) B importiert — Merge per UUID-Dedupe, nichts wird überschrieben
+# 2) B importiert — neue Kennungen werden ergänzt; abweichender Inhalt wird Konflikt
 curl -s -X POST http://127.0.0.1:8401/api/import \
   -H 'Content-Type: application/json' -d @export-a.json
 
@@ -60,8 +60,11 @@ curl -s -X POST http://127.0.0.1:8400/api/import \
 diff <(curl -s http://127.0.0.1:8400/api/graph) <(curl -s http://127.0.0.1:8401/api/graph)
 ```
 
-Der Import-Report zeigt je Collection `added` (neu) und `skipped` (bekannte UUID,
-nicht überschrieben). Gleicher Import zweimal → alles `skipped`, Zustand unverändert.
+Der Import-Report zeigt je Collection `added` (neu), `skipped` (gleiche Kennung
+und gleicher Inhalt) und `conflicts` (gleiche Kennung, abweichender Inhalt).
+Ein Konflikt nennt Kennung, Art und geänderte Feldnamen und wählt keinen
+Gewinner. Ein vorhandener öffentlicher Eintrag bleibt unverändert. Gleicher
+Import zweimal → alles `skipped`, Zustand bytegleich.
 
 ## API-Übersicht
 
@@ -74,25 +77,26 @@ nicht überschrieben). Gleicher Import zweimal → alles `skipped`, Zustand unve
 | `POST /api/findings` | Befund an Kante oder Variantenpaar |
 | `GET /api/graph` | Alles auf einmal (für die Oberfläche) |
 | `GET /api/export?work_ids=…&since=…` | Mooncells Document (gesamt oder Ausschnitt) |
-| `POST /api/import` | Document importieren (UUID-Dedupe-Merge) |
+| `POST /api/import` | Document importieren; gleiche Kennung mit anderem Inhalt wird Konflikt |
 | `GET /api/changes?since=…` | Nur Neu-Einfügungen seit Zeitstempel (Pull-Sync-Feed) |
-| `POST /api/sync` | `{peer: "http://…"}` — bidirektional: push + pull, beide Seiten konvergieren |
+| `POST /api/sync` | `{peer: "http://…"}` — bidirektional: gleicher Inhalt wird vereinigt, abweichender Inhalt wird Konflikt |
 | `GET/POST /api/peers` · `DELETE /api/peers/{id}` | Peer-Liste für Auto-Sync |
 | `GET /api/autosync-log` | Ergebnisse der letzten Auto-Sync-Läufe |
-| `POST /api/variants/{id}/status` | Statuswechsel: `entwurf`/`geprüft`/`grundformation`/`verworfen` (Kristallisieren) — der einzige mutable Kern-Feld, verbreitet sich föderiert |
+| `POST /api/variants/{id}/status` | Lokaler Statuswechsel: `entwurf`/`geprüft`/`grundformation`/`verworfen`. Import behandelt Status als Inhalt und überschreibt ihn nicht |
 | `GET /api/patterns` · `POST /api/query` | Traversierungsmuster (konzept.md §4): `ancestors`, `descendants`, `remix-line`, `contradiction-clusters`, `findings-for`, `fitness`, `provenance` |
 
 Schema v2 (additiv, bruchfrei zu v1): `variant.status`, `variant.tags`,
 `work.tags`, `finding.target_finding_id` (Meta-Befund). Peers sind
 instanzlokale Konfiguration und werden niemals über MDF exportiert/importiert.
-Ausnahme von „first write wins": `variant.status` darf sich föderiert
-verbreiten — alles andere wird beim Import nie überschrieben.
+`variant.status` ist dabei Inhalt. Ein späterer Import mit anderem Status
+überschreibt den öffentlichen Eintrag nicht, sondern meldet den Konflikt.
 
 ## Live-Synchronisation zwischen Instanzen
 
 **Per Klick:** In der Oberfläche oben auf **⇄ Sync**, Peer-URL eingeben
 (z. B. `http://127.0.0.1:8401`). Der Server pusst dann seinen Zustand an den
-Peer und holt den Peer-Zustand zurück — Merge per UUID-Dedupe, konfliktfrei.
+Peer und holt den Peer-Zustand zurück. Gleicher Inhalt wird vereinigt;
+abweichender Inhalt derselben Kennung wird als Konflikt gemeldet.
 
 **Per API:**
 
