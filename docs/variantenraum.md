@@ -53,6 +53,16 @@ Die öffentliche Basis beschreibt Deduplizierung über Kennungen, unveränderte 
 
 Historische Sync- und Testaussagen sind daher begrenzte Belege des damaligen Bausteins. Sie werden hier nicht als neuer Nachweis für beliebige veränderliche Daten, heutige Interoperabilität, den praktischen Gesamtweg oder menschliche Annahme übernommen. Diese Einordnung korrigiert keine fremden Quellen stillschweigend; der Katalog hält sie als dokumentierten Einwand neben dem Ausgangsentwurf fest.
 
+Eine isolierte Ausführung des tatsächlichen öffentlichen `JsonStore.import_document` mit künstlichen, durch die öffentlichen Modelle validierten Daten bestätigt diese Grenze in **29 gezielten Prüfaussagen**: Bei gleicher Kennung und abweichenden Notizen oder Labels behält A→B den Inhalt A und B→A den Inhalt B; der zweite Inhalt wird ohne Konfliktbericht übersprungen. Beim Status gewinnt dagegen der zuletzt importierte Wert. Ein unmittelbar wiederholtes identisches Paket lässt den gespeicherten Zustand bytegleich. Wird ein früheres Statuspaket nach einer zwischenzeitlichen Statusänderung erneut importiert, überschreibt es den Status wieder; eine Aktualitätsprüfung fehlt. Dies prüft den tatsächlichen Store, keinen HTTP-Austausch oder produktiven Systemweg, und repariert den Import nicht.
+
+Die portable Probe `tests/public-import-probe.py` benötigt Python ab 3.9, bereits vorhandenes Pydantic 2 und den öffentlichen Basiscommit im lokalen Git-Bestand. Sie prüft Git-Blob und SHA-256 von `server/store.py` und `server/models.py` am fest gebundenen Commit `95f7923eb58b6a1ed540c2daa86c255998e39c0d`; Arbeitskopiedateien werden nicht geladen. Prüfverzeichnis und Elternordner der JSON-Ergebnisdatei müssen bereits bestehen; beide Argumente sind explizite absolute Pfade. Das Skript schreibt die angegebene Ergebnisdatei, installiert nichts und entfernt seine temporären Quellen und Kunst-Daten nach dem Lauf:
+
+```sh
+python3 tests/public-import-probe.py \
+  --temp-root /absoluter/bestehender/pruefordner \
+  --output /absoluter/bestehender/pruefordner/ergebnis.json
+```
+
 ## Isoliert ansehen
 
 Im Repository-Stamm lässt sich ausschließlich der zusätzliche statische Ordner auf einem freien lokalen Port ausliefern:
