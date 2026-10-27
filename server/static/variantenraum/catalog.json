@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "title": "Das Gesamtgefüge als lebendiger Variantenraum",
-  "revision": "oeffentlicher-variantenraum-2026-10-27.4",
+  "revision": "oeffentlicher-variantenraum-2026-10-27.5",
   "sources": [
     {
       "id": "src-auftrag",
@@ -414,6 +414,37 @@
         ],
         "observedOn": "2026-10-27"
       }
+    },
+    {
+      "id": "src-mooncells-importprobe",
+      "title": "Mooncells – ausgeführte Probe des öffentlichen Imports",
+      "url": "https://github.com/ralfarminkirchner-netizen/mooncells/blob/ad6229aee75fed9cb3245c26ae32a113b1b8c2c5/tests/public-import-probe.py",
+      "summary": "Eine ausgeführte, wiederholbare Probe des unveränderten öffentlichen Basisstands bestand 29 Prüfungen mit künstlichen Daten und den tatsächlichen Modell- und Importfunktionen. Bei gleicher Kennung mit abweichenden Notizen oder Labels behält der Import jeweils den zuerst eingegangenen Inhalt: A vor B bewahrt A, B vor A bewahrt B; ein Inhaltskonflikt wird dabei nicht gemeldet. Der unmittelbar wiederholte gleiche Import lässt die gespeicherten Bytes unverändert. Der Variantenstatus folgt dagegen der letzten Zustellung; auch ein schon früher empfangenes Paket setzt nach einer Zwischenänderung den alten Status erneut. Das belegt begrenzte Wiederholbarkeit, keine allgemeine Reihenfolgeunabhängigkeit. Untersucht wurden weder HTTP noch produktive Dienste, Synchronisation oder menschliche Annahme.",
+      "revision": "oeffentliche-importprobe-2026-10-27.1",
+      "contentHash": "89fdac4bb2acf1cf24f284379ca0bbf90b49788a45500109b0526f9c490f8f23",
+      "hashScope": "SHA-256 ausschließlich des exakten UTF-8-Texts von summary ohne zusätzlichen Zeilenumbruch; kein Hash der Probe, der Quelldateien oder eines Betriebsstands.",
+      "visibility": "public",
+      "status": "verified",
+      "sourceType": "local-inventory-summary",
+      "locator": {
+        "kind": "repository-file",
+        "path": "tests/public-import-probe.py",
+        "scriptSha256": "ab2e5e1b401d488d633b81d7b8a09f0b18ff8752d136036145c59165ed847cd8",
+        "publicBaseline": "95f7923eb58b6a1ed540c2daa86c255998e39c0d",
+        "assertionsPassed": 29,
+        "executionScope": "Unveränderte öffentliche models.py und store.py, künstliche Daten, kein HTTP und kein Produktivdienst.",
+        "sourcePaths": [
+          "server/models.py",
+          "server/store.py"
+        ]
+      },
+      "technicalDetails": {
+        "observedOn": "2026-10-27",
+        "contentHashScope": "Exakter UTF-8-Text von summary ohne zusätzlichen Zeilenumbruch.",
+        "scriptHashScope": "Exakte Bytes der portablen öffentlichen Reprodatei; unabhängig vom Zusammenfassungs-Hash.",
+        "evidenceDisposition": "received",
+        "humanAcceptance": "open"
+      }
     }
   ],
   "rooms": [
@@ -442,7 +473,8 @@
         "src-mooncells-basis",
         "src-mooncells-lokal",
         "src-mooncells-importdoku",
-        "src-mooncells-importcode"
+        "src-mooncells-importcode",
+        "src-mooncells-importprobe"
       ],
       "responsibility": "Quellen- und Schreibzuständigkeit verbleibt im jeweiligen Raum; aktuelles Mandat ist gesondert zu bestätigen."
     },
@@ -1479,6 +1511,25 @@
         "src-antwort-google",
         "src-antwort-grok"
       ]
+    },
+    {
+      "id": "dissent-importprobe-reihenfolge",
+      "title": "Die Importreihenfolge verändert Inhalt und Status",
+      "summary": "Die ausgeführte Probe bestätigt einen konkreten Gegenbefund zur allgemeinen Konvergenzbehauptung: Bei gleicher Kennung setzen sich für Notizen und Labels je Reihenfolge verschiedene zuerst eingegangene Inhalte durch, ohne gemeldeten Inhaltskonflikt. Beim Status gewinnt die letzte Zustellung; ein früheres Paket kann nach einer Zwischenänderung den alten Status wiederherstellen. Nur der unmittelbare gleiche Wiederholimport war bytegleich. Eine Konflikt- oder Frischeregel bleibt daher offen. Die 29 bestandenen Prüfungen betreffen den unveränderten öffentlichen Import mit künstlichen Daten, keine HTTP-, Dienst- oder Produktionsprobe und keine Annahme einer Gesamtvariante.",
+      "variantIds": [
+        "variant-ausgang",
+        "variant-foederiert",
+        "variant-teiluebernahme"
+      ],
+      "roomIds": [
+        "room-mooncells"
+      ],
+      "status": "open",
+      "sourceIds": [
+        "src-mooncells-importdoku",
+        "src-mooncells-importcode",
+        "src-mooncells-importprobe"
+      ]
     }
   ],
   "technicalDetails": {
@@ -1501,6 +1552,24 @@
       "summary": "Die Anleitung erklärt den allgemeinen Importfall; der Code zeigt die genaue Entscheidung bei bekannten Kennungen und die Statusausnahme. Ein Inhaltsunterschied unter gleicher Kennung braucht einen ausdrücklich benannten Befund.",
       "returnPath": "Mooncells → Quellen und Herkunft → Importbeschreibung oder Importentscheidung → exakte Zeilen im öffentlichen Basiscommit",
       "scope": "Öffentlicher Quellenvergleich; keine neue kanonische Werkbeziehung, kein Produktionslauf und keine gemeinsame Graphintegration."
+    },
+    {
+      "id": "sourcecase-importprobe",
+      "title": "Vom Quellenvergleich zur ausgeführten Importprobe",
+      "sourceIds": [
+        "src-mooncells-importdoku",
+        "src-mooncells-importcode",
+        "src-mooncells-importprobe"
+      ],
+      "summary": "Eine neue Belegfassung ergänzt den erhaltenen Quellenvergleich um die ausgeführte Probe. Die beobachtete erste Inhaltsübernahme und die letzte Statuszustellung begrenzen die allgemeine Konvergenzbeschreibung; die erforderliche Konflikt- und Frischeregel bleibt offen.",
+      "returnPath": "Mooncells → Offener Dissens oder Quellen und Herkunft → ausgeführte Probe des öffentlichen Imports → öffentliche Reprodatei",
+      "scope": "Öffentlicher, reproduzierbarer Funktionsbefund mit künstlichen Daten; keine neue Gesamtvariante, keine produktive Synchronisation und keine menschliche Annahme.",
+      "provenance": {
+        "kind": "evidence-extension",
+        "parentSourceCaseIds": [
+          "sourcecase-importgrenze"
+        ]
+      }
     }
   ]
 }
