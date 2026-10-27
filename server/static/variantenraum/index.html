@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <meta name="referrer" content="no-referrer">
+  <title>Das Gesamtgefüge · Mooncells</title>
+  <link rel="stylesheet" href="./style.css">
+  <script type="module" src="./app.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#inhalt">Zum Inhalt</a>
+  <header class="site-header">
+    <a href="./index.html" class="wordmark" aria-label="Mooncells, zum Einstieg"><span class="moon-mark" aria-hidden="true"></span>Mooncells</a>
+    <span>Gemeinsam am Ganzen arbeiten</span>
+  </header>
+  <main id="inhalt" tabindex="-1">
+    <section class="intro" aria-labelledby="page-title">
+      <div><p class="intro-context">Ein veränderbarer gemeinsamer Entwurf</p><h1 id="page-title">Das Gesamtgefüge</h1><p class="lead">Wie können eigenständige Räume zusammenwirken? Hier lassen sich Fassungen erkunden, ihre Beiträge zurückverfolgen und Unterschiede nebeneinander lesen.</p></div>
+      <aside class="reading-note"><span class="thread-mark" aria-hidden="true">↗</span><p>Eine Übersicht gibt den Räumen keine neue Leitung. Herkunft, Verantwortung und offene Einwände bleiben an ihren Beiträgen erhalten.</p></aside>
+    </section>
+    <section class="variant-section" aria-labelledby="variants-title">
+      <div class="section-heading"><h2 id="variants-title">Mit einer Fassung beginnen</h2><span id="catalog-note">Der gemeinsame Einstieg wird geladen.</span></div>
+      <div id="variant-list" class="variant-list" aria-label="Gesamtvarianten"></div>
+    </section>
+    <p id="notice" class="notice" role="status" hidden></p>
+    <section id="workspace" class="workspace" aria-label="Gewählte Fassung" aria-busy="true"><p class="loading">Der Variantenraum wird geöffnet …</p></section>
+    <noscript><p class="notice">Dieser Variantenraum braucht JavaScript, um Fassungen und Quellenbindungen zu vergleichen.</p></noscript>
+  </main>
+  <footer><p>Vorschlag, Umsetzung, Prüfung und menschliche Annahme werden getrennt geführt.</p><p>Auswahl und Rückwege bleiben im teilbaren Link erhalten.</p></footer>
+</body>
+</html>

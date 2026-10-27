@@ -1,0 +1,1576 @@
+{
+  "schemaVersion": 1,
+  "title": "Das Gesamtgefüge als lebendiger Variantenraum",
+  "revision": "oeffentlicher-variantenraum-2026-10-27.5",
+  "sources": [
+    {
+      "id": "src-auftrag",
+      "title": "Gemeinsamer Auftrag – öffentlich sichere Zusammenfassung",
+      "summary": "Das Gesamtgefüge soll als lebendiger Variantenraum mit unabhängigen Quellenzuständigkeiten, nachvollziehbaren Beiträgen, Gegenlesen, Dissens und rekonstruierbaren Varianten entwickelt werden. Keine Übersicht übernimmt dadurch die Autorität der beteiligten Räume. Vorschlag, Umsetzung, Prüfung und menschliche Annahme bleiben getrennt.",
+      "revision": "oeffentliche-bestandszusammenfassung-2026-10-27.1",
+      "contentHash": "f2c07968f43774beec9a29881f347ba86f218ef823c6d9eda86471f7ab0034c1",
+      "visibility": "public",
+      "status": "verified",
+      "sourceType": "local-inventory-summary",
+      "technicalDetails": {
+        "contentHashScope": "SHA-256 der UTF-8-Zeichenfolge summary; keine Originaldatei und kein ausführbarer Stand",
+        "evidenceScope": "Ausgewählte öffentliche Zusammenfassung; keine vollständige Bestands- oder Laufzeitprüfung",
+        "summaryKind": "selected-mandate-summary"
+      }
+    },
+    {
+      "id": "src-mooncells-basis",
+      "title": "Mooncells – öffentliche Ausgangsbasis",
+      "summary": "Die öffentliche Mooncells-Basis beschreibt Werkfassungen und Ableitungen, unveränderte Eltern sowie einen Austausch über Export und Import. Ihre Aussagen über Mengenvereinigung und Konvergenz beruhen auf Voraussetzungen des damaligen Datenmodells; sie belegen keine allgemeine konfliktfreie Zusammenführung beliebiger Inhalte oder Zustandsänderungen.",
+      "revision": "95f7923eb58b6a1ed540c2daa86c255998e39c0d",
+      "contentHash": "125b968eb264b0a9dca4e46163bf77b333b536196fb86e4a904a1cbfd515d140",
+      "visibility": "public",
+      "status": "verified",
+      "sourceType": "public-baseline",
+      "url": "https://github.com/ralfarminkirchner-netizen/mooncells/blob/95f7923eb58b6a1ed540c2daa86c255998e39c0d/README.md",
+      "technicalDetails": {
+        "contentHashScope": "SHA-256 der UTF-8-Zeichenfolge summary; keine Originaldatei und kein ausführbarer Stand",
+        "evidenceScope": "Ausgewählte öffentliche Zusammenfassung; keine vollständige Bestands- oder Laufzeitprüfung"
+      }
+    },
+    {
+      "id": "src-mooncells-lokal",
+      "title": "Mooncells – lokaler Variantenraum-Entwurf",
+      "summary": "Dieser zusätzliche lokale Entwurf vergleicht Gesamtvarianten und bindet Bausteine an versionierte öffentliche Zusammenfassungen. Er zeigt Komponentenidentität, Kontext, Mandat, vier getrennte Zustandsachsen und Dissens. Die statische Darstellung und das isolierte Modell sind eine lokale Weiterentwicklung; sie sind nicht Bestandteil des verlinkten öffentlichen Basisstands.",
+      "revision": "oeffentliche-bestandszusammenfassung-2026-10-27.1",
+      "contentHash": "af122a071f5a28797ec9dbeb241440b28462be7297c92fe674eeae66fb0c7863",
+      "visibility": "public",
+      "status": "verified",
+      "sourceType": "local-inventory-summary",
+      "technicalDetails": {
+        "contentHashScope": "SHA-256 der UTF-8-Zeichenfolge summary; keine Originaldatei und kein ausführbarer Stand",
+        "evidenceScope": "Ausgewählte öffentliche Zusammenfassung; keine vollständige Bestands- oder Laufzeitprüfung",
+        "summaryKind": "local-development-summary"
+      }
+    },
+    {
+      "id": "src-kin",
+      "title": "KiN / TRAGWERK – begrenzte Bestandszusammenfassung",
+      "summary": "KiN und TRAGWERK bringen die Unterscheidung von Werk, Fassung, Quelle, Kontext, Beteiligung und Beziehung ein. Eine Auswahl soll über Ansichten und Rückwege erhalten bleiben. Vorhandene lokale Implementierungsbelege ergeben noch keinen frisch geprüften vollständigen Systemdurchlauf und keine menschliche Gesamtannahme. Die aktuelle Schreibzuständigkeit muss im jeweiligen Raum bestätigt werden.",
+      "revision": "oeffentliche-bestandszusammenfassung-2026-10-27.1",
+      "contentHash": "75d0f06d03ee981fd2eb4ca39d8d7252a269d0e6e26e7fd0218f973d2a898dfe",
+      "visibility": "public",
+      "status": "verified",
+      "sourceType": "local-inventory-summary",
+      "technicalDetails": {
+        "contentHashScope": "SHA-256 der UTF-8-Zeichenfolge summary; keine Originaldatei und kein ausführbarer Stand",
+        "evidenceScope": "Ausgewählte öffentliche Zusammenfassung; keine vollständige Bestands- oder Laufzeitprüfung",
+        "observedHead": "513cd911d4a9be13242b9fbfbae2009dae01454c",
+        "workingTree": "dirty",
+        "observedOn": "2026-10-27",
+        "executableSnapshot": false
+      }
+    },
+    {
+      "id": "src-spiral",
+      "title": "SPiRALCELLS / MiNDCEL – begrenzte Bestandszusammenfassung",
+      "summary": "SPiRALCELLS und MiNDCEL sind unterscheidbare Ansichten auf quellengebundene Werke und Fassungen. Anordnung, Nähe und Lesart erzeugen keine kanonische Zugehörigkeit oder Beziehung. Historische Teilprüfungen und dokumentierte Rückwege bestehen; aktuelle native Prüfung aller Ansichten, Kontextwechsel und Reload sowie menschliche Gestaltungsannahme sind damit nicht vollständig nachgewiesen.",
+      "revision": "oeffentliche-bestandszusammenfassung-2026-10-27.1",
+      "contentHash": "1a560a024dbf5861da6265cbc2ef373ad8830100316c9aa80f96f267bb76bb1b",
+      "visibility": "public",
+      "status": "verified",
+      "sourceType": "local-inventory-summary",
+      "technicalDetails": {
+        "contentHashScope": "SHA-256 der UTF-8-Zeichenfolge summary; keine Originaldatei und kein ausführbarer Stand",
+        "evidenceScope": "Ausgewählte öffentliche Zusammenfassung; keine vollständige Bestands- oder Laufzeitprüfung",
+        "observedHead": "ce39ba9953e61e9aeee5d7c1a5b9260413d2a9c0",
+        "workingTree": "dirty",
+        "observedOn": "2026-10-27",
+        "executableSnapshot": false
+      }
+    },
+    {
+      "id": "src-tisch",
+      "title": "DER TiSCH – begrenzte Bestandszusammenfassung",
+      "summary": "DER TiSCH ist als eigenständiger Arbeits- und Produktionsraum einbezogen. Isolierte Leseprüfungen sind dokumentiert. Ein durchgängiger produktiver Weg mit Rückkehr zur richtigen Quelle, Graph-Rückgabe, Schreibgrenzen und menschlicher Annahme ist in dieser Bestandsprüfung offen. Der Katalog vergibt keine Schreibrechte und startet keinen Produktionsdienst.",
+      "revision": "oeffentliche-bestandszusammenfassung-2026-10-27.1",
+      "contentHash": "deb133a4d6046bd8d4f0a311c9e1a003a1a9b7f43f28ec7f3a61b6a8032b26b3",
+      "visibility": "public",
+      "status": "verified",
+      "sourceType": "local-inventory-summary",
+      "technicalDetails": {
+        "contentHashScope": "SHA-256 der UTF-8-Zeichenfolge summary; keine Originaldatei und kein ausführbarer Stand",
+        "evidenceScope": "Ausgewählte öffentliche Zusammenfassung; keine vollständige Bestands- oder Laufzeitprüfung",
+        "observedHead": "741a8e53c1e4ef7c184fdda52994d0f035e57417",
+        "workingTree": "dirty",
+        "observedOn": "2026-10-27",
+        "executableSnapshot": false
+      }
+    },
+    {
+      "id": "src-dazwischen",
+      "title": "DAS DAZWISCHEN / Kimi – sichere Anschlusszusammenfassung",
+      "summary": "Der private Quellenraum behält seine Rohquellen und Schreibzuständigkeit lokal. Auswahl und genaue Quellenpassage sollen bei einem freigegebenen Anschluss nachvollziehbar bleiben. Dokumentierte Passage-Verlauf-Verweise sind keine Kausalbehauptungen und keine automatisch erzeugten Graphkanten. Ein vollständiger aktueller KiN-Durchlauf, reale Geräteprüfung und menschliche Annahme bleiben offen.",
+      "revision": "oeffentliche-bestandszusammenfassung-2026-10-27.1",
+      "contentHash": "5fa54af877564c5429baba4412eb334e1103a48712b2dad8cdc926dffc599469",
+      "visibility": "public",
+      "status": "verified",
+      "sourceType": "local-inventory-summary",
+      "technicalDetails": {
+        "contentHashScope": "SHA-256 der UTF-8-Zeichenfolge summary; keine Originaldatei und kein ausführbarer Stand",
+        "evidenceScope": "Ausgewählte öffentliche Zusammenfassung; keine vollständige Bestands- oder Laufzeitprüfung",
+        "observedHead": "97d39da5ff5ab87c044016fa90fa6b88f94ff60b",
+        "workingTree": "dirty",
+        "observedOn": "2026-10-27",
+        "executableSnapshot": false
+      }
+    },
+    {
+      "id": "src-jev-laya",
+      "title": "Jev und Laya – offene Identitäts- und Beitragsklärung",
+      "summary": "Jev und Laya werden als getrennte mögliche Beiträge geführt. Historische Rollen- und Profilbelege reichen nicht aus, um heutige Identität, Laufzeit, Mandat oder Qualifikation festzulegen. Ähnlich benannte historische Profile werden nicht stillschweigend mit Jev gleichgesetzt. Ihre Ausgaben bleiben Vorschläge und benötigen einen Quellen-, Versions- und Prüfkontext.",
+      "revision": "oeffentliche-bestandszusammenfassung-2026-10-27.1",
+      "contentHash": "aacca5dcd34f5d225d351eed928c0e736772936e7db3c81032d4ba196701d908",
+      "visibility": "public",
+      "status": "unverified",
+      "sourceType": "local-inventory-summary",
+      "technicalDetails": {
+        "contentHashScope": "SHA-256 der UTF-8-Zeichenfolge summary; keine Originaldatei und kein ausführbarer Stand",
+        "evidenceScope": "Ausgewählte öffentliche Zusammenfassung; keine vollständige Bestands- oder Laufzeitprüfung"
+      }
+    },
+    {
+      "id": "src-atlas",
+      "title": "PHÄNOMENATLAS – begrenzte Bestandszusammenfassung",
+      "summary": "Der PHÄNOMENATLAS soll öffentliche Phänomene über zugängliche Einstiege, Quellenbelege und offene Lesarten erschließen. Bestehende Quellen-, Objekt-, Versions- und Beteiligungsgrenzen bleiben erhalten. Eine veröffentlichbare Ansicht oder ein Export belegt noch keine angenommene lokale Verbindung und keinen vollständigen Rückweg zwischen den Räumen.",
+      "revision": "oeffentliche-bestandszusammenfassung-2026-10-27.1",
+      "contentHash": "bd54d3ec810ab9ec57c046eb937f61d5783e1b734c81535ec0965b2ea4ff900f",
+      "visibility": "public",
+      "status": "verified",
+      "sourceType": "local-inventory-summary",
+      "technicalDetails": {
+        "contentHashScope": "SHA-256 der UTF-8-Zeichenfolge summary; keine Originaldatei und kein ausführbarer Stand",
+        "evidenceScope": "Ausgewählte öffentliche Zusammenfassung; keine vollständige Bestands- oder Laufzeitprüfung",
+        "observedHead": "af74b51c80dae0076a36bad57b234fd5b194e56e",
+        "workingTree": "dirty",
+        "observedOn": "2026-10-27",
+        "executableSnapshot": false
+      }
+    },
+    {
+      "id": "src-spektrum",
+      "title": "SPEKTRUM – Anschluss unbekannt",
+      "summary": "In der begrenzten Prüfung wurde kein eindeutig zuständiger aktueller SPEKTRUM-Vertrag oder ausführbarer Anschluss zugeordnet. Der Name bleibt als eigener offener Raum erhalten. Aus Begriffsvorkommen und Nachbarschaft zu anderen Atlas-Projekten wird keine gemeinsame Identität, Implementierung oder Zuständigkeit abgeleitet.",
+      "revision": null,
+      "contentHash": null,
+      "visibility": "public",
+      "status": "unknown",
+      "sourceType": "local-inventory-summary",
+      "technicalDetails": {
+        "contentHashScope": "SHA-256 der UTF-8-Zeichenfolge summary; keine Originaldatei und kein ausführbarer Stand",
+        "evidenceScope": "Ausgewählte öffentliche Zusammenfassung; keine vollständige Bestands- oder Laufzeitprüfung"
+      }
+    },
+    {
+      "id": "src-neuro",
+      "title": "NEURO – begrenzte Bestandszusammenfassung",
+      "summary": "NEURO bringt einen eigenständigen Leseraum ein. Ursprüngliches Material bleibt erhalten; neue Lesarten werden getrennt geführt und private Verläufe nicht automatisch veröffentlicht. Ein aktueller verantwortlicher Laufzeitanschluss und ein angenommener Systemrückweg sind hier nicht geprüft.",
+      "revision": "oeffentliche-bestandszusammenfassung-2026-10-27.1",
+      "contentHash": "c8430f20015db9608ad88aa64ffbb62486459827b8d7bfdc3f958b37f18a2476",
+      "visibility": "public",
+      "status": "verified",
+      "sourceType": "local-inventory-summary",
+      "technicalDetails": {
+        "contentHashScope": "SHA-256 der UTF-8-Zeichenfolge summary; keine Originaldatei und kein ausführbarer Stand",
+        "evidenceScope": "Ausgewählte öffentliche Zusammenfassung; keine vollständige Bestands- oder Laufzeitprüfung",
+        "observedHead": "a876e0749002e93509d569635b8aaefac0e527df",
+        "workingTree": "dirty",
+        "observedOn": "2026-10-27",
+        "executableSnapshot": false
+      }
+    },
+    {
+      "id": "src-antwort-google",
+      "title": "Google / Gemini – Gegenlese und Gegenreaktion",
+      "summary": "Echte Gegenlese zum Föderierten Vergleich: Eine verspätete Quittung nach lokalem Rückzug könnte eine überholte Annahme wieder wirksam erscheinen lassen; Teilübernahme mit Rollenwechsel könnte Urheber und Zuständigkeit eines offenen Einwands verlieren. Übernommen wird eine lokale monotone Entscheidungsepoche pro Raum, mit alten Quittungen nur als Historie und erhaltenem Einwand. Gegenreaktion nach Grok: Bei einer rautenförmigen Abhängigkeit darf eine abgeleitete Variante eine gesperrte Voraussetzung nicht umgehen. Übernommen werden gerichtete geerbte Konfliktbedingungen; unbekannte Abhängigkeiten bleiben unklar. Eine globale Uhr und eine allein auf Werk und Fassung verkürzte Quittung werden nicht übernommen: Paket, Kontext und Mandat bleiben erforderlich.",
+      "revision": "freigegebener-google-digest-2026-10-27.2",
+      "contentHash": "c7d255d39e68df20c4bd1f8b0a82c866d52f062acb6ce44952fd61403a46ee26",
+      "visibility": "public",
+      "status": "verified",
+      "sourceType": "provider-contribution",
+      "technicalDetails": {
+        "contentHashScope": "SHA-256 der UTF-8-Zeichenfolge summary; keine Originaldatei und kein ausführbarer Stand",
+        "evidenceScope": "Ausgewählte öffentliche Zusammenfassung; keine vollständige Bestands- oder Laufzeitprüfung",
+        "provider": "Google / Gemini",
+        "reviewKey": "gegenlese-google-2026-10-27",
+        "reviewedVariantId": "variant-foederiert",
+        "reviewedVariantRevision": "oeffentlicher-variantenraum-2026-10-27.1",
+        "reviewedVariantTitle": "Föderierter Vergleich",
+        "responseEvidence": "Echte Antwort vom Leitchat sichtbar gelesen; bewusst freigegebener paraphrasierter Digest.",
+        "publicRawConversationAvailable": false,
+        "independentProviderCount": 1,
+        "stages": [
+          {
+            "kind": "initial-review",
+            "observedOn": "2026-10-27",
+            "reaction": "Lokale Epoche und erhaltener Einwand übernommen; genaue Paket-, Kontext- und Mandatsbindung ergänzt."
+          },
+          {
+            "kind": "counterreaction-after-grok",
+            "observedOn": "2026-10-27",
+            "reaction": "Gerichtete Abhängigkeiten übernommen; keine pauschale transitive Passung."
+          }
+        ],
+        "evidenceLimit": "Der öffentliche Digest macht Beitrag und Reaktion nachvollziehbar. Er ersetzt keinen öffentlich rekonstruierbaren Originaldialog und keine menschliche Annahme."
+      }
+    },
+    {
+      "id": "src-antwort-grok",
+      "title": "Grok – gemeinsame Botgruppen-Gegenlese",
+      "summary": "Echte Gegenlese in einem gemeinsamen Grok-Botgruppenkontext, keine drei unabhängigen Anbieterbestätigungen: Urteil, Geltungsbereich und genauer Quittungsbezug sollen getrennt sein. Die öffentliche Mooncells-Basis überspringt bekannte Kennungen beim Import; der Variantenstatus ist eine dokumentierte Überschreibausnahme. Der Leitchat hat diese Importgrenze am öffentlichen Basiscode zusätzlich gelesen. Übernommen werden neue abgeleitete Varianten für Teilübernahmen, erhaltener Dissens und genaue Paket-, Kontext- und Mandatsbindung der Quittung ohne globale Freigabepflicht. Gegenreaktion auf Google: Eine Kantensperre behandelt Kantendissens; abweichende Inhalte wie Notiz, Titel oder Status unter derselben Kennung brauchen einen eigenen Inhaltskonflikt oder eine neue Ableitung. Eine allgemeine transitive Passung und eine Reparatur des produktiven Statusimports werden nicht behauptet.",
+      "revision": "freigegebener-grok-digest-2026-10-27.2",
+      "contentHash": "77d8a1f5eeda4a57a142a8deb8a94392ebd7a88e39ea9b3767fc53f82a5f1620",
+      "visibility": "public",
+      "status": "verified",
+      "sourceType": "provider-contribution",
+      "technicalDetails": {
+        "contentHashScope": "SHA-256 der UTF-8-Zeichenfolge summary; keine Originaldatei und kein ausführbarer Stand",
+        "evidenceScope": "Ausgewählte öffentliche Zusammenfassung; keine vollständige Bestands- oder Laufzeitprüfung",
+        "provider": "Grok",
+        "reviewKey": "gegenlese-grok-2026-10-27",
+        "reviewedVariantId": "variant-foederiert",
+        "reviewedVariantRevision": "oeffentlicher-variantenraum-2026-10-27.1",
+        "reviewedVariantTitle": "Föderierter Vergleich",
+        "responseEvidence": "Echte Antwort vom Leitchat sichtbar gelesen; bewusst freigegebener paraphrasierter Digest.",
+        "publicRawConversationAvailable": false,
+        "independentProviderCount": 1,
+        "stages": [
+          {
+            "kind": "initial-review",
+            "observedOn": "2026-10-27",
+            "reaction": "Getrenntes Urteil, Umfang und Quittungsbindung; neue Ableitung mit erhaltenem Dissens."
+          },
+          {
+            "kind": "counterreaction-after-google",
+            "observedOn": "2026-10-27",
+            "reaction": "Kanten- und Inhaltskonflikt getrennt; produktiver Statusimport bleibt offen."
+          }
+        ],
+        "evidenceLimit": "Der öffentliche Digest macht Beitrag und Reaktion nachvollziehbar. Er ersetzt keinen öffentlich rekonstruierbaren Originaldialog und keine menschliche Annahme.",
+        "codeCrosscheck": {
+          "revision": "95f7923eb58b6a1ed540c2daa86c255998e39c0d",
+          "url": "https://github.com/ralfarminkirchner-netizen/mooncells/blob/95f7923eb58b6a1ed540c2daa86c255998e39c0d/server/store.py#L162-L199",
+          "scope": "Bekannte Kennung wird übersprungen; Variantenstatus dokumentierte Ausnahme. Keine hier ausgeführte Produktions-Syncprüfung."
+        }
+      }
+    },
+    {
+      "id": "src-antwort-kimi",
+      "title": "Kimi – Gegenlese und zweiter Rücklauf",
+      "summary": "Echte Gegenlese zum Variantenraum und zur öffentlichen Mooncells-Basis: Neue Vergleichsschnitte erhalten Originale und eigenständige Räume; ein fehlerhafter Baustein sperrt nicht automatisch das ganze Gefüge. Quittung ist niemals stellvertretende menschliche Zustimmung. Öffentliche Basis und lokale Weiterentwicklung bleiben unterscheidbar; DAS DAZWISCHEN bleibt ein eigener Quellenraum mit Rückweg. Tatsächlicher zweiter Rücklauf: Gerichtete Abhängigkeiten statt globaler Sperre tragen. Eine Quittung braucht den Rückweg zu verantwortlicher Person oder Rolle, Befund und genauem Testlauf; geprüft und verworfen muss von nie geprüft unterscheidbar bleiben. Übernommen werden diese Herkunftsgrenzen. Ein tatsächlicher eigener Quittungseintrag in DAS DAZWISCHEN ist noch offen; eine Schreibintegration wird nicht behauptet. Wer mit welchem Mandat einen Inhaltskonflikt in eine neue Ableitung überführt, bleibt ungeklärt. Zwei Fassungen und ein Einwand begründen keinen Eigentümerwechsel. Vorgeschlagene Prüfungen sind keine bereits bestandenen Tests oder menschliche Annahme.",
+      "revision": "freigegebener-kimi-digest-2026-10-27.2",
+      "contentHash": "f74a246abb085172e8177853b80f66e27103a326264cdc1c286bec23e3f87271",
+      "visibility": "public",
+      "status": "verified",
+      "sourceType": "provider-contribution",
+      "technicalDetails": {
+        "contentHashScope": "SHA-256 der UTF-8-Zeichenfolge summary; keine Originaldatei und kein ausführbarer Stand",
+        "evidenceScope": "Ausgewählte öffentliche Zusammenfassung; keine vollständige Bestands- oder Laufzeitprüfung",
+        "provider": "Kimi",
+        "reviewKey": "gegenlese-kimi-2026-10-27",
+        "reviewedVariantId": "variant-foederiert",
+        "reviewedVariantRevision": "oeffentlicher-variantenraum-2026-10-27.1",
+        "reviewedVariantTitle": "Föderierter Vergleich",
+        "responseEvidence": "Echte Antwort vom Leitchat sichtbar gelesen; bewusst freigegebener paraphrasierter Digest.",
+        "publicRawConversationAvailable": false,
+        "independentProviderCount": 1,
+        "stages": [
+          {
+            "kind": "independent-review",
+            "observedOn": "2026-10-27",
+            "reaction": "Eigenständige Räume, unveränderte Originale, getrennte Annahme und lokale Konfliktwirkung übernommen; konkrete Prüfaufträge bleiben einzeln nachzuweisen."
+          },
+          {
+            "kind": "actual-second-return",
+            "observedOn": "2026-10-27",
+            "observedLocalTime": "19:30",
+            "reaction": "Gerichtete Konfliktwirkung bestätigt; Quittungsrückweg und Unterschied geprüft-verworfen/nie-geprüft übernommen. Eigener DAZWISCHEN-Quittungseintrag und Mandat zur Ableitung bleiben offen; kein Eigentümerwechsel."
+          }
+        ],
+        "evidenceLimit": "Der öffentliche Digest macht Beitrag und Reaktion nachvollziehbar. Er ersetzt keinen öffentlich rekonstruierbaren Originaldialog und keine menschliche Annahme."
+      }
+    },
+    {
+      "id": "src-pruefbelege",
+      "title": "Lokale Modell- und Oberflächenprüfung",
+      "summary": "Begrenzte aktuelle Prüfung des isolierten Variantenraums: Der Leitchat und der Kernagent melden 34 bestandene Node-Tests in tests/variantenraum.test.mjs; der Oberflächenagent meldet 44 bestandene DOM-Szenarien. Die Modelltests betreffen unter anderem unveränderte Ursprünge, genaue Paket-/Kontext-/Mandatsbindung, Inhaltseinwände, gerichtete Konfliktabhängigkeiten, lokale Entscheidungsepochen sowie gültige Quellenbezüge. Der Leitchat hat nativ die drei Fassungen, Vergleich und DAS-DAZWISCHEN-Raumfassung geprüft. Reload erhält Variante, Raumfassung und Vergleich; Enter führt zum genauen Vergleich und zur Variantenkarte mit erhaltener Suche, Filterung und Fokus zurück. Nach einer korrigierten Überbreite wurden Variante, Vergleich und Raumbeitrag bei schmaler Ansicht ohne horizontale Dokumentüberbreite erneut geprüft; auch die Desktopansicht blieb ohne Überbreite. Technische Details waren geschlossen, Browserwarnungen und Fehlerprotokoll leer. Dies belegt begrenzte lokale Modell- und Darstellungsfunktionen; produktive Raumverbindungen, ein eigener Quittungseintrag in DAS DAZWISCHEN, der vollständige praktische Gesamtweg und menschliche Annahme sind damit nicht nachgewiesen.",
+      "revision": "freigegebene-pruefbelege-2026-10-27.2",
+      "contentHash": "d4cf4f46d2b71dba276c911d14e68f7f3934d9ade8af133464aa84855380cbe5",
+      "visibility": "public",
+      "status": "verified",
+      "sourceType": "local-inventory-summary",
+      "technicalDetails": {
+        "contentHashScope": "SHA-256 der UTF-8-Zeichenfolge summary; keine Testdatei und kein ausführbarer Stand",
+        "evidenceScope": "Begrenzte lokale Tests und gemeldete Teilstrecke; weder produktive Integration noch menschliche Annahme",
+        "observedOn": "2026-10-27",
+        "evidenceRefs": [
+          "tests/variantenraum.test.mjs",
+          "docs/variantenraum.md"
+        ],
+        "nodeTests": {
+          "passed": 34,
+          "reportedBy": "Leitchat und Kernagent",
+          "command": "node --test tests/variantenraum.test.mjs"
+        },
+        "domScenarios": {
+          "passed": 44,
+          "reportedBy": "Oberflächenagent"
+        },
+        "nativeReview": {
+          "reportedBy": "Leitchat",
+          "status": "passed-within-stated-scope",
+          "scenes": [
+            "drei Fassungen",
+            "Vergleich",
+            "DAS-DAZWISCHEN-Raumfassung",
+            "Reload mit erhaltener Variante, Raumfassung und Vergleich",
+            "Enter-Rückweg mit erhaltener Suche, Filterung und Fokus"
+          ],
+          "narrowViewport": {
+            "width": 390,
+            "height": 844,
+            "documentScrollWidth": 390,
+            "views": [
+              "Variante",
+              "Vergleich",
+              "Raumbeitrag"
+            ],
+            "afterCorrection": true
+          },
+          "desktop": {
+            "width": 1675,
+            "documentScrollWidth": 1675
+          },
+          "technicalDetailsInitiallyClosed": true,
+          "browserWarnings": [],
+          "browserErrors": [],
+          "limit": "Ausgewählte native Wege; keine vollständige Geräte-, Browser-, Produktions- oder menschliche Annahmeprüfung."
+        }
+      }
+    },
+    {
+      "id": "src-mooncells-importdoku",
+      "title": "Mooncells – Importbeschreibung und ihre Grenze",
+      "summary": "Die öffentliche Importanleitung beschreibt das Einfügen neuer und das Überspringen bekannter Kennungen und stellt einen konvergenten Austausch dar. Dieselbe README benennt später den Variantenstatus ausdrücklich als veränderliche Ausnahme. Die allgemeine Nichtüberschreibungsbeschreibung braucht daher diese Einschränkung; sie ist kein Beleg für konfliktfreie Zusammenführung beliebiger abweichender Inhalte.",
+      "url": "https://github.com/ralfarminkirchner-netizen/mooncells/blob/95f7923eb58b6a1ed540c2daa86c255998e39c0d/README.md#L40-L64",
+      "revision": "95f7923eb58b6a1ed540c2daa86c255998e39c0d",
+      "contentHash": "484823c57a582b446e50db22dc996b7dfcce7790386837339fb8aec0336fbe4f",
+      "visibility": "public",
+      "status": "verified",
+      "sourceType": "public-baseline",
+      "technicalDetails": {
+        "contentHashScope": "SHA-256 der UTF-8-Zeichenfolge summary; kein Hash der Quelldatei",
+        "evidenceScope": "Exakt benannter öffentlicher Basiscommit; Quelltext- und Dokumentenbefund, kein neuer Produktionslauf",
+        "sourceCommit": "95f7923eb58b6a1ed540c2daa86c255998e39c0d",
+        "sourceReferences": [
+          {
+            "path": "README.md",
+            "lines": [
+              40,
+              64
+            ],
+            "url": "https://github.com/ralfarminkirchner-netizen/mooncells/blob/95f7923eb58b6a1ed540c2daa86c255998e39c0d/README.md#L40-L64"
+          },
+          {
+            "path": "README.md",
+            "lines": [
+              82,
+              89
+            ],
+            "url": "https://github.com/ralfarminkirchner-netizen/mooncells/blob/95f7923eb58b6a1ed540c2daa86c255998e39c0d/README.md#L82-L89"
+          }
+        ],
+        "observedOn": "2026-10-27"
+      }
+    },
+    {
+      "id": "src-mooncells-importcode",
+      "title": "Mooncells – tatsächliche Importentscheidung",
+      "summary": "Der öffentliche Importcode fügt unbekannte Kennungen ein. Bei einer bekannten Variante mit abweichendem Status ersetzt er ausschließlich den Status und zählt eine Aktualisierung; sonst zählt er die bekannte Kennung als übersprungen. Ein anderer Inhalt unter derselben Kennung erhält hier weder eine Konfliktmeldung noch eine neue Ableitung. Dieser genaue Gegenbefund begrenzt die allgemeine Importbeschreibung; produktive Reihenfolge- und Statuskonflikte bleiben offen.",
+      "url": "https://github.com/ralfarminkirchner-netizen/mooncells/blob/95f7923eb58b6a1ed540c2daa86c255998e39c0d/server/store.py#L162-L199",
+      "revision": "95f7923eb58b6a1ed540c2daa86c255998e39c0d",
+      "contentHash": "ef4763e0a1b75fc18a83793f89d59874a2a26c635f35140a62987d234ca0a5cc",
+      "visibility": "public",
+      "status": "verified",
+      "sourceType": "public-baseline",
+      "technicalDetails": {
+        "contentHashScope": "SHA-256 der UTF-8-Zeichenfolge summary; kein Hash der Quelldatei",
+        "evidenceScope": "Exakt benannter öffentlicher Basiscommit; Quelltext- und Dokumentenbefund, kein neuer Produktionslauf",
+        "sourceCommit": "95f7923eb58b6a1ed540c2daa86c255998e39c0d",
+        "sourceReferences": [
+          {
+            "path": "server/store.py",
+            "lines": [
+              162,
+              199
+            ],
+            "url": "https://github.com/ralfarminkirchner-netizen/mooncells/blob/95f7923eb58b6a1ed540c2daa86c255998e39c0d/server/store.py#L162-L199"
+          }
+        ],
+        "observedOn": "2026-10-27"
+      }
+    },
+    {
+      "id": "src-mooncells-importprobe",
+      "title": "Mooncells – ausgeführte Probe des öffentlichen Imports",
+      "url": "https://github.com/ralfarminkirchner-netizen/mooncells/pull/4/files",
+      "summary": "Eine ausgeführte, wiederholbare Probe des unveränderten öffentlichen Basisstands bestand 29 Prüfungen mit künstlichen Daten und den tatsächlichen Modell- und Importfunktionen. Bei gleicher Kennung mit abweichenden Notizen oder Labels behält der Import jeweils den zuerst eingegangenen Inhalt: A vor B bewahrt A, B vor A bewahrt B; ein Inhaltskonflikt wird dabei nicht gemeldet. Der unmittelbar wiederholte gleiche Import lässt die gespeicherten Bytes unverändert. Der Variantenstatus folgt dagegen der letzten Zustellung; auch ein schon früher empfangenes Paket setzt nach einer Zwischenänderung den alten Status erneut. Das belegt begrenzte Wiederholbarkeit, keine allgemeine Reihenfolgeunabhängigkeit. Untersucht wurden weder HTTP noch produktive Dienste, Synchronisation oder menschliche Annahme.",
+      "revision": "oeffentliche-importprobe-2026-10-27.1",
+      "contentHash": "89fdac4bb2acf1cf24f284379ca0bbf90b49788a45500109b0526f9c490f8f23",
+      "hashScope": "SHA-256 ausschließlich des exakten UTF-8-Texts von summary ohne zusätzlichen Zeilenumbruch; kein Hash der Probe, der Quelldateien oder eines Betriebsstands.",
+      "visibility": "public",
+      "status": "verified",
+      "sourceType": "local-inventory-summary",
+      "locator": {
+        "kind": "repository-file",
+        "path": "tests/public-import-probe.py",
+        "scriptCommit": "ad6229aee75fed9cb3245c26ae32a113b1b8c2c5",
+        "scriptSha256": "ab2e5e1b401d488d633b81d7b8a09f0b18ff8752d136036145c59165ed847cd8",
+        "publicBaseline": "95f7923eb58b6a1ed540c2daa86c255998e39c0d",
+        "assertionsPassed": 29,
+        "executionScope": "Unveränderte öffentliche models.py und store.py, künstliche Daten, kein HTTP und kein Produktivdienst.",
+        "sourcePaths": [
+          "server/models.py",
+          "server/store.py"
+        ]
+      },
+      "technicalDetails": {
+        "observedOn": "2026-10-27",
+        "contentHashScope": "Exakter UTF-8-Text von summary ohne zusätzlichen Zeilenumbruch.",
+        "scriptHashScope": "Exakte Bytes der portablen öffentlichen Reprodatei; unabhängig vom Zusammenfassungs-Hash.",
+        "evidenceDisposition": "received",
+        "humanAcceptance": "open"
+      }
+    }
+  ],
+  "rooms": [
+    {
+      "id": "room-kin",
+      "title": "KiN / TRAGWERK",
+      "summary": "Quellen, Fassungen, Kontext und Beziehungen nachvollziehbar verbinden.",
+      "description": "Quellen, Fassungen, Kontext und Beziehungen nachvollziehbar verbinden.",
+      "contributionStatus": "open",
+      "knowledgeStatus": "partial",
+      "contribution": "Rückweg und Zuständigkeitsgrenzen für einen konkreten freigegebenen Anschluss prüfen.",
+      "sourceIds": [
+        "src-kin"
+      ],
+      "responsibility": "Quellen- und Schreibzuständigkeit verbleibt im jeweiligen Raum; aktuelles Mandat ist gesondert zu bestätigen."
+    },
+    {
+      "id": "room-mooncells",
+      "title": "Mooncells",
+      "summary": "Gesamtvarianten nebeneinander führen, vergleichen und begründet ableiten.",
+      "description": "Gesamtvarianten nebeneinander führen, vergleichen und begründet ableiten.",
+      "contributionStatus": "open",
+      "knowledgeStatus": "known",
+      "contribution": "Öffentlicher Quellenfall: allgemeine Importbeschreibung und tatsächliche Statusausnahme vergleichen, mit Rückweg zu Anleitung und Importcode. Gemeinsame Graphintegration bleibt offen.",
+      "sourceIds": [
+        "src-mooncells-basis",
+        "src-mooncells-lokal",
+        "src-mooncells-importdoku",
+        "src-mooncells-importcode",
+        "src-mooncells-importprobe"
+      ],
+      "responsibility": "Quellen- und Schreibzuständigkeit verbleibt im jeweiligen Raum; aktuelles Mandat ist gesondert zu bestätigen."
+    },
+    {
+      "id": "room-spiral",
+      "title": "SPiRALCELLS / MiNDCEL",
+      "summary": "Mehrere Ansichten bewahren dieselbe Quellenbindung und erlauben unterschiedliche Lesarten.",
+      "description": "Mehrere Ansichten bewahren dieselbe Quellenbindung und erlauben unterschiedliche Lesarten.",
+      "contributionStatus": "open",
+      "knowledgeStatus": "partial",
+      "contribution": "Aktuelle native Kontext- und Rückwegprüfung mit eigener Annahme beitragen.",
+      "sourceIds": [
+        "src-spiral"
+      ],
+      "responsibility": "Quellen- und Schreibzuständigkeit verbleibt im jeweiligen Raum; aktuelles Mandat ist gesondert zu bestätigen."
+    },
+    {
+      "id": "room-tisch",
+      "title": "DER TiSCH",
+      "summary": "Eigenständiger Arbeits- und Produktionsraum mit offenen praktischen Rückwegen.",
+      "description": "Eigenständiger Arbeits- und Produktionsraum mit offenen praktischen Rückwegen.",
+      "contributionStatus": "open",
+      "knowledgeStatus": "partial",
+      "contribution": "Realen Produktionsdurchlauf, Rückgabe und Schreibzuständigkeit belegen.",
+      "sourceIds": [
+        "src-tisch"
+      ],
+      "responsibility": "Quellen- und Schreibzuständigkeit verbleibt im jeweiligen Raum; aktuelles Mandat ist gesondert zu bestätigen."
+    },
+    {
+      "id": "room-dazwischen",
+      "title": "DAS DAZWISCHEN / Kimi",
+      "summary": "Privater Quellenraum und Leseassistenz mit ausdrücklich begrenzten Freigaben.",
+      "description": "Privater Quellenraum und Leseassistenz mit ausdrücklich begrenzten Freigaben.",
+      "contributionStatus": "open",
+      "knowledgeStatus": "partial",
+      "contribution": "Nur bewusst freigegebene Anschlussbelege und konkrete Gegenlese beitragen. Der tatsächliche eigene Quittungseintrag ist noch offen; keine Schreibintegration ist nachgewiesen.",
+      "sourceIds": [
+        "src-dazwischen"
+      ],
+      "responsibility": "Quellen- und Schreibzuständigkeit verbleibt im jeweiligen Raum; aktuelles Mandat ist gesondert zu bestätigen."
+    },
+    {
+      "id": "room-jev-laya",
+      "title": "Jev und Laya",
+      "summary": "Getrennte Beiträge mit noch zu klärenden aktuellen Identitäten und Mandaten.",
+      "description": "Getrennte Beiträge mit noch zu klärenden aktuellen Identitäten und Mandaten.",
+      "contributionStatus": "open",
+      "knowledgeStatus": "unknown",
+      "contribution": "Identität, Fassung, Aufgabe und Qualifikation je Beitrag bestätigen.",
+      "sourceIds": [
+        "src-jev-laya"
+      ],
+      "responsibility": "Quellen- und Schreibzuständigkeit verbleibt im jeweiligen Raum; aktuelles Mandat ist gesondert zu bestätigen."
+    },
+    {
+      "id": "room-atlas",
+      "title": "PHÄNOMENATLAS",
+      "summary": "Öffentliche Phänomene mit Belegen und offenen Lesarten erschließen.",
+      "description": "Öffentliche Phänomene mit Belegen und offenen Lesarten erschließen.",
+      "contributionStatus": "open",
+      "knowledgeStatus": "partial",
+      "contribution": "Eigene Quellen- und Rückwegprüfung statt bloßer Exportgleichsetzung beitragen.",
+      "sourceIds": [
+        "src-atlas"
+      ],
+      "responsibility": "Quellen- und Schreibzuständigkeit verbleibt im jeweiligen Raum; aktuelles Mandat ist gesondert zu bestätigen."
+    },
+    {
+      "id": "room-spektrum",
+      "title": "SPEKTRUM",
+      "summary": "Eigenständiger Anschluss ist derzeit nicht eindeutig zugeordnet.",
+      "description": "Eigenständiger Anschluss ist derzeit nicht eindeutig zugeordnet.",
+      "contributionStatus": "open",
+      "knowledgeStatus": "unknown",
+      "contribution": "Zuständigen Raum, Quellenvertrag und möglichen Beitrag erst benennen.",
+      "sourceIds": [
+        "src-spektrum"
+      ],
+      "responsibility": "Quellen- und Schreibzuständigkeit verbleibt im jeweiligen Raum; aktuelles Mandat ist gesondert zu bestätigen."
+    },
+    {
+      "id": "room-neuro",
+      "title": "NEURO",
+      "summary": "Eigenständiger Leseraum mit erhaltenem Ursprungsmaterial und getrennten Ableitungen.",
+      "description": "Eigenständiger Leseraum mit erhaltenem Ursprungsmaterial und getrennten Ableitungen.",
+      "contributionStatus": "open",
+      "knowledgeStatus": "partial",
+      "contribution": "Aktuellen Verantwortungs- und Laufzeitanschluss gesondert prüfen.",
+      "sourceIds": [
+        "src-neuro"
+      ],
+      "responsibility": "Quellen- und Schreibzuständigkeit verbleibt im jeweiligen Raum; aktuelles Mandat ist gesondert zu bestätigen."
+    }
+  ],
+  "components": [
+    {
+      "id": "component-kin",
+      "title": "Quellengebundene Werk- und Kontextführung",
+      "workIdentity": "Baustein: Quellengebundene Werk- und Kontextführung",
+      "summary": "Identität, Fassung, Kontext und Beziehung unterscheidbar halten.",
+      "description": "Identität, Fassung, Kontext und Beziehung unterscheidbar halten.",
+      "roomId": "room-kin",
+      "sourceIds": [
+        "src-kin"
+      ]
+    },
+    {
+      "id": "component-mooncells",
+      "title": "Gesamtvarianten und Ableitungen",
+      "workIdentity": "Baustein: Gesamtvarianten und Ableitungen",
+      "summary": "Unveränderte Ausgangsvarianten und begründete neue Varianten vergleichen.",
+      "description": "Unveränderte Ausgangsvarianten und begründete neue Varianten vergleichen.",
+      "roomId": "room-mooncells",
+      "sourceIds": [
+        "src-mooncells-lokal",
+        "src-mooncells-importdoku",
+        "src-mooncells-importcode"
+      ]
+    },
+    {
+      "id": "component-spiral",
+      "title": "SPiRALCELLS – offene Anordnung",
+      "workIdentity": "Baustein: SPiRALCELLS – offene Anordnung",
+      "summary": "Lesarten und räumliche Anordnungen ohne neue kanonische Mitgliedschaften.",
+      "description": "Lesarten und räumliche Anordnungen ohne neue kanonische Mitgliedschaften.",
+      "roomId": "room-spiral",
+      "sourceIds": [
+        "src-spiral"
+      ]
+    },
+    {
+      "id": "component-mindcel",
+      "title": "MiNDCEL – weitere Ansicht",
+      "workIdentity": "Baustein: MiNDCEL – weitere Ansicht",
+      "summary": "Dieselben Quellenbindungen in einer unterscheidbaren Ansicht bewahren.",
+      "description": "Dieselben Quellenbindungen in einer unterscheidbaren Ansicht bewahren.",
+      "roomId": "room-spiral",
+      "sourceIds": [
+        "src-spiral"
+      ]
+    },
+    {
+      "id": "component-tisch",
+      "title": "DER TiSCH – Arbeitsdurchlauf",
+      "workIdentity": "Baustein: DER TiSCH – Arbeitsdurchlauf",
+      "summary": "Arbeitsauftrag, Produktion und Rückgabe an die passende Quelle prüfen.",
+      "description": "Arbeitsauftrag, Produktion und Rückgabe an die passende Quelle prüfen.",
+      "roomId": "room-tisch",
+      "sourceIds": [
+        "src-tisch"
+      ]
+    },
+    {
+      "id": "component-dazwischen",
+      "title": "DAS DAZWISCHEN – private Quellenpassage",
+      "workIdentity": "Baustein: DAS DAZWISCHEN – private Quellenpassage",
+      "summary": "Freigegebenen Kontext erhalten, private Rohquellen im zuständigen Raum belassen.",
+      "description": "Freigegebenen Kontext erhalten, private Rohquellen im zuständigen Raum belassen.",
+      "roomId": "room-dazwischen",
+      "sourceIds": [
+        "src-dazwischen"
+      ]
+    },
+    {
+      "id": "component-kimi",
+      "title": "Kimi – begrenzte Leseassistenz",
+      "workIdentity": "Baustein: Kimi – begrenzte Leseassistenz",
+      "summary": "Vorschläge und Rückverweise mit Quellenbindung, ohne implizite Freigabe oder Annahme.",
+      "description": "Vorschläge und Rückverweise mit Quellenbindung, ohne implizite Freigabe oder Annahme.",
+      "roomId": "room-dazwischen",
+      "sourceIds": [
+        "src-dazwischen"
+      ]
+    },
+    {
+      "id": "component-jev",
+      "title": "Jev – eigenständiger Beitrag",
+      "workIdentity": "Baustein: Jev – eigenständiger Beitrag",
+      "summary": "Identität und aktuelles Mandat erst ausdrücklich bestätigen.",
+      "description": "Identität und aktuelles Mandat erst ausdrücklich bestätigen.",
+      "roomId": "room-jev-laya",
+      "sourceIds": [
+        "src-jev-laya"
+      ]
+    },
+    {
+      "id": "component-laya",
+      "title": "Laya – eigenständiger Beitrag",
+      "workIdentity": "Baustein: Laya – eigenständiger Beitrag",
+      "summary": "Eigenen Beitrag ohne Gleichsetzung mit Jev führen.",
+      "description": "Eigenen Beitrag ohne Gleichsetzung mit Jev führen.",
+      "roomId": "room-jev-laya",
+      "sourceIds": [
+        "src-jev-laya"
+      ]
+    },
+    {
+      "id": "component-atlas",
+      "title": "PHÄNOMENATLAS – belegte Phänomenwege",
+      "workIdentity": "Baustein: PHÄNOMENATLAS – belegte Phänomenwege",
+      "summary": "Phänomene, Quellen und offene Lesarten öffentlich nachvollziehbar erschließen.",
+      "description": "Phänomene, Quellen und offene Lesarten öffentlich nachvollziehbar erschließen.",
+      "roomId": "room-atlas",
+      "sourceIds": [
+        "src-atlas"
+      ]
+    },
+    {
+      "id": "component-spektrum",
+      "title": "SPEKTRUM – offener Anschluss",
+      "workIdentity": "Baustein: SPEKTRUM – offener Anschluss",
+      "summary": "Unbekannten Anschluss sichtbar erhalten; keine Werkgleichsetzung aus Namen ableiten.",
+      "description": "Unbekannten Anschluss sichtbar erhalten; keine Werkgleichsetzung aus Namen ableiten.",
+      "roomId": "room-spektrum",
+      "sourceIds": [
+        "src-spektrum"
+      ]
+    },
+    {
+      "id": "component-neuro",
+      "title": "NEURO – getrennter Leseraum",
+      "workIdentity": "Baustein: NEURO – getrennter Leseraum",
+      "summary": "Ursprungsmaterial und neue Lesarten unterscheidbar erhalten.",
+      "description": "Ursprungsmaterial und neue Lesarten unterscheidbar erhalten.",
+      "roomId": "room-neuro",
+      "sourceIds": [
+        "src-neuro"
+      ]
+    },
+    {
+      "id": "component-lokale-epoche",
+      "title": "Lokale Entscheidungsepoche",
+      "workIdentity": "Baustein: Lokale Entscheidungsepoche",
+      "summary": "Lokale Rückzüge und Rollenwechsel durch eine monotone Entscheidungsepoche pro Raum gegen alte Quittungen abgrenzen; keine globale Uhr.",
+      "description": "Lokale Rückzüge und Rollenwechsel durch eine monotone Entscheidungsepoche pro Raum gegen alte Quittungen abgrenzen; keine globale Uhr.",
+      "roomId": "room-mooncells",
+      "sourceIds": [
+        "src-antwort-google"
+      ]
+    },
+    {
+      "id": "component-genaue-quittung",
+      "title": "Gebundene Quittung und erhaltener Einwand",
+      "workIdentity": "Baustein: Gebundene Quittung und erhaltener Einwand",
+      "summary": "Urteil, Umfang und Quittungsbezug getrennt halten; Paket, Kontext, Mandat, Urheber und Einwandzuständigkeit erhalten.",
+      "description": "Urteil, Umfang und Quittungsbezug getrennt halten; Paket, Kontext, Mandat, Urheber und Einwandzuständigkeit erhalten.",
+      "roomId": "room-kin",
+      "sourceIds": [
+        "src-antwort-grok"
+      ]
+    },
+    {
+      "id": "component-konfliktabhaengigkeit",
+      "title": "Gerichtete Konfliktbedingungen",
+      "workIdentity": "Baustein: Gerichtete Konfliktbedingungen",
+      "summary": "Betroffene und davon abhängige Beziehungen gesondert beurteilen; unbekannte Abhängigkeiten bleiben unklar.",
+      "description": "Betroffene und davon abhängige Beziehungen gesondert beurteilen; unbekannte Abhängigkeiten bleiben unklar.",
+      "roomId": "room-mooncells",
+      "sourceIds": [
+        "src-antwort-google"
+      ]
+    },
+    {
+      "id": "component-inhaltskonflikt",
+      "title": "Abweichender Inhalt und neue Ableitung",
+      "workIdentity": "Baustein: Abweichender Inhalt und neue Ableitung",
+      "summary": "Abweichende Inhalte unter gleicher Kennung als Konflikt erhalten und eine begründete neue Variante bilden.",
+      "description": "Abweichende Inhalte unter gleicher Kennung als Konflikt erhalten und eine begründete neue Variante bilden.",
+      "roomId": "room-mooncells",
+      "sourceIds": [
+        "src-antwort-grok"
+      ]
+    },
+    {
+      "id": "component-getrennte-annahme",
+      "title": "Quittung und menschliche Annahme",
+      "workIdentity": "Baustein: Quittung und menschliche Annahme",
+      "summary": "Technischen Empfang und menschliche Zustimmung trennen; eigenständige Räume und Quellenrückweg erhalten.",
+      "description": "Technischen Empfang und menschliche Zustimmung trennen; eigenständige Räume und Quellenrückweg erhalten.",
+      "roomId": "room-dazwischen",
+      "sourceIds": [
+        "src-antwort-kimi"
+      ]
+    }
+  ],
+  "variants": [
+    {
+      "id": "variant-ausgang",
+      "title": "Ausgangsentwurf",
+      "parentIds": [],
+      "componentBindings": [
+        {
+          "componentId": "component-kin",
+          "sourceId": "src-kin",
+          "revision": "oeffentliche-bestandszusammenfassung-2026-10-27.1",
+          "contentHash": "75d0f06d03ee981fd2eb4ca39d8d7252a269d0e6e26e7fd0218f973d2a898dfe",
+          "bindingStatus": "pinned",
+          "roomId": "room-kin",
+          "role": "Begrenzter Bestandsbezug: Identität, Fassung, Kontext und Beziehung unterscheidbar halten."
+        },
+        {
+          "componentId": "component-mooncells",
+          "sourceId": "src-mooncells-lokal",
+          "revision": "oeffentliche-bestandszusammenfassung-2026-10-27.1",
+          "contentHash": "af122a071f5a28797ec9dbeb241440b28462be7297c92fe674eeae66fb0c7863",
+          "bindingStatus": "pinned",
+          "roomId": "room-mooncells",
+          "role": "Begrenzter Bestandsbezug: Unveränderte Ausgangsvarianten und begründete neue Varianten vergleichen."
+        },
+        {
+          "componentId": "component-spiral",
+          "sourceId": "src-spiral",
+          "revision": "oeffentliche-bestandszusammenfassung-2026-10-27.1",
+          "contentHash": "1a560a024dbf5861da6265cbc2ef373ad8830100316c9aa80f96f267bb76bb1b",
+          "bindingStatus": "pinned",
+          "roomId": "room-spiral",
+          "role": "Begrenzter Bestandsbezug: Lesarten und räumliche Anordnungen ohne neue kanonische Mitgliedschaften."
+        },
+        {
+          "componentId": "component-mindcel",
+          "sourceId": "src-spiral",
+          "revision": "oeffentliche-bestandszusammenfassung-2026-10-27.1",
+          "contentHash": "1a560a024dbf5861da6265cbc2ef373ad8830100316c9aa80f96f267bb76bb1b",
+          "bindingStatus": "pinned",
+          "roomId": "room-spiral",
+          "role": "Begrenzter Bestandsbezug: Dieselben Quellenbindungen in einer unterscheidbaren Ansicht bewahren."
+        },
+        {
+          "componentId": "component-tisch",
+          "sourceId": "src-tisch",
+          "revision": "oeffentliche-bestandszusammenfassung-2026-10-27.1",
+          "contentHash": "deb133a4d6046bd8d4f0a311c9e1a003a1a9b7f43f28ec7f3a61b6a8032b26b3",
+          "bindingStatus": "pinned",
+          "roomId": "room-tisch",
+          "role": "Begrenzter Bestandsbezug: Arbeitsauftrag, Produktion und Rückgabe an die passende Quelle prüfen."
+        },
+        {
+          "componentId": "component-dazwischen",
+          "sourceId": "src-dazwischen",
+          "revision": "oeffentliche-bestandszusammenfassung-2026-10-27.1",
+          "contentHash": "5fa54af877564c5429baba4412eb334e1103a48712b2dad8cdc926dffc599469",
+          "bindingStatus": "pinned",
+          "roomId": "room-dazwischen",
+          "role": "Begrenzter Bestandsbezug: Freigegebenen Kontext erhalten, private Rohquellen im zuständigen Raum belassen."
+        },
+        {
+          "componentId": "component-kimi",
+          "sourceId": "src-dazwischen",
+          "revision": "oeffentliche-bestandszusammenfassung-2026-10-27.1",
+          "contentHash": "5fa54af877564c5429baba4412eb334e1103a48712b2dad8cdc926dffc599469",
+          "bindingStatus": "pinned",
+          "roomId": "room-dazwischen",
+          "role": "Begrenzter Bestandsbezug: Vorschläge und Rückverweise mit Quellenbindung, ohne implizite Freigabe oder Annahme."
+        },
+        {
+          "componentId": "component-jev",
+          "sourceId": "src-jev-laya",
+          "revision": "oeffentliche-bestandszusammenfassung-2026-10-27.1",
+          "contentHash": "aacca5dcd34f5d225d351eed928c0e736772936e7db3c81032d4ba196701d908",
+          "bindingStatus": "pinned",
+          "roomId": "room-jev-laya",
+          "role": "Begrenzter Bestandsbezug: Identität und aktuelles Mandat erst ausdrücklich bestätigen."
+        },
+        {
+          "componentId": "component-laya",
+          "sourceId": "src-jev-laya",
+          "revision": "oeffentliche-bestandszusammenfassung-2026-10-27.1",
+          "contentHash": "aacca5dcd34f5d225d351eed928c0e736772936e7db3c81032d4ba196701d908",
+          "bindingStatus": "pinned",
+          "roomId": "room-jev-laya",
+          "role": "Begrenzter Bestandsbezug: Eigenen Beitrag ohne Gleichsetzung mit Jev führen."
+        },
+        {
+          "componentId": "component-atlas",
+          "sourceId": "src-atlas",
+          "revision": "oeffentliche-bestandszusammenfassung-2026-10-27.1",
+          "contentHash": "bd54d3ec810ab9ec57c046eb937f61d5783e1b734c81535ec0965b2ea4ff900f",
+          "bindingStatus": "pinned",
+          "roomId": "room-atlas",
+          "role": "Begrenzter Bestandsbezug: Phänomene, Quellen und offene Lesarten öffentlich nachvollziehbar erschließen."
+        },
+        {
+          "componentId": "component-spektrum",
+          "sourceId": "src-spektrum",
+          "revision": null,
+          "contentHash": null,
+          "bindingStatus": "unknown",
+          "roomId": "room-spektrum",
+          "role": "Begrenzter Bestandsbezug: Unbekannten Anschluss sichtbar erhalten; keine Werkgleichsetzung aus Namen ableiten."
+        },
+        {
+          "componentId": "component-neuro",
+          "sourceId": "src-neuro",
+          "revision": "oeffentliche-bestandszusammenfassung-2026-10-27.1",
+          "contentHash": "c8430f20015db9608ad88aa64ffbb62486459827b8d7bfdc3f958b37f18a2476",
+          "bindingStatus": "pinned",
+          "roomId": "room-neuro",
+          "role": "Begrenzter Bestandsbezug: Ursprungsmaterial und neue Lesarten unterscheidbar erhalten."
+        }
+      ],
+      "context": {
+        "question": "Welche Teile des Gesamtgefüges sind bisher belegt, wer verantwortet ihre Quellen und welche Anschlüsse bleiben offen?",
+        "conditions": [
+          "Begrenzte Bestandszusammenfassung, keine Vollständigkeitsbehauptung.",
+          "Jeder Raum behält Quellen, Fassungen und Schreibzuständigkeit.",
+          "Bestehende Teilbelege ersetzen keinen aktuellen vollständigen Systemdurchlauf."
+        ]
+      },
+      "mandate": {
+        "status": "proposed",
+        "actor": "Beteiligte Räume und menschliche Entscheidung",
+        "scope": "Lesbare Bestandsübersicht als gemeinsamer Vorschlag; keine zentrale Weisungs- oder Schreibbefugnis."
+      },
+      "proposal": {
+        "status": "proposed",
+        "summary": "Quellengebundene Zuständigkeiten und die bisherige reale Übersicht werden als nachvollziehbarer Ausgangspunkt geführt."
+      },
+      "implementation": {
+        "status": "partial",
+        "summary": "Eigenständige Umsetzungen und historische Teilbelege bestehen. Der Katalog fasst sie sicher zusammen; er integriert ihre Laufzeiten nicht."
+      },
+      "verification": {
+        "status": "partial",
+        "summary": "Ausgewählte lokale Übergaben und die öffentliche Mooncells-Basis wurden gelesen. Kein frischer kompletter Browser-, Agenten-, Produktions- oder Rückwegdurchlauf aller Räume."
+      },
+      "humanAcceptance": {
+        "status": "open",
+        "summary": "Keine menschliche Annahme des Gesamtgefüges dokumentiert."
+      },
+      "dissentIds": [
+        "dissent-roundtrip",
+        "dissent-identitaet",
+        "dissent-konvergenz",
+        "dissent-spektrum",
+        "dissent-oeffentlich-lokal"
+      ],
+      "provenance": {
+        "kind": "selected-source-overview",
+        "sourceVariantIds": []
+      }
+    },
+    {
+      "id": "variant-foederiert",
+      "title": "Föderierter Vergleich",
+      "parentIds": [
+        "variant-ausgang"
+      ],
+      "componentBindings": [
+        {
+          "componentId": "component-kin",
+          "sourceId": "src-kin",
+          "revision": "oeffentliche-bestandszusammenfassung-2026-10-27.1",
+          "contentHash": "75d0f06d03ee981fd2eb4ca39d8d7252a269d0e6e26e7fd0218f973d2a898dfe",
+          "bindingStatus": "pinned",
+          "roomId": "room-kin",
+          "role": "Offener Raumbeitrag zu prüfen: Identität, Fassung, Kontext und Beziehung unterscheidbar halten."
+        },
+        {
+          "componentId": "component-mooncells",
+          "sourceId": "src-mooncells-lokal",
+          "revision": "oeffentliche-bestandszusammenfassung-2026-10-27.1",
+          "contentHash": "af122a071f5a28797ec9dbeb241440b28462be7297c92fe674eeae66fb0c7863",
+          "bindingStatus": "pinned",
+          "roomId": "room-mooncells",
+          "role": "Offener Raumbeitrag zu prüfen: Unveränderte Ausgangsvarianten und begründete neue Varianten vergleichen."
+        },
+        {
+          "componentId": "component-spiral",
+          "sourceId": "src-spiral",
+          "revision": "oeffentliche-bestandszusammenfassung-2026-10-27.1",
+          "contentHash": "1a560a024dbf5861da6265cbc2ef373ad8830100316c9aa80f96f267bb76bb1b",
+          "bindingStatus": "pinned",
+          "roomId": "room-spiral",
+          "role": "Offener Raumbeitrag zu prüfen: Lesarten und räumliche Anordnungen ohne neue kanonische Mitgliedschaften."
+        },
+        {
+          "componentId": "component-mindcel",
+          "sourceId": "src-spiral",
+          "revision": "oeffentliche-bestandszusammenfassung-2026-10-27.1",
+          "contentHash": "1a560a024dbf5861da6265cbc2ef373ad8830100316c9aa80f96f267bb76bb1b",
+          "bindingStatus": "pinned",
+          "roomId": "room-spiral",
+          "role": "Offener Raumbeitrag zu prüfen: Dieselben Quellenbindungen in einer unterscheidbaren Ansicht bewahren."
+        },
+        {
+          "componentId": "component-tisch",
+          "sourceId": "src-tisch",
+          "revision": "oeffentliche-bestandszusammenfassung-2026-10-27.1",
+          "contentHash": "deb133a4d6046bd8d4f0a311c9e1a003a1a9b7f43f28ec7f3a61b6a8032b26b3",
+          "bindingStatus": "pinned",
+          "roomId": "room-tisch",
+          "role": "Offener Raumbeitrag zu prüfen: Arbeitsauftrag, Produktion und Rückgabe an die passende Quelle prüfen."
+        },
+        {
+          "componentId": "component-dazwischen",
+          "sourceId": "src-dazwischen",
+          "revision": "oeffentliche-bestandszusammenfassung-2026-10-27.1",
+          "contentHash": "5fa54af877564c5429baba4412eb334e1103a48712b2dad8cdc926dffc599469",
+          "bindingStatus": "pinned",
+          "roomId": "room-dazwischen",
+          "role": "Offener Raumbeitrag zu prüfen: Freigegebenen Kontext erhalten, private Rohquellen im zuständigen Raum belassen."
+        },
+        {
+          "componentId": "component-kimi",
+          "sourceId": "src-dazwischen",
+          "revision": "oeffentliche-bestandszusammenfassung-2026-10-27.1",
+          "contentHash": "5fa54af877564c5429baba4412eb334e1103a48712b2dad8cdc926dffc599469",
+          "bindingStatus": "pinned",
+          "roomId": "room-dazwischen",
+          "role": "Offener Raumbeitrag zu prüfen: Vorschläge und Rückverweise mit Quellenbindung, ohne implizite Freigabe oder Annahme."
+        },
+        {
+          "componentId": "component-jev",
+          "sourceId": "src-jev-laya",
+          "revision": "oeffentliche-bestandszusammenfassung-2026-10-27.1",
+          "contentHash": "aacca5dcd34f5d225d351eed928c0e736772936e7db3c81032d4ba196701d908",
+          "bindingStatus": "pinned",
+          "roomId": "room-jev-laya",
+          "role": "Offener Raumbeitrag zu prüfen: Identität und aktuelles Mandat erst ausdrücklich bestätigen."
+        },
+        {
+          "componentId": "component-laya",
+          "sourceId": "src-jev-laya",
+          "revision": "oeffentliche-bestandszusammenfassung-2026-10-27.1",
+          "contentHash": "aacca5dcd34f5d225d351eed928c0e736772936e7db3c81032d4ba196701d908",
+          "bindingStatus": "pinned",
+          "roomId": "room-jev-laya",
+          "role": "Offener Raumbeitrag zu prüfen: Eigenen Beitrag ohne Gleichsetzung mit Jev führen."
+        },
+        {
+          "componentId": "component-atlas",
+          "sourceId": "src-atlas",
+          "revision": "oeffentliche-bestandszusammenfassung-2026-10-27.1",
+          "contentHash": "bd54d3ec810ab9ec57c046eb937f61d5783e1b734c81535ec0965b2ea4ff900f",
+          "bindingStatus": "pinned",
+          "roomId": "room-atlas",
+          "role": "Offener Raumbeitrag zu prüfen: Phänomene, Quellen und offene Lesarten öffentlich nachvollziehbar erschließen."
+        },
+        {
+          "componentId": "component-spektrum",
+          "sourceId": "src-spektrum",
+          "revision": null,
+          "contentHash": null,
+          "bindingStatus": "unknown",
+          "roomId": "room-spektrum",
+          "role": "Offener Raumbeitrag zu prüfen: Unbekannten Anschluss sichtbar erhalten; keine Werkgleichsetzung aus Namen ableiten."
+        },
+        {
+          "componentId": "component-neuro",
+          "sourceId": "src-neuro",
+          "revision": "oeffentliche-bestandszusammenfassung-2026-10-27.1",
+          "contentHash": "c8430f20015db9608ad88aa64ffbb62486459827b8d7bfdc3f958b37f18a2476",
+          "bindingStatus": "pinned",
+          "roomId": "room-neuro",
+          "role": "Offener Raumbeitrag zu prüfen: Ursprungsmaterial und neue Lesarten unterscheidbar erhalten."
+        }
+      ],
+      "context": {
+        "question": "Wie können unabhängige Räume ihre Beiträge und Gegenlese vergleichen, ohne eine gemeinsame Pflichtstrecke einzuführen?",
+        "conditions": [
+          "Beitrag und Rückweg werden am jeweiligen Raum benannt.",
+          "Alternativen und Dissens bleiben neben dem Ausgangsentwurf erhalten.",
+          "Übernahme braucht eine konkrete Quellenfassung und nachvollziehbare Begründung.",
+          "Technische Prüfung und menschliche Annahme bleiben getrennte Achsen."
+        ]
+      },
+      "mandate": {
+        "status": "proposed",
+        "actor": "Jeweils zuständige Räume und menschliche Entscheidung",
+        "scope": "Freiwilliger Vergleich offener Raumbeiträge; keine Übertragung ihrer Datenhoheit auf den Katalog."
+      },
+      "proposal": {
+        "status": "proposed",
+        "summary": "Gesamtvarianten, Raumbeiträge, begründete Teilübernahmen und Nichtübernahmen werden nebeneinander lesbar. Alle Räume haben eine offene Anschlussfrage."
+      },
+      "implementation": {
+        "status": "partial",
+        "summary": "Statische Oberfläche und isoliertes Variantenmodell sind implementiert und in begrenzten lokalen Modell- und Oberflächenprüfungen belegt. Produktiver Import, Statusüberschreibung und fremde Raumzustände sind damit nicht repariert oder freigegeben."
+      },
+      "verification": {
+        "status": "partial",
+        "summary": "34 bestandene Node-Tests und 44 bestandene DOM-Szenarien sind als begrenzte lokale Belege gemeldet. Nativ wurden Fassungen, Vergleich, DAS-DAZWISCHEN-Raumfassung, Reload sowie Enter-Rückkehr mit erhaltener Suche, Filterung und Fokus geprüft. Nach Korrektur einer Überbreite bestanden die ausgewählten Ansichten den schmalen Wiederholungstest; Warnungs- und Fehlerprotokoll waren leer. Eigener DAZWISCHEN-Quittungseintrag, produktive Anschlüsse, vollständiger Gesamtweg und menschliche Annahme bleiben offen.",
+        "evidenceBindings": [
+          {
+            "sourceId": "src-pruefbelege",
+            "revision": "freigegebene-pruefbelege-2026-10-27.2",
+            "contentHash": "d4cf4f46d2b71dba276c911d14e68f7f3934d9ade8af133464aa84855380cbe5",
+            "scope": "isolated-local-model-and-interface-only"
+          }
+        ],
+        "sourceIds": [
+          "src-pruefbelege"
+        ]
+      },
+      "humanAcceptance": {
+        "status": "open",
+        "summary": "Gemeinsame Gegenlese und menschliche Annahme sind offen."
+      },
+      "dissentIds": [
+        "dissent-roundtrip",
+        "dissent-identitaet",
+        "dissent-konvergenz",
+        "dissent-spektrum",
+        "dissent-gegenlese",
+        "dissent-oeffentlich-lokal"
+      ],
+      "provenance": {
+        "kind": "comparison-proposal",
+        "sourceVariantIds": [
+          "variant-ausgang"
+        ]
+      }
+    },
+    {
+      "id": "variant-teiluebernahme",
+      "title": "Revidierte Teilübernahme",
+      "parentIds": [
+        "variant-foederiert"
+      ],
+      "componentBindings": [
+        {
+          "componentId": "component-kin",
+          "sourceId": "src-kin",
+          "revision": "oeffentliche-bestandszusammenfassung-2026-10-27.1",
+          "contentHash": "75d0f06d03ee981fd2eb4ca39d8d7252a269d0e6e26e7fd0218f973d2a898dfe",
+          "bindingStatus": "pinned",
+          "roomId": "room-kin",
+          "role": "Offener Raumbeitrag zu prüfen: Identität, Fassung, Kontext und Beziehung unterscheidbar halten."
+        },
+        {
+          "componentId": "component-mooncells",
+          "sourceId": "src-mooncells-lokal",
+          "revision": "oeffentliche-bestandszusammenfassung-2026-10-27.1",
+          "contentHash": "af122a071f5a28797ec9dbeb241440b28462be7297c92fe674eeae66fb0c7863",
+          "bindingStatus": "pinned",
+          "roomId": "room-mooncells",
+          "role": "Offener Raumbeitrag zu prüfen: Unveränderte Ausgangsvarianten und begründete neue Varianten vergleichen."
+        },
+        {
+          "componentId": "component-spiral",
+          "sourceId": "src-spiral",
+          "revision": "oeffentliche-bestandszusammenfassung-2026-10-27.1",
+          "contentHash": "1a560a024dbf5861da6265cbc2ef373ad8830100316c9aa80f96f267bb76bb1b",
+          "bindingStatus": "pinned",
+          "roomId": "room-spiral",
+          "role": "Offener Raumbeitrag zu prüfen: Lesarten und räumliche Anordnungen ohne neue kanonische Mitgliedschaften."
+        },
+        {
+          "componentId": "component-mindcel",
+          "sourceId": "src-spiral",
+          "revision": "oeffentliche-bestandszusammenfassung-2026-10-27.1",
+          "contentHash": "1a560a024dbf5861da6265cbc2ef373ad8830100316c9aa80f96f267bb76bb1b",
+          "bindingStatus": "pinned",
+          "roomId": "room-spiral",
+          "role": "Offener Raumbeitrag zu prüfen: Dieselben Quellenbindungen in einer unterscheidbaren Ansicht bewahren."
+        },
+        {
+          "componentId": "component-tisch",
+          "sourceId": "src-tisch",
+          "revision": "oeffentliche-bestandszusammenfassung-2026-10-27.1",
+          "contentHash": "deb133a4d6046bd8d4f0a311c9e1a003a1a9b7f43f28ec7f3a61b6a8032b26b3",
+          "bindingStatus": "pinned",
+          "roomId": "room-tisch",
+          "role": "Offener Raumbeitrag zu prüfen: Arbeitsauftrag, Produktion und Rückgabe an die passende Quelle prüfen."
+        },
+        {
+          "componentId": "component-dazwischen",
+          "sourceId": "src-dazwischen",
+          "revision": "oeffentliche-bestandszusammenfassung-2026-10-27.1",
+          "contentHash": "5fa54af877564c5429baba4412eb334e1103a48712b2dad8cdc926dffc599469",
+          "bindingStatus": "pinned",
+          "roomId": "room-dazwischen",
+          "role": "Offener Raumbeitrag zu prüfen: Freigegebenen Kontext erhalten, private Rohquellen im zuständigen Raum belassen."
+        },
+        {
+          "componentId": "component-kimi",
+          "sourceId": "src-dazwischen",
+          "revision": "oeffentliche-bestandszusammenfassung-2026-10-27.1",
+          "contentHash": "5fa54af877564c5429baba4412eb334e1103a48712b2dad8cdc926dffc599469",
+          "bindingStatus": "pinned",
+          "roomId": "room-dazwischen",
+          "role": "Offener Raumbeitrag zu prüfen: Vorschläge und Rückverweise mit Quellenbindung, ohne implizite Freigabe oder Annahme."
+        },
+        {
+          "componentId": "component-jev",
+          "sourceId": "src-jev-laya",
+          "revision": "oeffentliche-bestandszusammenfassung-2026-10-27.1",
+          "contentHash": "aacca5dcd34f5d225d351eed928c0e736772936e7db3c81032d4ba196701d908",
+          "bindingStatus": "pinned",
+          "roomId": "room-jev-laya",
+          "role": "Offener Raumbeitrag zu prüfen: Identität und aktuelles Mandat erst ausdrücklich bestätigen."
+        },
+        {
+          "componentId": "component-laya",
+          "sourceId": "src-jev-laya",
+          "revision": "oeffentliche-bestandszusammenfassung-2026-10-27.1",
+          "contentHash": "aacca5dcd34f5d225d351eed928c0e736772936e7db3c81032d4ba196701d908",
+          "bindingStatus": "pinned",
+          "roomId": "room-jev-laya",
+          "role": "Offener Raumbeitrag zu prüfen: Eigenen Beitrag ohne Gleichsetzung mit Jev führen."
+        },
+        {
+          "componentId": "component-atlas",
+          "sourceId": "src-atlas",
+          "revision": "oeffentliche-bestandszusammenfassung-2026-10-27.1",
+          "contentHash": "bd54d3ec810ab9ec57c046eb937f61d5783e1b734c81535ec0965b2ea4ff900f",
+          "bindingStatus": "pinned",
+          "roomId": "room-atlas",
+          "role": "Offener Raumbeitrag zu prüfen: Phänomene, Quellen und offene Lesarten öffentlich nachvollziehbar erschließen."
+        },
+        {
+          "componentId": "component-spektrum",
+          "sourceId": "src-spektrum",
+          "revision": null,
+          "contentHash": null,
+          "bindingStatus": "unknown",
+          "roomId": "room-spektrum",
+          "role": "Offener Raumbeitrag zu prüfen: Unbekannten Anschluss sichtbar erhalten; keine Werkgleichsetzung aus Namen ableiten."
+        },
+        {
+          "componentId": "component-neuro",
+          "sourceId": "src-neuro",
+          "revision": "oeffentliche-bestandszusammenfassung-2026-10-27.1",
+          "contentHash": "c8430f20015db9608ad88aa64ffbb62486459827b8d7bfdc3f958b37f18a2476",
+          "bindingStatus": "pinned",
+          "roomId": "room-neuro",
+          "role": "Offener Raumbeitrag zu prüfen: Ursprungsmaterial und neue Lesarten unterscheidbar erhalten."
+        },
+        {
+          "componentId": "component-lokale-epoche",
+          "sourceId": "src-antwort-google",
+          "revision": "freigegebener-google-digest-2026-10-27.2",
+          "contentHash": "c7d255d39e68df20c4bd1f8b0a82c866d52f062acb6ce44952fd61403a46ee26",
+          "bindingStatus": "pinned",
+          "roomId": "room-mooncells",
+          "role": "Begründet übernommener Teil der echten Gegenlese: Lokale Rückzüge und Rollenwechsel durch eine monotone Entscheidungsepoche pro Raum gegen alte Quittungen abgrenzen; keine globale Uhr."
+        },
+        {
+          "componentId": "component-genaue-quittung",
+          "sourceId": "src-antwort-grok",
+          "revision": "freigegebener-grok-digest-2026-10-27.2",
+          "contentHash": "77d8a1f5eeda4a57a142a8deb8a94392ebd7a88e39ea9b3767fc53f82a5f1620",
+          "bindingStatus": "pinned",
+          "roomId": "room-kin",
+          "role": "Begründet übernommener Teil der echten Gegenlese: Urteil, Umfang und Quittungsbezug getrennt halten; Paket, Kontext, Mandat, Urheber und Einwandzuständigkeit erhalten."
+        },
+        {
+          "componentId": "component-konfliktabhaengigkeit",
+          "sourceId": "src-antwort-google",
+          "revision": "freigegebener-google-digest-2026-10-27.2",
+          "contentHash": "c7d255d39e68df20c4bd1f8b0a82c866d52f062acb6ce44952fd61403a46ee26",
+          "bindingStatus": "pinned",
+          "roomId": "room-mooncells",
+          "role": "Begründet übernommener Teil der echten Gegenlese: Betroffene und davon abhängige Beziehungen gesondert beurteilen; unbekannte Abhängigkeiten bleiben unklar."
+        },
+        {
+          "componentId": "component-inhaltskonflikt",
+          "sourceId": "src-antwort-grok",
+          "revision": "freigegebener-grok-digest-2026-10-27.2",
+          "contentHash": "77d8a1f5eeda4a57a142a8deb8a94392ebd7a88e39ea9b3767fc53f82a5f1620",
+          "bindingStatus": "pinned",
+          "roomId": "room-mooncells",
+          "role": "Begründet übernommener Teil der echten Gegenlese: Abweichende Inhalte unter gleicher Kennung als Konflikt erhalten und eine begründete neue Variante bilden."
+        },
+        {
+          "componentId": "component-getrennte-annahme",
+          "sourceId": "src-antwort-kimi",
+          "revision": "freigegebener-kimi-digest-2026-10-27.2",
+          "contentHash": "f74a246abb085172e8177853b80f66e27103a326264cdc1c286bec23e3f87271",
+          "bindingStatus": "pinned",
+          "roomId": "room-dazwischen",
+          "role": "Begründet übernommener Teil der echten Gegenlese: Technischen Empfang und menschliche Zustimmung trennen; eigenständige Räume und Quellenrückweg erhalten."
+        }
+      ],
+      "context": {
+        "question": "Welche konkret gegengelesenen Teile entwickeln den Föderierten Vergleich weiter, ohne Quellenzuständigkeit, Einwände oder menschliche Entscheidung zu verlieren?",
+        "conditions": [
+          "Echte Google-, Grok- und Kimi-Beiträge sind in freigegebenen Digests gebunden; ihre Originaldialoge sind öffentlich nicht vollständig rekonstruierbar.",
+          "Google und Grok haben auf die Gegenposition reagiert. Die Grok-Botgruppe zählt als ein Anbieterkontext.",
+          "Lokale Entscheidungsepochen gelten pro Raum; alte Quittungen bleiben historische Belege und reaktivieren keinen Rückzug.",
+          "Quittungen brauchen den genauen Paket-, Kontext- und Mandatsbezug; Rollenwechsel bewahrt Urheber und Zuständigkeit offener Einwände.",
+          "Ein Konflikt blockiert die betroffene Beziehung und nachweislich davon abhängige Beziehungen; unbekannte Abhängigkeiten bleiben unklar.",
+          "Abweichender Inhalt unter gleicher Kennung bleibt Inhaltskonflikt. Die Gesamtpassung bleibt unbekannt.",
+          "Teilübernahme erzeugt eine neue Ableitung. Originale und Dissens bleiben erhalten; Empfang ist keine menschliche Annahme.",
+          "Quittungsherkunft unterscheidet geprüft und verworfen von nie geprüft und führt zu verantwortlicher Person oder Rolle, Befund und genauem Testlauf zurück.",
+          "Der eigene Quittungseintrag von DAS DAZWISCHEN und eine dortige Schreibintegration sind nicht belegt.",
+          "Das entscheidende Mandat für Inhaltskonflikt → neue Ableitung bleibt offen; zwei Fassungen mit Einwand übertragen kein Eigentum."
+        ]
+      },
+      "mandate": {
+        "status": "proposed",
+        "actor": "Beteiligte Räume und menschliche Entscheidung",
+        "scope": "Begründete lokale Teilübernahme aus freigegebener Gegenlese; keine globale Uhr, Freigabepflicht oder Weisungsbefugnis."
+      },
+      "proposal": {
+        "status": "proposed",
+        "summary": "Aus echter Google-, Grok- und Kimi-Gegenlese mit Google↔Grok-Gegenreaktion hergeleitet: lokale Entscheidungsepochen, genau gebundene Quittungen, erhaltene Einwände und gerichtete Konfliktbedingungen. Inhaltskonflikt und unbekannte Gesamtpassung bleiben ausdrücklich offen."
+      },
+      "implementation": {
+        "status": "partial",
+        "summary": "Statische Oberfläche und isoliertes Variantenmodell sind implementiert und in begrenzten lokalen Modell- und Oberflächenprüfungen belegt. Produktiver Import, Statusüberschreibung und fremde Raumzustände sind damit nicht repariert oder freigegeben."
+      },
+      "verification": {
+        "status": "partial",
+        "summary": "34 bestandene Node-Tests und 44 bestandene DOM-Szenarien sind als begrenzte lokale Belege gemeldet. Nativ wurden Fassungen, Vergleich, DAS-DAZWISCHEN-Raumfassung, Reload sowie Enter-Rückkehr mit erhaltener Suche, Filterung und Fokus geprüft. Nach Korrektur einer Überbreite bestanden die ausgewählten Ansichten den schmalen Wiederholungstest; Warnungs- und Fehlerprotokoll waren leer. Eigener DAZWISCHEN-Quittungseintrag, produktive Anschlüsse, vollständiger Gesamtweg und menschliche Annahme bleiben offen.",
+        "evidenceBindings": [
+          {
+            "sourceId": "src-pruefbelege",
+            "revision": "freigegebene-pruefbelege-2026-10-27.2",
+            "contentHash": "d4cf4f46d2b71dba276c911d14e68f7f3934d9ade8af133464aa84855380cbe5",
+            "scope": "isolated-local-model-and-interface-only"
+          }
+        ],
+        "sourceIds": [
+          "src-pruefbelege"
+        ]
+      },
+      "humanAcceptance": {
+        "status": "open",
+        "summary": "Anbieterantwort und technischer Empfang sind keine menschliche Zustimmung. Gemeinsame Prüfung und Annahme bleiben offen."
+      },
+      "dissentIds": [
+        "dissent-roundtrip",
+        "dissent-identitaet",
+        "dissent-konvergenz",
+        "dissent-spektrum",
+        "dissent-gegenlese",
+        "dissent-oeffentlich-lokal",
+        "dissent-inhaltskonflikt",
+        "dissent-abhaengigkeit"
+      ],
+      "provenance": {
+        "kind": "partial-adoption-from-real-review",
+        "sourceVariantIds": [
+          "variant-foederiert"
+        ],
+        "operationId": "operation-teiluebernahme-gegenlese-2026-10-27"
+      },
+      "technicalDetails": {
+        "reviewKeys": [
+          "gegenlese-google-2026-10-27",
+          "gegenlese-grok-2026-10-27",
+          "gegenlese-kimi-2026-10-27"
+        ],
+        "reviewedVariantId": "variant-foederiert",
+        "reviewedVariantRevision": "oeffentlicher-variantenraum-2026-10-27.1",
+        "reviewCycle": "Föderierter Vergleich → Grok und Google → gegenseitige Gegenreaktion → eigenständige Kimi-Gegenlese → tatsächlicher zweiter Kimi-Rücklauf → begründete Teilübernahme.",
+        "overallCompatibility": "unknown",
+        "humanAcceptanceInferredFromReceipt": false
+      }
+    }
+  ],
+  "relations": [
+    {
+      "id": "relation-vergleich",
+      "fromVariantId": "variant-ausgang",
+      "toVariantId": "variant-foederiert",
+      "type": "compares",
+      "summary": "Der föderierte Vergleich entwickelt einen zusätzlichen Vorschlag aus dem begrenzten Ausgangsentwurf; der Ausgang bleibt erhalten.",
+      "sourceIds": [
+        "src-auftrag",
+        "src-mooncells-lokal"
+      ],
+      "compatibility": "unknown",
+      "dependsOnRelationIds": []
+    },
+    {
+      "id": "relation-wartende-revision",
+      "fromVariantId": "variant-foederiert",
+      "toVariantId": "variant-teiluebernahme",
+      "type": "partial-adoption",
+      "summary": "Konkrete neue Ableitung nach echter Google-, Grok- und Kimi-Gegenlese und Google↔Grok-Gegenreaktion. Lokale Epoch, genaue Quittung und erhaltener Dissens werden übernommen; Inhaltskonflikt, öffentliche Basisgrenzen und Gesamtpassung bleiben offen.",
+      "sourceIds": [
+        "src-antwort-google",
+        "src-antwort-grok",
+        "src-antwort-kimi"
+      ],
+      "compatibility": "unknown",
+      "dependsOnRelationIds": []
+    }
+  ],
+  "dissent": [
+    {
+      "id": "dissent-roundtrip",
+      "title": "Der praktische Gesamtweg ist noch offen",
+      "summary": "Teilprüfungen ergeben keinen vollständigen Nachweis für Einstieg, Raumbeitrag, Quellenrückkehr, Variantenvergleich und Wiederaufnahme nach Reload. Produktiver TiSCH-Weg, Grenzen der Schreibzuständigkeit und menschliche Annahme brauchen eigene Belege. Eine Quittung muss zu verantwortlicher Person oder Rolle, Befund und genauem Testlauf zurückführen und geprüft-verworfen von nie-geprüft unterscheiden. Ein tatsächlicher eigener Quittungseintrag von DAS DAZWISCHEN ist noch offen; eine Schreibintegration wird nicht behauptet.",
+      "variantIds": [
+        "variant-ausgang",
+        "variant-foederiert",
+        "variant-teiluebernahme"
+      ],
+      "roomIds": [
+        "room-kin",
+        "room-spiral",
+        "room-tisch",
+        "room-dazwischen",
+        "room-atlas",
+        "room-neuro"
+      ],
+      "status": "open",
+      "sourceIds": [
+        "src-kin",
+        "src-spiral",
+        "src-tisch",
+        "src-dazwischen",
+        "src-atlas",
+        "src-neuro",
+        "src-antwort-kimi"
+      ]
+    },
+    {
+      "id": "dissent-identitaet",
+      "title": "Jev und Laya brauchen einen aktuellen eigenen Bezug",
+      "summary": "Historische Namen, Profile und Einzelaufrufe reichen nicht für aktuelle Identität, Mandat oder Qualifikation. Jev und Laya bleiben getrennt; eine Gleichsetzung mit ähnlich benannten Profilen wird nicht angenommen.",
+      "variantIds": [
+        "variant-ausgang",
+        "variant-foederiert",
+        "variant-teiluebernahme"
+      ],
+      "roomIds": [
+        "room-jev-laya"
+      ],
+      "status": "open",
+      "sourceIds": [
+        "src-jev-laya"
+      ]
+    },
+    {
+      "id": "dissent-konvergenz",
+      "title": "Konvergenz braucht benannte Voraussetzungen",
+      "summary": "Die öffentliche Basis beschreibt Deduplizierung und Mengenvereinigung. Derselbe Bezeichner mit unterschiedlichem Inhalt und veränderliche Statusfelder erfordern eine eigene Konflikt- und Reihenfolgeregel; allgemeine Konvergenz folgt nicht allein aus dem Überspringen vorhandener Kennungen.",
+      "variantIds": [
+        "variant-ausgang",
+        "variant-foederiert",
+        "variant-teiluebernahme"
+      ],
+      "roomIds": [
+        "room-mooncells"
+      ],
+      "status": "documented",
+      "sourceIds": [
+        "src-mooncells-basis",
+        "src-mooncells-lokal",
+        "src-mooncells-importdoku",
+        "src-mooncells-importcode"
+      ]
+    },
+    {
+      "id": "dissent-spektrum",
+      "title": "SPEKTRUM bleibt eigenständig unbekannt",
+      "summary": "Aktuelle Zuständigkeit, Quellenvertrag und Anschluss sind nicht eindeutig belegt. Der Raum wird nicht stillschweigend mit PHÄNOMENATLAS oder NEURO zusammengeführt.",
+      "variantIds": [
+        "variant-ausgang",
+        "variant-foederiert",
+        "variant-teiluebernahme"
+      ],
+      "roomIds": [
+        "room-spektrum"
+      ],
+      "status": "open",
+      "sourceIds": [
+        "src-spektrum"
+      ]
+    },
+    {
+      "id": "dissent-gegenlese",
+      "title": "Gegenlese erfolgt – öffentliche Belege bleiben begrenzt",
+      "summary": "Google, Grok und Kimi haben tatsächlich gegengelesen; Google und Grok reagierten auf die Gegenposition, Kimi lieferte einen tatsächlichen zweiten Rücklauf. Öffentliche Digests dokumentieren konkrete Übernahmen und Grenzen. Originaldialoge sind öffentlich nicht vollständig rekonstruierbar; drei Grok-Botrollen sind ein Anbieterkontext. Technische Prüfung und menschliche Annahme folgen daraus nicht.",
+      "variantIds": [
+        "variant-foederiert",
+        "variant-teiluebernahme"
+      ],
+      "roomIds": [
+        "room-dazwischen",
+        "room-mooncells"
+      ],
+      "status": "documented",
+      "sourceIds": [
+        "src-antwort-google",
+        "src-antwort-grok",
+        "src-antwort-kimi"
+      ]
+    },
+    {
+      "id": "dissent-oeffentlich-lokal",
+      "title": "Öffentliche Basis und lokaler Entwurf unterscheiden sich",
+      "summary": "Der öffentliche Basisstand enthält die zusätzliche lokale Konflikt- und Variantenarbeit noch nicht. Lokale veränderte Bestände und ihre Tests dürfen nicht als Verhalten des veröffentlichten Imports ausgegeben werden. Eine produktive Sync- oder Statusreparatur ist hier nicht erfolgt.",
+      "variantIds": [
+        "variant-ausgang",
+        "variant-foederiert",
+        "variant-teiluebernahme"
+      ],
+      "roomIds": [
+        "room-mooncells"
+      ],
+      "status": "open",
+      "sourceIds": [
+        "src-mooncells-basis",
+        "src-mooncells-lokal",
+        "src-antwort-grok",
+        "src-antwort-kimi"
+      ]
+    },
+    {
+      "id": "dissent-inhaltskonflikt",
+      "title": "Inhaltskonflikt bleibt ein eigener Einwand",
+      "summary": "Eine reine Kantensperre klärt keine unterschiedlichen Notizen, Titel oder Statuswerte unter derselben Kennung. Diese Unterschiede bleiben als Inhaltseinwand erhalten oder benötigen eine neue abgeleitete Variante. Wer mit welchem Mandat diese Überführung entscheidet, bleibt offen. Zwei Fassungen und ein Einwand begründen keinen Eigentümerwechsel. Der produktive Statusimport bleibt gesondert offen.",
+      "variantIds": [
+        "variant-teiluebernahme"
+      ],
+      "roomIds": [
+        "room-mooncells"
+      ],
+      "status": "open",
+      "sourceIds": [
+        "src-antwort-grok",
+        "src-antwort-kimi"
+      ]
+    },
+    {
+      "id": "dissent-abhaengigkeit",
+      "title": "Unbekannte Abhängigkeit ergibt keine Passung",
+      "summary": "Eine abgeleitete Variante darf eine gesperrte Voraussetzung nicht durch einen Umweg über einen anderen Baustein verlieren. Gerichtete bekannte Abhängigkeiten tragen die Konfliktbedingung weiter; bei unbekannten Abhängigkeiten und für das Gesamtgefüge bleibt die Passung unklar.",
+      "variantIds": [
+        "variant-teiluebernahme"
+      ],
+      "roomIds": [
+        "room-mooncells",
+        "room-kin"
+      ],
+      "status": "open",
+      "sourceIds": [
+        "src-antwort-google",
+        "src-antwort-grok"
+      ]
+    },
+    {
+      "id": "dissent-importprobe-reihenfolge",
+      "title": "Die Importreihenfolge verändert Inhalt und Status",
+      "summary": "Die ausgeführte Probe bestätigt einen konkreten Gegenbefund zur allgemeinen Konvergenzbehauptung: Bei gleicher Kennung setzen sich für Notizen und Labels je Reihenfolge verschiedene zuerst eingegangene Inhalte durch, ohne gemeldeten Inhaltskonflikt. Beim Status gewinnt die letzte Zustellung; ein früheres Paket kann nach einer Zwischenänderung den alten Status wiederherstellen. Nur der unmittelbare gleiche Wiederholimport war bytegleich. Eine Konflikt- oder Frischeregel bleibt daher offen. Die 29 bestandenen Prüfungen betreffen den unveränderten öffentlichen Import mit künstlichen Daten, keine HTTP-, Dienst- oder Produktionsprobe und keine Annahme einer Gesamtvariante.",
+      "variantIds": [
+        "variant-ausgang",
+        "variant-foederiert",
+        "variant-teiluebernahme"
+      ],
+      "roomIds": [
+        "room-mooncells"
+      ],
+      "status": "open",
+      "sourceIds": [
+        "src-mooncells-importdoku",
+        "src-mooncells-importcode",
+        "src-mooncells-importprobe"
+      ]
+    }
+  ],
+  "technicalDetails": {
+    "publicBaseline": "95f7923eb58b6a1ed540c2daa86c255998e39c0d",
+    "publicationStatus": "published-draft-pr",
+    "sourceSelection": "Abstrakte, bewusst ausgewählte öffentliche Zusammenfassungen; keine privaten Rohquellen, Autoren-E-Mails oder privaten Dateipfade.",
+    "snapshotMeaning": "Dirty observedHead ist ein beobachteter Git-Zeiger und kein eingefrorener ausführbarer Stand. Bindungen betreffen die Zusammenfassung mit gleicher revision und contentHash.",
+    "relationMeaning": "Beziehungen verbinden nur die hier beschriebenen Gesamtvarianten. Sie erzeugen keine kanonischen Beziehungen zwischen Werken.",
+    "runtimeBoundary": "Statischer Katalog und isoliertes lokales Modell; keine Zustands-API, kein kanonischer Systemzustand, keine Dienst- oder Schreibfreigabe.",
+    "reviewEvidence": "Drei Anbieter; Grok-Botrollen ein gemeinsamer Kontext. Echte Antworten im Leitchat gelesen, freigegebene Digests; Originaldialoge öffentlich nicht vollständig rekonstruierbar."
+  },
+  "publicSourceCases": [
+    {
+      "id": "sourcecase-importgrenze",
+      "title": "Importbeschreibung und tatsächliche Ausnahme",
+      "sourceIds": [
+        "src-mooncells-importdoku",
+        "src-mooncells-importcode"
+      ],
+      "summary": "Die Anleitung erklärt den allgemeinen Importfall; der Code zeigt die genaue Entscheidung bei bekannten Kennungen und die Statusausnahme. Ein Inhaltsunterschied unter gleicher Kennung braucht einen ausdrücklich benannten Befund.",
+      "returnPath": "Mooncells → Quellen und Herkunft → Importbeschreibung oder Importentscheidung → exakte Zeilen im öffentlichen Basiscommit",
+      "scope": "Öffentlicher Quellenvergleich; keine neue kanonische Werkbeziehung, kein Produktionslauf und keine gemeinsame Graphintegration."
+    },
+    {
+      "id": "sourcecase-importprobe",
+      "title": "Vom Quellenvergleich zur ausgeführten Importprobe",
+      "sourceIds": [
+        "src-mooncells-importdoku",
+        "src-mooncells-importcode",
+        "src-mooncells-importprobe"
+      ],
+      "summary": "Eine neue Belegfassung ergänzt den erhaltenen Quellenvergleich um die ausgeführte Probe. Die beobachtete erste Inhaltsübernahme und die letzte Statuszustellung begrenzen die allgemeine Konvergenzbeschreibung; die erforderliche Konflikt- und Frischeregel bleibt offen.",
+      "returnPath": "Mooncells → Offener Dissens oder Quellen und Herkunft → ausgeführte Probe des öffentlichen Imports → öffentliche Dateien des Entwurfs-PR; die genaue Reprodatei bleibt in den technischen Details gebunden",
+      "scope": "Öffentlicher, reproduzierbarer Funktionsbefund mit künstlichen Daten; keine neue Gesamtvariante, keine produktive Synchronisation und keine menschliche Annahme.",
+      "provenance": {
+        "kind": "evidence-extension",
+        "parentSourceCaseIds": [
+          "sourcecase-importgrenze"
+        ]
+      }
+    }
+  ]
+}
