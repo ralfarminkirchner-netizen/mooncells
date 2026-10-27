@@ -1,12 +1,18 @@
 import { validateCatalog, compareVariants } from './core.mjs';
+import { createRundwegClient, mergeRundwegState, inspectHandoff, handoffsForVariant, dazwischenUrl } from './rundweg-client.mjs';
 
 const workspace = document.querySelector('#workspace');
 const variantList = document.querySelector('#variant-list');
 const notice = document.querySelector('#notice');
 let catalog;
+let baseCatalog;
 let state;
 let indexes;
 let navigationWarning = false;
+const rundweg = { available: false, busy: false, handoffs: [], checks: new Map() };
+let retryStorage;
+try { retryStorage = window.localStorage; } catch { /* The catalog also works without browser storage. */ }
+const rundwegClient = createRundwegClient({ storage: retryStorage });
 const stages = [['proposal', 'Vorschlag'], ['implementation', 'Umsetzung'], ['verification', 'Prüfung'], ['humanAcceptance', 'Menschliche Annahme']];
 const labels = {
   open: 'Offen', proposed: 'Vorgeschlagen', proposal: 'Vorgeschlagen', awaiting: 'Beitrag ausstehend',
@@ -125,6 +131,98 @@ function onHistory() {
   if (navigationWarning) { announce('Ein Teil des gespeicherten Einstiegs war nicht verfügbar. Die gültige Auswahl ist geöffnet.'); navigationWarning = false; }
 }
 
+function indexCatalog() {
+  indexes = Object.fromEntries(['variants', 'rooms', 'components', 'sources', 'dissent'].map(kind => [kind, new Map(catalog[kind].map(item => [item.id, item]))]));
+  document.querySelector('#catalog-note').textContent = `${catalog.variants.length} Gesamtfassungen · ${catalog.rooms.length} eigenständige Räume`;
+}
+async function refreshRundweg() {
+  try {
+    const remote = await rundwegClient.state();
+    const merged = mergeRundwegState(baseCatalog, remote, catalog?.variants || []);
+    const checks = await Promise.all(remote.handoffs.map(async entry => [entry.packet?.operationId, await inspectHandoff(entry, merged)]));
+    catalog = merged; indexCatalog();
+    rundweg.handoffs = remote.handoffs; rundweg.checks = new Map(checks); rundweg.available = true;
+    return true;
+  } catch { rundweg.available = false; return false; }
+}
+async function reconnectRundweg() {
+  rundweg.busy = true; render();
+  const connected = await refreshRundweg();
+  rundweg.busy = false;
+  if (connected) { navigationWarning = false; state = readState(); saveHash(true); }
+  render(); announce(connected ? 'Der gespeicherte Rundwegstand ist geladen.' : 'Der Rundwegdienst ist gerade nicht erreichbar. Der Variantenraum bleibt geöffnet.');
+}
+async function startRundweg(variant) {
+  rundweg.busy = true; render();
+  try {
+    const entry = await rundwegClient.handoff({ catalogRevision: catalog.revision, variant, navigation: { hash: hashFor(state) } });
+    const check = await inspectHandoff(entry, catalog);
+    if (!check.canContinue) throw new Error('handoff');
+    location.assign(dazwischenUrl(entry, location.origin));
+  } catch {
+    await refreshRundweg();
+    announce('Die Übergabe konnte noch nicht sicher geöffnet werden. Erneutes Öffnen wiederholt denselben Versuch, falls seine Antwort verloren ging.');
+  } finally { rundweg.busy = false; render(); }
+}
+async function recordRundweg(entry) {
+  rundweg.busy = true; render();
+  try {
+    if (!await refreshRundweg()) throw new Error('state');
+    const current = rundweg.handoffs.find(item => item.packet.operationId === entry.packet.operationId);
+    const check = rundweg.checks.get(current?.packet.operationId);
+    if (!current || (!current.adoption && !check?.canAdopt)) throw new Error('receipt');
+    const result = current.adoption ? current : await rundwegClient.adopt(current);
+    if (!await refreshRundweg() || !indexes.variants.has(result.adoption?.variantId)) throw new Error('state');
+    go({ variant: result.adoption.variantId, other: current.packet.source.variantId, view: 'variant', roomVariant: '' });
+    announce('Der Rundwegbeleg ist in einer neuen Gesamtfassung festgehalten. Einwände und Quellenbindungen bleiben erhalten; menschliche Annahme bleibt offen.');
+  } catch { announce('Der Beleg konnte noch nicht in einer neuen Fassung festgehalten werden. Lade den aktuellen Rundwegstand und versuche es bei einem gültigen Empfang erneut.'); }
+  finally { rundweg.busy = false; render(); }
+}
+async function withdrawRundweg(entry) {
+  rundweg.busy = true; render();
+  try {
+    await rundwegClient.withdraw(entry);
+    if (!await refreshRundweg()) throw new Error('state');
+    announce('Die Übergabe ist zurückgezogen. Der Übergabebeleg bleibt historisch; eine neue Ableitung aus dieser Übergabe ist gesperrt.');
+  } catch { announce('Der Rückzug konnte noch nicht bestätigt werden. Lade den gespeicherten Rundwegstand erneut.'); }
+  finally { rundweg.busy = false; render(); }
+}
+function receiptView(entry) {
+  const check = rundweg.checks.get(entry.packet.operationId) || {};
+  const receipt = entry.receipt;
+  const existing = entry.adoption && indexes.variants.get(entry.adoption.variantId);
+  const actions = [];
+  if (rundweg.available && check.canContinue) {
+    try { actions.push(node('a', { class: 'button-link', href: dazwischenUrl(entry, location.origin) }, 'In DAS DAZWISCHEN öffnen')); } catch { /* No untrusted destination is rendered. */ }
+  }
+  if (existing) actions.push(button('Gesamtfassung mit Rundwegbeleg öffnen', () => go({ variant: existing.id, view: 'variant', roomVariant: '' }), { disabled: rundweg.busy }));
+  else if (rundweg.available && check.canAdopt) actions.push(button('Rundwegbeleg in neuer Gesamtfassung festhalten', () => recordRundweg(entry), { disabled: rundweg.busy }));
+  if (rundweg.available && !entry.withdrawn) actions.push(button('Übergabe zurückziehen', () => withdrawRundweg(entry), { class: 'text-button', disabled: rundweg.busy }));
+  return node('article', { class: 'rundweg-receipt' }, heading(name(entry.packet.source.variantSnapshot, 'Übergebene Gesamtfassung'), 4),
+    !check.validPacket && paragraph('Die Bindung dieses Übergabebelegs konnte nicht bestätigt werden. Eine neue Ableitung bleibt gesperrt.', 'rundweg-warning'),
+    entry.withdrawn && paragraph('Zurückgezogen. Der Übergabebeleg bleibt als Geschichte erhalten; aus dieser Übergabe entsteht keine weitere Gesamtfassung.', 'rundweg-warning'),
+    check.stale && paragraph('Dieser Beleg gehört zu einer älteren Fassung. Für die aktuelle Fassung ist ein neuer Versuch erforderlich.', 'rundweg-warning'),
+    check.validReceipt ? [badge('received', 'In DAS DAZWISCHEN empfangen'),
+      paragraph(`${human(receipt.actor.name, 'Technische Ausführung')} · ${human(receipt.actor.role, 'Technische Ausführung')}`),
+      paragraph(human(receipt.finding, 'Ein technischer Empfang wurde festgehalten.')),
+      paragraph(human(receipt.actor.scope, 'Mandat: den technischen Rundweg im aktuellen Auftrag ausführen.')),
+      paragraph('Fachliche Prüfung offen · Menschliche Annahme offen', 'subtle')]
+      : paragraph(receipt ? 'Die Quittung passt nicht vollständig zu dieser Übergabe. Sie wird nicht als gültiger Empfang gewertet.' : 'Empfang noch nicht quittiert.', 'subtle'),
+    existing && paragraph(entry.withdrawn ? 'Eine bereits abgeleitete Fassung bleibt erhalten. Der Rückzug ändert sie nicht.' : 'Dieser Rundwegbeleg ist bereits in einer neuen Gesamtfassung festgehalten.'),
+    paragraph('Ein Rückzug sperrt neue Ableitungen aus dieser Übergabe. Er löscht weder den Beleg noch bereits entstandene Fassungen.', 'subtle'),
+    node('div', { class: 'rundweg-actions' }, actions), technical(entry));
+}
+function rundwegView(variant, entryPoint = false) {
+  const entries = handoffsForVariant(rundweg.handoffs, variant);
+  if (!entryPoint && !entries.length) return [];
+  return node('section', { class: 'rundweg-panel' }, heading('Rundweg mit DAS DAZWISCHEN'),
+    paragraph('Öffentliche Quellenzusammenfassungen und ihre genauen Bindungen werden übergeben. Private Originale sind nicht enthalten. Ein Empfangsbeleg bestätigt den technischen Rückweg; fachliche Prüfung und menschliche Annahme bleiben offen.'),
+    !rundweg.available && paragraph('Der Rundwegdienst ist gerade nicht erreichbar. Du kannst den Katalog weiter lesen; Übergaben und neue Fassungen benötigen den Dienst.', 'rundweg-warning'),
+    entryPoint && button('In DAS DAZWISCHEN weiterarbeiten', () => startRundweg(variant), { disabled: rundweg.busy || !rundweg.available || !bindingsFor(variant, 'room-dazwischen').length }),
+    button('Gespeicherten Rundwegstand laden', reconnectRundweg, { class: 'text-button', disabled: rundweg.busy }),
+    entries.length ? entries.map(receiptView) : paragraph('Für diese Gesamtfassung liegt noch keine Raumquittung vor.', 'subtle'));
+}
+
 function bindingsFor(variant, roomId) {
   return list(variant.componentBindings).filter(binding => !roomId || binding.roomId === roomId || itemById('components', binding.componentId)?.roomId === roomId);
 }
@@ -234,8 +332,14 @@ function roomDirectory(variant) {
   return node('section', {}, heading('Von der Fassung in die Räume'), paragraph('Jeder Raum behält seine eigene Herkunft. Öffne einen Beitrag, seine Quellen und die noch fehlenden Nachweise.', 'subtle'),
     node('div', { class: 'toolbar' }, node('label', { class: 'field' }, 'Räume durchsuchen', search), node('label', { class: 'field' }, 'Beiträge eingrenzen', filter)), results);
 }
+function sourceSnapshotNotice(variant, roomId) {
+  const entries = handoffsForVariant(rundweg.handoffs, variant).filter(entry => !roomId || entry.packet.source.roomId === roomId);
+  if (!entries.length) return [];
+  return node('section', { class: 'quiet-panel' }, heading('Übernommener Quellenstand'),
+    paragraph('Die folgenden Beiträge, Prüfstände und Einwände stammen aus der übergebenen Quellenfassung. Der spätere technische Rundweg wird im eigenen Beleg geführt. Die ursprünglichen Aussagen bleiben als Quellenstand erhalten.'));
+}
 function variantView(variant) {
-  return [workHeader(variant), stageView(variant), node('div', { class: 'content-grid' }, roomDirectory(variant), node('aside', {}, conditionsView(variant),
+  return [workHeader(variant), sourceSnapshotNotice(variant), stageView(variant), rundwegView(variant), node('div', { class: 'content-grid' }, roomDirectory(variant), node('aside', {}, conditionsView(variant),
     node('section', { class: 'quiet-panel' }, heading('Offener Dissens'), dissentView(dissentFor(variant))),
     node('section', { class: 'quiet-panel' }, heading('Verwandte Gesamtfassungen'), relatedView(variant)))),
     technical({ catalogRevision: catalog.revision, variant, note: 'Beziehungen dieses Katalogs beschreiben Gesamtfassungen. Sie erzeugen keine kanonischen Werkbeziehungen.' })];
@@ -255,6 +359,8 @@ function roomView(variant) {
   return [button(`← Zurück ${state.back === 'compare' ? 'zum Vergleich' : 'zur Gesamtfassung'}`, returnFromRoom, { class: 'text-button back-button' }),
     node('article', { class: 'room-detail' }, paragraph(name(variant, 'Gewählte Gesamtfassung'), 'work-label'),
       heading(name(room, 'Eigenständiger Raum'), 2, { id: 'work-title', tabindex: '-1' }), paragraph(summary(room, 'Die Eigenart dieses Raums ist noch zu beschreiben.'), 'lead'),
+      sourceSnapshotNotice(variant, room.id),
+      room.id === 'room-dazwischen' && rundwegView(variant, true),
       node('div', { class: 'content-grid' }, node('div', {},
         heading('Beitrag dieses Raums'), badge(room.contributionStatus || 'open'), paragraph(human(room.contribution, 'Ein tatsächlicher Beitrag des verantwortlichen Raums steht noch aus.')),
         paragraph(human(room.knowledge, room.knowledgeStatus === 'known' ? 'Der erfasste Stand ist mit Quellen verbunden.' : 'Die Übersicht kennt diesen Raum nur teilweise; sein eigener Beitrag bleibt erforderlich.'), 'subtle'),
@@ -360,10 +466,12 @@ async function load() {
     const data = await response.json();
     const result = validateCatalog(data);
     if (!result.valid || !list(data.variants).length) throw new Error('catalog');
-    catalog = data;
-    indexes = Object.fromEntries(['variants', 'rooms', 'components', 'sources', 'dissent'].map(kind => [kind, new Map(catalog[kind].map(item => [item.id, item]))]));
-    document.querySelector('#catalog-note').textContent = `${catalog.variants.length} Gesamtfassungen · ${catalog.rooms.length} eigenständige Räume`;
-    state = readState(); saveHash(true); render();
+    baseCatalog = data; catalog = data; indexCatalog();
+    await refreshRundweg();
+    state = readState();
+    if (rundweg.available || !navigationWarning) saveHash(true);
+    render();
+    if (!rundweg.available) announce('Der Rundwegdienst ist gerade nicht erreichbar. Der Katalog bleibt lesbar; gespeicherte zusätzliche Fassungen sind erst mit dem Dienst verfügbar.');
     if (navigationWarning) { announce('Ein Teil des gespeicherten Einstiegs war nicht verfügbar. Die gültige Auswahl ist geöffnet.'); navigationWarning = false; }
   } catch {
     catalog = null;

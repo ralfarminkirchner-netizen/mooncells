@@ -1,0 +1,627 @@
+diff --git a/src/types/variantHandoff.ts b/src/types/variantHandoff.ts
+new file mode 100644
+--- /dev/null
++++ b/src/types/variantHandoff.ts
+@@ -0,0 +1,71 @@
++export type JsonValue = null | boolean | number | string | JsonValue[] | { [key: string]: JsonValue }
++
++export interface HandoffBinding {
++  componentId: string
++  componentTitle: string
++  sourceId: string
++  roomId: string
++  role: string
++  revision: string | null
++  contentHash: string | null
++  bindingStatus: string
++  [key: string]: JsonValue
++}
++
++export interface HandoffSourceSummary {
++  id: string
++  title: string
++  summary: string
++  revision: string | null
++  contentHash: string | null
++  visibility: 'public'
++}
++
++export interface HandoffDissent {
++  id: string
++  title: string
++  summary: string
++  [key: string]: JsonValue
++}
++
++export interface VariantHandoffPacket {
++  format: 'kintegrity.roundtrip.v1'
++  operationId: string
++  createdAt: string
++  digest: string
++  source: {
++    catalogRevision: string
++    variantId: string
++    variantDigest: string
++    variantSnapshot: { title: string; [key: string]: JsonValue }
++    roomId: string
++    bindings: HandoffBinding[]
++    sourceSummaries: HandoffSourceSummary[]
++    dissent: HandoffDissent[]
++  }
++  navigation: { hash: string }
++  mandate: { text: string; executor: 'Codex'; role: 'Technische Ausführung'; scope: string }
++  target: { name: 'DAS DAZWISCHEN'; revision: string }
++  returnUrl: string
++}
++
++export interface VariantHandoffReceipt {
++  id: string
++  packetDigest: string
++  digest: string
++  createdAt: string
++  actor: { name: 'Codex'; role: 'Technische Ausführung'; mandate: string; scope: string; identityBasis: 'configured-local-technical-executor' }
++  transport: 'received'
++  review: 'not-reviewed'
++  humanAcceptance: 'open'
++  finding: string
++  targetRevision: string
++  returnUrl: string
++}
++
++export interface VariantHandoffEnvelope {
++  packet: VariantHandoffPacket
++  receipt: VariantHandoffReceipt | null
++  withdrawn: boolean
++  adoption: JsonValue
++}
+diff --git a/src/lib/variantHandoff.ts b/src/lib/variantHandoff.ts
+new file mode 100644
+--- /dev/null
++++ b/src/lib/variantHandoff.ts
+@@ -0,0 +1,170 @@
++import type { JsonValue, VariantHandoffEnvelope, VariantHandoffPacket, VariantHandoffReceipt } from '../types/variantHandoff.ts'
++
++const invalidMessage = 'Die Übergabe konnte nicht sicher geprüft werden. Eine Quittierung ist nicht möglich.'
++const hashPattern = /^[a-f0-9]{64}$/
++const operationPattern = /^[A-Za-z0-9_-]{8,128}$/
++const summaryKeys = new Set(['id', 'title', 'summary', 'revision', 'contentHash', 'visibility'])
++
++function invalid(): never { throw new Error(invalidMessage) }
++function object(value: unknown): Record<string, unknown> {
++  if (!value || typeof value !== 'object' || Array.isArray(value)) invalid()
++  return value as Record<string, unknown>
++}
++function text(value: unknown, max = 20000): asserts value is string {
++  if (typeof value !== 'string' || !value.trim() || value.length > max) invalid()
++}
++function hash(value: unknown): void {
++  if (typeof value !== 'string' || !hashPattern.test(value)) invalid()
++}
++function timestamp(value: unknown): void {
++  text(value, 64)
++  if (!Number.isFinite(Date.parse(value))) invalid()
++}
++function list(value: unknown): unknown[] {
++  if (!Array.isArray(value) || value.length > 500) invalid()
++  return value
++}
++function nullableText(value: unknown): void { if (value !== null) text(value) }
++
++export function isHandoffOperation(value: string | null): value is string {
++  return value !== null && operationPattern.test(value)
++}
++
++/** JSON-only, ASCII field names; matches the server's recursive key ordering. */
++export function canonicalJson(value: unknown): string {
++  function sorted(entry: unknown, depth: number): JsonValue {
++    if (depth > 40) invalid()
++    if (entry === null || typeof entry === 'string' || typeof entry === 'boolean') return entry
++    if (typeof entry === 'number' && Number.isFinite(entry)) return entry
++    if (Array.isArray(entry)) return entry.map((item) => sorted(item, depth + 1))
++    const record = object(entry)
++    const keys = Object.keys(record).sort()
++    if (keys.some((key) => !/^[\x20-\x7e]+$/.test(key))) invalid()
++    return Object.fromEntries(keys.map((key) => [key, sorted(record[key], depth + 1)]))
++  }
++  return JSON.stringify(sorted(value, 0))
++}
++
++export async function contentDigest(value: unknown): Promise<string> {
++  const bytes = new TextEncoder().encode(canonicalJson(value))
++  const digest = await crypto.subtle.digest('SHA-256', bytes)
++  return [...new Uint8Array(digest)].map((byte) => byte.toString(16).padStart(2, '0')).join('')
++}
++
++async function verifyDigest(value: Record<string, unknown>): Promise<void> {
++  hash(value.digest)
++  const { digest, ...contents } = value
++  if (await contentDigest(contents) !== digest) invalid()
++}
++
++export function isSafeReturnUrl(value: unknown): value is string {
++  if (typeof value !== 'string' || value.length > 8000 || /[\s\\]/.test(value) || [...value].some((char) => char.charCodeAt(0) < 32 || char.charCodeAt(0) === 127)) return false
++  if (!value.startsWith('/variantenraum/index.html#') || value.endsWith('#')) return false
++  const url = new URL(value, 'https://roundtrip.invalid')
++  return url.origin === 'https://roundtrip.invalid' && url.pathname === '/variantenraum/index.html' && !url.search && Boolean(url.hash)
++}
++
++function validatePacket(value: unknown, operationId: string): VariantHandoffPacket {
++  const packet = object(value)
++  if (packet.format !== 'kintegrity.roundtrip.v1' || packet.operationId !== operationId || !isHandoffOperation(operationId)) invalid()
++  timestamp(packet.createdAt)
++  hash(packet.digest)
++  if (!isSafeReturnUrl(packet.returnUrl)) invalid()
++  const navigation = object(packet.navigation)
++  text(navigation.hash, 8000)
++  if (!navigation.hash.startsWith('#') || packet.returnUrl !== `/variantenraum/index.html${navigation.hash}`) invalid()
++  const mandate = object(packet.mandate)
++  if (mandate.executor !== 'Codex' || mandate.role !== 'Technische Ausführung') invalid()
++  text(mandate.text)
++  text(mandate.scope)
++  const target = object(packet.target)
++  if (target.name !== 'DAS DAZWISCHEN') invalid()
++  text(target.revision, 256)
++  const source = object(packet.source)
++  for (const field of ['catalogRevision', 'variantId', 'roomId']) text(source[field], 500)
++  hash(source.variantDigest)
++  const snapshot = object(source.variantSnapshot)
++  text(snapshot.title, 1000)
++  if (snapshot.id !== source.variantId || source.roomId !== 'room-dazwischen') invalid()
++  const snapshotBindings = list(snapshot.componentBindings)
++  for (const entry of list(source.bindings)) {
++    const binding = object(entry)
++    for (const field of ['componentId', 'componentTitle', 'sourceId', 'roomId', 'role', 'bindingStatus']) text(binding[field], 2000)
++    nullableText(binding.revision)
++    nullableText(binding.contentHash)
++    if (binding.roomId !== source.roomId) invalid()
++    const originalBinding = Object.fromEntries(Object.entries(binding).filter(([key]) => key !== 'componentTitle'))
++    if (!snapshotBindings.some((item) => canonicalJson(item) === canonicalJson(originalBinding))) invalid()
++  }
++  const sourceIds = new Set<string>()
++  for (const entry of list(source.sourceSummaries)) {
++    const summary = object(entry)
++    if (Object.keys(summary).some((key) => !summaryKeys.has(key)) || summary.visibility !== 'public') invalid()
++    for (const field of ['id', 'title', 'summary']) text(summary[field])
++    nullableText(summary.revision)
++    nullableText(summary.contentHash)
++    const id = summary.id as string
++    if (sourceIds.has(id)) invalid()
++    sourceIds.add(id)
++  }
++  for (const entry of list(source.bindings)) if (!sourceIds.has(object(entry).sourceId as string)) invalid()
++  for (const entry of list(source.dissent)) {
++    const dissent = object(entry)
++    for (const field of ['id', 'title', 'summary']) text(dissent[field])
++  }
++  return packet as unknown as VariantHandoffPacket
++}
++
++function validateReceipt(value: unknown, packet: VariantHandoffPacket): VariantHandoffReceipt {
++  const receipt = object(value)
++  text(receipt.id, 500)
++  hash(receipt.digest)
++  timestamp(receipt.createdAt)
++  if (receipt.packetDigest !== packet.digest || receipt.targetRevision !== packet.target.revision || receipt.returnUrl !== packet.returnUrl) invalid()
++  if (receipt.transport !== 'received' || receipt.review !== 'not-reviewed' || receipt.humanAcceptance !== 'open') invalid()
++  text(receipt.finding, 2000)
++  const actor = object(receipt.actor)
++  if (actor.name !== 'Codex' || actor.role !== packet.mandate.role || actor.mandate !== packet.mandate.text || actor.scope !== packet.mandate.scope || actor.identityBasis !== 'configured-local-technical-executor') invalid()
++  return receipt as unknown as VariantHandoffReceipt
++}
++
++export async function verifyHandoffEnvelope(value: unknown, operationId: string): Promise<VariantHandoffEnvelope> {
++  const envelope = object(value)
++  if (typeof envelope.withdrawn !== 'boolean' || !Object.hasOwn(envelope, 'receipt') || !Object.hasOwn(envelope, 'adoption')) invalid()
++  const packet = validatePacket(envelope.packet, operationId)
++  await verifyDigest(packet as unknown as Record<string, unknown>)
++  if (await contentDigest(packet.source.variantSnapshot) !== packet.source.variantDigest) invalid()
++  const receipt = envelope.receipt === null ? null : validateReceipt(envelope.receipt, packet)
++  if (receipt) await verifyDigest(receipt as unknown as Record<string, unknown>)
++  canonicalJson(envelope.adoption)
++  return { packet, receipt, withdrawn: envelope.withdrawn, adoption: envelope.adoption as JsonValue }
++}
++
++export async function loadHandoff(operationId: string, signal?: AbortSignal): Promise<VariantHandoffEnvelope> {
++  if (!isHandoffOperation(operationId)) invalid()
++  const response = await fetch(`/api/rundweg/handoffs/${encodeURIComponent(operationId)}`, { credentials: 'same-origin', cache: 'no-store', signal })
++  if (!response.ok) throw new Error('Die Übergabe ist zurzeit nicht erreichbar. Bitte erneut laden.')
++  return verifyHandoffEnvelope(await response.json(), operationId)
++}
++
++export async function acknowledgeHandoff(packet: VariantHandoffPacket, finding: string): Promise<VariantHandoffEnvelope> {
++  const cleaned = finding.trim()
++  if (cleaned.length < 10 || cleaned.length > 2000) throw new Error('Bitte einen Befund mit mindestens zehn Zeichen zum technischen Empfang eintragen.')
++  const response = await fetch(`/api/rundweg/handoffs/${encodeURIComponent(packet.operationId)}/receipt`, {
++    method: 'POST', credentials: 'same-origin', cache: 'no-store',
++    headers: { 'Content-Type': 'application/json', 'X-Rundweg-Request': '1' },
++    body: JSON.stringify({ packetDigest: packet.digest, finding: cleaned, disposition: 'received' }),
++  })
++  if (!response.ok) throw new Error(response.status === 409 ? 'Die Übergabe wurde inzwischen verändert oder bereits anders quittiert. Bitte neu laden.' : 'Die Quittung konnte nicht bestätigt werden. Bitte die Übergabe neu laden, bevor Sie es erneut versuchen.')
++  const envelope = await verifyHandoffEnvelope(await response.json(), packet.operationId)
++  if (envelope.packet.digest !== packet.digest || !envelope.receipt || envelope.receipt.finding !== cleaned) invalid()
++  return envelope
++}
++
++/** Technical tokens remain available in the deliberately opened provenance view. */
++export function handoffDisplayText(value: string): string {
++  return value
++    .replace(/\b[\da-f]{8}-[\da-f]{4}-[\da-f]{4}-[\da-f]{4}-[\da-f]{12}\b/gi, 'technische Kennung')
++    .replace(/\b[\da-f]{7,64}\b/gi, 'technischer Quellenstand')
++    .replace(/\/(?:Volumes|Users|home)\/[^\s,;]+/g, 'technischer Quellenpfad')
++}
+diff --git a/src/components/VariantHandoffPanel.tsx b/src/components/VariantHandoffPanel.tsx
+new file mode 100644
+--- /dev/null
++++ b/src/components/VariantHandoffPanel.tsx
+@@ -0,0 +1,139 @@
++import { useEffect, useRef, useState } from 'react'
++import { acknowledgeHandoff, handoffDisplayText, isHandoffOperation, loadHandoff } from '../lib/variantHandoff'
++import type { VariantHandoffEnvelope } from '../types/variantHandoff'
++import './VariantHandoffPanel.css'
++
++const human = handoffDisplayText
++const loadError = 'Die Übergabe konnte nicht sicher geladen werden. Eine Quittierung ist nicht möglich.'
++
++export default function VariantHandoffPanel() {
++  const [requested] = useState(() => new URLSearchParams(window.location.search).get('rundweg'))
++  const [envelope, setEnvelope] = useState<VariantHandoffEnvelope | null>(null)
++  const [finding, setFinding] = useState('')
++  const [error, setError] = useState(requested !== null && !isHandoffOperation(requested) ? loadError : '')
++  const [loading, setLoading] = useState(isHandoffOperation(requested))
++  const [sending, setSending] = useState(false)
++  const [reload, setReload] = useState(0)
++  const heading = useRef<HTMLHeadingElement>(null)
++  const dialog = useRef<HTMLDialogElement>(null)
++
++  useEffect(() => {
++    if (requested === null) return
++    if (dialog.current && !dialog.current.open) dialog.current.showModal()
++    heading.current?.focus()
++    if (!isHandoffOperation(requested)) return
++    const controller = new AbortController()
++    void loadHandoff(requested, controller.signal).then((loaded) => {
++      if (controller.signal.aborted) return
++      setEnvelope(loaded)
++      setFinding(loaded.receipt?.finding ?? '')
++    }).catch(() => {
++      if (!controller.signal.aborted) setError(loadError)
++    }).finally(() => {
++      if (!controller.signal.aborted) setLoading(false)
++    })
++    return () => controller.abort()
++  }, [requested, reload])
++
++  if (requested === null) return null
++
++  function reloadHandoff() {
++    if (!isHandoffOperation(requested)) return
++    setLoading(true)
++    setError('')
++    setEnvelope(null)
++    setReload((value) => value + 1)
++  }
++
++  async function acknowledge() {
++    if (!envelope || envelope.withdrawn || envelope.receipt || loading || sending) return
++    setSending(true)
++    setError('')
++    try {
++      const result = await acknowledgeHandoff(envelope.packet, finding)
++      setEnvelope(result)
++      setFinding(result.receipt?.finding ?? finding)
++    } catch {
++      // Do not disclose server payloads, identifiers or URLs through error text.
++      setError('Die Quittung konnte nicht sicher bestätigt werden. Bitte neu laden; ein bereits gespeicherter Empfang bleibt dabei erhalten.')
++      setEnvelope(null)
++    } finally {
++      setSending(false)
++    }
++  }
++
++  const packet = envelope?.packet
++  const receipt = envelope?.receipt
++  return <dialog ref={dialog} className="variant-handoff" aria-labelledby="variant-handoff-heading" onCancel={(event) => event.preventDefault()}>
++    <div className="variant-handoff__sheet">
++      <header>
++        <p className="variant-handoff__eyebrow">Variantenraum · DAS DAZWISCHEN</p>
++        <h1 id="variant-handoff-heading" ref={heading} tabIndex={-1}>Übergabe mit Rückweg</h1>
++        <p>Dieser Anschluss überträgt die ausgewählte öffentliche Gesamtfassung und ihren gebundenen Raumbeitrag als Zusammenfassungen. Er öffnet keine private Originalpassage und ersetzt keine fachliche oder menschliche Entscheidung.</p>
++      </header>
++      {loading && <p role="status">Die Übergabe wird geladen und geprüft.</p>}
++      {error && <p className="variant-handoff__notice is-error" role="alert">{error}</p>}
++      {!packet && <nav className="variant-handoff__return" aria-label="Sicherer Ausgang">
++        {!loading && isHandoffOperation(requested) && <button type="button" onClick={reloadHandoff}>Übergabe erneut laden</button>}
++        <a href="/variantenraum/index.html">Zur Übersicht im Variantenraum</a>
++      </nav>}
++      {packet && <>
++        <section aria-labelledby="variant-handoff-origin">
++          <h2 id="variant-handoff-origin">Aus dem Variantenraum</h2>
++          <h3>{human(packet.source.variantSnapshot.title)}</h3>
++          <p>Der Rückweg bewahrt die ausgewählte Fassung und den mitgegebenen Ansichtskontext. Die technischen Quellenstände sind in den geschlossenen Details erhalten.</p>
++          <h3>Gebundene Beiträge</h3>
++          {packet.source.bindings.length === 0 ? <p>Keine einzelnen Beiträge im Paket gebunden.</p> : <ul>{packet.source.bindings.map((binding, index) => <li key={index}>
++            <strong>{human(binding.componentTitle)}</strong>
++            <p>{human(binding.role)}</p>
++          </li>)}</ul>}
++          <h3>Öffentliche Quellenzusammenfassungen</h3>
++          <p>Zusammenfassungen sind keine Originalpassagen. Private Quellen, Lesewege und deren genaue Passage werden hier nicht übernommen.</p>
++          {packet.source.sourceSummaries.length === 0 ? <p>Keine Quellenzusammenfassung mitgegeben.</p> : <ul>{packet.source.sourceSummaries.map((source, index) => <li key={index}>
++            <strong>{human(source.title)}</strong>
++            <p>{human(source.summary)}</p>
++          </li>)}</ul>}
++          <h3>Erhaltene Einwände</h3>
++          {packet.source.dissent.length === 0 ? <p>Keine Einwände im Paket mitgegeben. Daraus folgt keine Zustimmung.</p> : <ul>{packet.source.dissent.map((dissent, index) => <li key={index}>
++            <strong>{human(dissent.title)}</strong>
++            <p>{human(dissent.summary)}</p>
++          </li>)}</ul>}
++        </section>
++        <section aria-labelledby="variant-handoff-mandate">
++          <h2 id="variant-handoff-mandate">Verantwortung und Geltung</h2>
++          <p><strong>Codex · Technische Ausführung</strong></p>
++          <p>{human(packet.mandate.text)}</p>
++          <p><strong>Umfang:</strong> {human(packet.mandate.scope)}</p>
++          <p>Die Quittung belegt Empfang und technischen Anschluss dieses Pakets in DAS DAZWISCHEN. Fachliche Prüfung: noch nicht erfolgt. Menschliche Annahme: offen. Eine spätere Ableitung braucht eine eigene, verantwortete Entscheidung.</p>
++        </section>
++        {envelope.withdrawn && <section className="variant-handoff__notice" aria-labelledby="variant-handoff-withdrawn">
++          <h2 id="variant-handoff-withdrawn">Übergabe zurückgezogen</h2>
++          <p>Dieser Stand ist nur noch ein historischer Beleg. Ein neuer Empfang kann hier nicht quittiert werden.</p>
++        </section>}
++        {receipt ? <section className="variant-handoff__notice" aria-labelledby="variant-handoff-receipt">
++          <h2 id="variant-handoff-receipt">Technischer Empfang quittiert</h2>
++          <p><strong>Verantwortlich:</strong> Codex · Technische Ausführung</p>
++          <p><strong>Befund:</strong> {human(receipt.finding)}</p>
++          <p><strong>Empfangen:</strong> {new Date(receipt.createdAt).toLocaleString('de-DE')}</p>
++          <p>Das Paket und dieser Empfangsbeleg wurden auf ihre Bindung geprüft. Fachliche Prüfung und menschliche Annahme bleiben offen.</p>
++        </section> : !envelope.withdrawn && <section aria-labelledby="variant-handoff-acknowledge">
++          <h2 id="variant-handoff-acknowledge">Empfang bewusst festhalten</h2>
++          <p>Beschreiben Sie, was am technischen Anschluss tatsächlich festgestellt wurde. Mit dem Klick wird die fest benannte technische Ausführung quittiert; Sie bestätigen damit keine menschliche Annahme.</p>
++          <label htmlFor="variant-handoff-finding">Befund zum technischen Empfang</label>
++          <textarea id="variant-handoff-finding" rows={4} minLength={10} maxLength={2000} aria-describedby="variant-handoff-finding-help" value={finding} disabled={sending} onChange={(event) => setFinding(event.target.value)} />
++          <p id="variant-handoff-finding-help">Mindestens zehn Zeichen. Beschreiben Sie einen beobachteten technischen Befund.</p>
++          <button type="button" disabled={finding.trim().length < 10 || sending} onClick={() => { void acknowledge() }}>{sending ? 'Quittung wird geprüft …' : 'Technischen Empfang quittieren'}</button>
++        </section>}
++        <nav className="variant-handoff__return" aria-label="Rückweg zum Variantenraum">
++          <a href={receipt?.returnUrl ?? packet.returnUrl}>{receipt ? 'Mit Quittung zum Variantenraum zurück' : 'Ohne Quittung zurück'}</a>
++          <button type="button" disabled={sending} onClick={reloadHandoff}>Gespeicherten Stand neu laden</button>
++        </nav>
++        <details className="variant-handoff__technical">
++          <summary>Technische Bindung und Empfangsbeleg</summary>
++          <p>Das Paket und gegebenenfalls die Quittung sind im Browser kanonisch auf ihre Prüfsumme und gegenseitige Bindung geprüft. Dies ist ein technischer Integritätsnachweis, keine fachliche oder menschliche Zustimmung.</p>
++          <pre>{JSON.stringify(envelope, null, 2)}</pre>
++        </details>
++      </>}
++    </div>
++  </dialog>
++}
+diff --git a/src/components/VariantHandoffPanel.css b/src/components/VariantHandoffPanel.css
+new file mode 100644
+--- /dev/null
++++ b/src/components/VariantHandoffPanel.css
+@@ -0,0 +1,39 @@
++.variant-handoff {
++  position: fixed;
++  inset: 0;
++  width: 100%;
++  height: 100%;
++  max-width: none;
++  max-height: none;
++  margin: 0;
++  border: 0;
++  box-sizing: border-box;
++  z-index: 100;
++  overflow: auto;
++  padding: clamp(12px, 3vw, 40px);
++  color: #eae9e4;
++  background: #111a1e;
++  text-align: left;
++}
++.variant-handoff__sheet { max-width: 860px; margin: 0 auto; overflow-wrap: anywhere; }
++.variant-handoff header { margin-bottom: 28px; }
++.variant-handoff h1 { font-size: clamp(1.8rem, 6vw, 3rem); line-height: 1.12; margin: 10px 0 20px; }
++.variant-handoff h2 { font-size: 1.3rem; line-height: 1.3; margin: 0 0 16px; }
++.variant-handoff h3 { font-size: 1.05rem; line-height: 1.4; margin: 24px 0 8px; }
++.variant-handoff p { max-width: 72ch; line-height: 1.65; margin: 8px 0 14px; }
++.variant-handoff__eyebrow { color: #91d5cb; font-size: .85rem; }
++.variant-handoff section { border-top: 1px solid #405256; padding: 24px 0; }
++.variant-handoff ul { margin: 12px 0; padding-left: 24px; }
++.variant-handoff li { margin: 0 0 20px; }
++.variant-handoff label { display: block; font-weight: 600; margin: 18px 0 8px; }
++.variant-handoff textarea { display: block; box-sizing: border-box; width: 100%; max-width: 100%; min-height: 110px; padding: 12px; margin-bottom: 14px; resize: vertical; color: #f2f2eb; background: #19272b; border: 1px solid #74958f; border-radius: 8px; font: inherit; }
++.variant-handoff button, .variant-handoff__return a { display: inline-block; max-width: 100%; box-sizing: border-box; padding: 12px 16px; min-height: 44px; margin: 4px 8px 4px 0; border: 1px solid #83b6ac; border-radius: 8px; background: #213b3c; color: #f0f5ed; font: inherit; white-space: normal; line-height: 1.45; text-decoration: none; cursor: pointer; }
++.variant-handoff button:disabled { opacity: .55; cursor: default; }
++.variant-handoff :is(button, a, textarea, summary):focus-visible { outline: 3px solid #ead69c; outline-offset: 4px; }
++.variant-handoff__notice { padding: 20px !important; margin: 18px 0; border: 1px solid #81afa4 !important; border-radius: 10px; background: #19312f; }
++.variant-handoff__notice.is-error { border-color: #dc9b88 !important; background: #3e2824; }
++.variant-handoff__return { padding: 20px 0; border-top: 1px solid #405256; }
++.variant-handoff__technical { margin: 12px 0 32px; padding: 16px; border: 1px solid #405256; border-radius: 8px; }
++.variant-handoff__technical summary { cursor: pointer; padding: 6px 0; }
++.variant-handoff__technical pre { max-width: 100%; overflow: auto; padding: 14px; font-size: .78rem; line-height: 1.5; background: #0b1215; }
++@media (max-width: 480px) { .variant-handoff button, .variant-handoff__return a { width: 100%; margin-right: 0; } }
+diff --git a/src/App.tsx b/src/App.tsx
+--- a/src/App.tsx
++++ b/src/App.tsx
+@@ -4,6 +4,7 @@
+ import AppearanceControls from './components/AppearanceControls'
+ import Inspector from './components/Inspector'
+ import SourcesPanel from './components/SourcesPanel'
++import VariantHandoffPanel from './components/VariantHandoffPanel'
+ import { cascadeIds, categoryMeta, links, nodeById, nodes, sequenceIds, stages } from './data/wirkgefuege'
+ import { variants, type VariantId } from './data/variants'
+ import { getAppearanceCssVariables, loadAppearanceState, resetAppearanceMode, resolveAppearance, saveAppearanceState, setAppearanceCategoryColor, setAppearanceColor, setAppearanceMode, type SessionAppearanceState } from './lib/appearance'
+@@ -891,6 +892,7 @@
+         </section>}
+         mobileFooter={view === 'pruefung' ? <div className="mobile-cascade-footer">{renderCascadePlayer()}<div className="mobile-feedback">Rückkopplung: Geltung prüft den Rückschluss auf Absicht.</div></div> : null}
+       />
++      <VariantHandoffPanel />
+     </main>
+   )
+ }
+diff --git a/tests/variantHandoff.test.ts b/tests/variantHandoff.test.ts
+new file mode 100644
+--- /dev/null
++++ b/tests/variantHandoff.test.ts
+@@ -0,0 +1,164 @@
++import assert from 'node:assert/strict'
++import test from 'node:test'
++import { acknowledgeHandoff, canonicalJson, contentDigest, handoffDisplayText, isHandoffOperation, isSafeReturnUrl, loadHandoff, verifyHandoffEnvelope } from '../src/lib/variantHandoff.ts'
++import type { VariantHandoffEnvelope, VariantHandoffPacket, VariantHandoffReceipt } from '../src/types/variantHandoff.ts'
++
++const operation = 'operation_test_01'
++async function sign<T extends { digest: string }>(value: T): Promise<T> {
++  const contents = Object.fromEntries(Object.entries(value).filter(([key]) => key !== 'digest'))
++  return { ...value, digest: await contentDigest(contents) }
++}
++async function fixture(): Promise<VariantHandoffEnvelope> {
++  const binding = { componentId: 'component-test', sourceId: 'source-test', roomId: 'room-dazwischen', role: 'Offener technischer Anschluss', revision: 'summary-review', contentHash: null, bindingStatus: 'pinned' }
++  const variantSnapshot = { id: 'variant-test', title: 'Revidierte Gesamtfassung', componentBindings: [binding], notes: 'Offene Prüfung' }
++  const packet: VariantHandoffPacket = await sign({
++    format: 'kintegrity.roundtrip.v1', operationId: operation,
++    createdAt: '2026-10-27T19:00:00Z', digest: '',
++    source: {
++      catalogRevision: 'catalog-review', variantId: 'variant-test',
++      variantDigest: await contentDigest(variantSnapshot), variantSnapshot,
++      roomId: 'room-dazwischen', bindings: [{ ...binding, componentTitle: 'Eigenständiger Raumbeitrag' }],
++      sourceSummaries: [{ id: 'source-test', title: 'Öffentliche Übersicht', summary: 'Nur die freigegebene Zusammenfassung.', revision: 'summary-review', contentHash: null, visibility: 'public' }],
++      dissent: [{ id: 'dissent-test', title: 'Annahme bleibt offen', summary: 'Empfang begründet keine fachliche Zustimmung.' }],
++    },
++    navigation: { hash: '#variant=revision&room=daz&search=offen' },
++    mandate: { executor: 'Codex', role: 'Technische Ausführung', text: 'Einen echten, verantworteten technischen Rundweg umsetzen.', scope: 'Öffentlicher Paketempfang und gebundener Rückweg' },
++    target: { name: 'DAS DAZWISCHEN', revision: 'build-test' },
++    returnUrl: '/variantenraum/index.html#variant=revision&room=daz&search=offen',
++  })
++  return { packet, receipt: null, withdrawn: false, adoption: null }
++}
++async function received(envelope: VariantHandoffEnvelope): Promise<VariantHandoffEnvelope> {
++  const { packet } = envelope
++  const receipt: VariantHandoffReceipt = await sign({
++    id: 'receipt-test', packetDigest: packet.digest, digest: '', createdAt: '2026-10-27T19:05:00Z',
++    actor: { name: 'Codex', role: 'Technische Ausführung', mandate: packet.mandate.text, scope: packet.mandate.scope, identityBasis: 'configured-local-technical-executor' },
++    transport: 'received', review: 'not-reviewed', humanAcceptance: 'open', finding: 'Paket geladen, Bindung geprüft.',
++    targetRevision: packet.target.revision, returnUrl: packet.returnUrl,
++  })
++  return { ...envelope, receipt }
++}
++
++test('canonical JSON sorts nested keys and preserves Unicode values', () => {
++  assert.equal(canonicalJson({ z: [{ b: true, a: 'Rückweg' }], a: null }), '{"a":null,"z":[{"a":"Rückweg","b":true}]}')
++  assert.throws(() => canonicalJson({ a: undefined }))
++  assert.throws(() => canonicalJson({ a: Infinity }))
++  assert.throws(() => canonicalJson({ 'ä': 'unsupported key' }))
++})
++test('operation and return paths reject arbitrary origins and path tricks', () => {
++  assert.equal(isHandoffOperation(operation), true)
++  assert.equal(isHandoffOperation('../private'), false)
++  assert.equal(isSafeReturnUrl('/variantenraum/index.html#variant=choice'), true)
++  for (const path of ['https://elsewhere.test/variantenraum/index.html#x', '//elsewhere.test/#x', '/variantenraum/index.html?external=x#x', '/variantenraum/index.html#', '/variantenraum/index.html#x\n', '/variantenraum/index.html#x\\evil']) assert.equal(isSafeReturnUrl(path), false)
++})
++test('a verified packet is read-only until explicit acknowledgment', async () => {
++  const envelope = await fixture()
++  const verified = await verifyHandoffEnvelope(envelope, operation)
++  assert.equal(verified.receipt, null)
++  assert.equal(verified.withdrawn, false)
++  assert.deepEqual(verified, envelope)
++})
++test('packet tampering and wrong operation are refused', async () => {
++  const envelope = await fixture()
++  envelope.packet.source.variantSnapshot.title = 'Veränderte Fassung'
++  await assert.rejects(verifyHandoffEnvelope(envelope, operation))
++  await assert.rejects(verifyHandoffEnvelope(await fixture(), 'other_operation'))
++})
++test('a re-signed packet cannot conceal mismatched snapshot digest', async () => {
++  const envelope = await fixture()
++  envelope.packet.source.variantSnapshot.title = 'Andere Fassung'
++  envelope.packet = await sign(envelope.packet)
++  await assert.rejects(verifyHandoffEnvelope(envelope, operation))
++})
++test('private source payload fields are refused even if packet digest is valid', async () => {
++  const envelope = await fixture()
++  Object.assign(envelope.packet.source.sourceSummaries[0], { fulltext: 'Nicht zur Übertragung vorgesehen' })
++  envelope.packet = await sign(envelope.packet)
++  await assert.rejects(verifyHandoffEnvelope(envelope, operation))
++})
++test('source binding must resolve to an included public summary', async () => {
++  const envelope = await fixture()
++  envelope.packet.source.bindings[0].sourceId = 'missing-source'
++  envelope.packet = await sign(envelope.packet)
++  await assert.rejects(verifyHandoffEnvelope(envelope, operation))
++})
++test('room, variant and contribution must belong to the bound snapshot', async () => {
++  for (const mutation of [
++    (packet: VariantHandoffPacket) => { packet.source.variantId = 'other-variant' },
++    (packet: VariantHandoffPacket) => { packet.source.roomId = 'other-room' },
++    (packet: VariantHandoffPacket) => { packet.source.bindings[0].role = 'Unbelegte Zuständigkeit' },
++  ]) {
++    const envelope = await fixture()
++    mutation(envelope.packet)
++    envelope.packet = await sign(envelope.packet)
++    await assert.rejects(verifyHandoffEnvelope(envelope, operation))
++  }
++})
++test('receipt preserves fixed executor, mandate and open human acceptance', async () => {
++  const envelope = await received(await fixture())
++  assert.deepEqual(await verifyHandoffEnvelope(envelope, operation), envelope)
++  assert.equal(envelope.receipt?.review, 'not-reviewed')
++  assert.equal(envelope.receipt?.humanAcceptance, 'open')
++})
++test('receipt integrity, actor, mandate, target and return binding are all checked', async () => {
++  for (const mutation of [
++    (receipt: VariantHandoffReceipt) => { receipt.finding = 'Anderer Befund' },
++    (receipt: VariantHandoffReceipt) => { receipt.actor.mandate = 'Anderer Auftrag' },
++    (receipt: VariantHandoffReceipt) => { receipt.actor.scope = 'Anderer Bereich' },
++    (receipt: VariantHandoffReceipt) => { Object.assign(receipt.actor, { identityBasis: 'self-asserted' }) },
++    (receipt: VariantHandoffReceipt) => { receipt.targetRevision = 'other-build' },
++    (receipt: VariantHandoffReceipt) => { receipt.returnUrl = '/variantenraum/index.html#other' },
++    (receipt: VariantHandoffReceipt) => { Object.assign(receipt.actor, { name: 'Behauptete Person' }) },
++    (receipt: VariantHandoffReceipt) => { Object.assign(receipt, { humanAcceptance: 'accepted' }) },
++  ]) {
++    const envelope = await received(await fixture())
++    mutation(envelope.receipt!)
++    if (envelope.receipt!.finding !== 'Anderer Befund') envelope.receipt = await sign(envelope.receipt!)
++    await assert.rejects(verifyHandoffEnvelope(envelope, operation))
++  }
++})
++test('withdrawn packets retain a verified historical receipt', async () => {
++  const envelope = await received(await fixture())
++  envelope.withdrawn = true
++  const verified = await verifyHandoffEnvelope(envelope, operation)
++  assert.equal(verified.withdrawn, true)
++  assert.ok(verified.receipt)
++})
++test('human display keeps identifiers and private paths in technical details', () => {
++  const text = handoffDisplayText('Stand 95f7923 und 12345678-abcd-1234-abcd-123456789abc bei /Volumes/Drive/private.md')
++  assert.equal(text.includes('95f7923'), false)
++  assert.equal(text.includes('12345678-abcd'), false)
++  assert.equal(text.includes('/Volumes/'), false)
++})
++test('load uses the same-origin read endpoint and rehydrates stored receipt', async (context) => {
++  const envelope = await received(await fixture())
++  context.mock.method(globalThis, 'fetch', async (url: string, init: RequestInit) => {
++    assert.equal(url, `/api/rundweg/handoffs/${operation}`)
++    assert.equal(init.credentials, 'same-origin')
++    assert.equal(init.cache, 'no-store')
++    assert.equal(init.method, undefined)
++    return new Response(JSON.stringify(envelope), { status: 200 })
++  })
++  assert.equal((await loadHandoff(operation)).receipt?.finding, envelope.receipt?.finding)
++})
++test('explicit receipt sends only digest, finding and disposition with request header', async (context) => {
++  const envelope = await received(await fixture())
++  context.mock.method(globalThis, 'fetch', async (url: string, init: RequestInit) => {
++    assert.equal(url, `/api/rundweg/handoffs/${operation}/receipt`)
++    assert.equal(init.method, 'POST')
++    assert.deepEqual(init.headers, { 'Content-Type': 'application/json', 'X-Rundweg-Request': '1' })
++    assert.deepEqual(JSON.parse(init.body as string), { packetDigest: envelope.packet.digest, finding: envelope.receipt!.finding, disposition: 'received' })
++    return new Response(JSON.stringify(envelope), { status: 200 })
++  })
++  assert.deepEqual(await acknowledgeHandoff(envelope.packet, ` ${envelope.receipt!.finding} `), envelope)
++})
++test('empty and too short findings never issue a receipt request', async (context) => {
++  const mock = context.mock.method(globalThis, 'fetch', async () => { throw new Error('must not request') })
++  await assert.rejects(acknowledgeHandoff((await fixture()).packet, '   '))
++  await assert.rejects(acknowledgeHandoff((await fixture()).packet, 'Kurz'))
++  assert.equal(mock.mock.callCount(), 0)
++})
++test('conflicting receipt and failed requests do not report success or expose payload', async (context) => {
++  context.mock.method(globalThis, 'fetch', async () => new Response('private-technical-token', { status: 409 }))
++  await assert.rejects(acknowledgeHandoff((await fixture()).packet, 'Technischer Befund'), (error: Error) => !error.message.includes('private-technical-token'))
++})
